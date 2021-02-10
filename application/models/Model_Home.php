@@ -1,0 +1,84 @@
+<?php
+// error_reporting(0);
+class Model_Home extends CI_model
+{
+    public function gettruck()
+    {
+        return $this->db->get("skb_mobil")->result_array();
+    }
+    public function getmobilbyid($mobil_no)
+    {
+        return $this->db->get_where("skb_mobil",array("mobil_no"=>$mobil_no))->row_array();
+    }
+    public function getcustomer()
+    {
+        return $this->db->get("skb_customer")->result_array();
+    }
+    public function getcustomerbyid($customer_id)
+    {
+        return $this->db->get_where("skb_customer",array("customer_id"=>$customer_id))->row_array();
+    }
+    public function getsupir()
+    {
+        return $this->db->get("skb_supir")->result_array();
+    }
+    public function getsupirbyid($supir_id)
+    {
+        return $this->db->get_where("skb_supir",array("supir_id"=>$supir_id))->row_array();
+    }
+    public function getjo()
+    {
+        return $this->db->get("skb_job_order")->result_array();
+    }
+    public function getjobyid($jo_id)
+    {
+        return $this->db->get_where("skb_job_order",array("Jo_id"=>$jo_id))->row_array();
+    }
+     //function-fiunction datatable truck
+        public function count_all_truck()
+        {
+            return $this->db->count_all_results("skb_mobil");
+        }
+
+        public function filter_truck($search, $limit, $start, $order_field, $order_ascdesc)
+        {
+            $this->db->like('mobil_no', $search);
+            $this->db->or_like('mobil_jenis', $search);
+            $this->db->order_by($order_field, $order_ascdesc);
+            $this->db->limit($limit, $start);
+            return $this->db->get('skb_mobil')->result_array();
+        }
+
+        public function count_filter_truck($search)
+        {
+            $this->db->like('mobil_no', $search);
+            $this->db->or_like('mobil_jenis', $search);
+            return $this->db->get('skb_mobil')->num_rows();
+        }
+     //akhir function-fiunction datatable truck
+     //function-fiunction datatable JO
+        public function count_all_JO()
+        {
+            $this->db->join("skb_customer", "skb_customer.customer_id = skb_job_order.customer_id", 'left');
+            return $this->db->count_all_results("skb_job_order");
+        }
+
+        public function filter_JO($search, $limit, $start, $order_field, $order_ascdesc)
+        {
+            $this->db->like('JO_id', $search);
+            $this->db->or_like('customer_name', $search);
+            $this->db->order_by($order_field, $order_ascdesc);
+            $this->db->limit($limit, $start);
+            $this->db->join("skb_customer", "skb_customer.customer_id = skb_job_order.customer_id", 'left');
+            return $this->db->get('skb_job_order')->result_array();
+        }
+
+        public function count_filter_JO($search)
+        {         
+            $this->db->like('JO_id', $search);
+            $this->db->or_like('customer_name', $search);
+            $this->db->join("skb_customer", "skb_customer.customer_id = skb_job_order.customer_id", 'left');
+            return $this->db->get('skb_job_order')->num_rows();
+        }
+     //akhir function-fiunction datatable JO
+}
