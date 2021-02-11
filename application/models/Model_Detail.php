@@ -23,7 +23,7 @@ class Model_Detail extends CI_model
     }
 
     public function getbonbyid($bon_id){
-        $this->db->join("skb_supir","skb_supir.supir_id=skb_bon.bon_id","left");
+        $this->db->join("skb_supir","skb_supir.supir_id=skb_bon.supir_id","left");
         return $this->db->get_where("skb_bon",array("bon_id"=>$bon_id))->row_array();
     }
 }
