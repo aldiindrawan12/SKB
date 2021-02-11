@@ -21,13 +21,16 @@ class Home extends CI_Controller {
         $search = $_POST['search']['value'];
         $limit = $_POST['length'];
         $start = $_POST['start'];
-        // $status = $this->input->post('searchStatus');
+        $tanggal = $this->input->post('tanggal');
+        $bulan = $this->input->post('bulan');
+        $tahun = $this->input->post('tahun');
+        // $tanggal,$bulan,$tahun
         $order_index = $_POST['order'][0]['column'];
         $order_field = $_POST['columns'][$order_index]['data'];
         $order_ascdesc = $_POST['order'][0]['dir'];
-        $sql_total = $this->model_home->count_all_JO();
-        $sql_data = $this->model_home->filter_JO($search, $limit, $start, $order_field, $order_ascdesc);
-        $sql_filter = $this->model_home->count_filter_JO($search);
+        $sql_total = $this->model_home->count_all_JO($tanggal,$bulan,$tahun);
+        $sql_data = $this->model_home->filter_JO($search, $limit, $start, $order_field, $order_ascdesc,$tanggal,$bulan,$tahun);
+        $sql_filter = $this->model_home->count_filter_JO($search,$tanggal,$bulan,$tahun);
         $callback = array(
             'draw' => $_POST['draw'],
             'recordsTotal' => $sql_total,

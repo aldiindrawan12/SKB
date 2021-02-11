@@ -1,9 +1,20 @@
+
 <div class="container">
+    <a href="" class="btn btn-primary btn-icon-split mb-5" data-toggle='modal' data-target='#popup-customer'>
+        <span class="icon text-white-100">
+            <i class="fas fa-plus"></i>
+        </span>
+        <span class="text">Customer Baru</span>
+    </a>
     <form action="<?=base_url("index.php/form/insert_JO")?>" method="POST" class="row">
         <div class="col-md-5">
             <label class="form-label" for="Customer">Customer</label>
             <select name="Customer" id="Customer" class="form-control custom-select" required>
-                <option class="font-w700" disabled="disabled" selected value="">Customer</option>
+                <?php if(count($customer_by_name)==0){?>
+                    <option class="font-w700" disabled="disabled" selected value="">Customer</option>
+                <?php }else{?>
+                    <option class="font-w700" selected value="<?=$customer_by_name["customer_id"]?>"><?=$customer_by_name["customer_name"]?></option>
+                <?php }?>
                 <?php foreach($customer as $value){?>
                     <option value="<?=$value["customer_id"]?>"><?=$value["customer_name"]?></option>
                 <?php } ?>
@@ -70,4 +81,28 @@
             <button type="reset" class="btn btn-warning mb-3">Reset</button>
         </div>
     </form>
+</div>
+
+<div class="modal fade" id="popup-customer" tabindex="-1" role="dialog" aria-labelledby="modal-block-large" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary-dark">
+                <h5 class="block-title">Customer Baru</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">X</span>
+                </button>
+            </div>
+            <div class="font-size-sm m-3 text-justify">
+                <form action="<?= base_url("index.php/form/insert_customer")?>" method="POST">
+                    <div class="form-group">
+                        <label for="Customer" class="form-label">Customer</label>
+                        <input autocomplete="off" type="text" class="form-control" id="Customer" name="Customer" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary mb-3">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>

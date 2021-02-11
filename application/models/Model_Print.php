@@ -1,6 +1,6 @@
 <?php
 // error_reporting(0);
-class Model_Home extends CI_model
+class Model_Print extends CI_model
 {
     public function gettruck()
     {
@@ -61,25 +61,25 @@ class Model_Home extends CI_model
         {
             $like=$tahun."-".$bulan."-".$tanggal;
             if($like != "--"){
-                if ($tanggal != "x" && $bulan=="x" && $tahun=="x") {
+                if ($tanggal != "" && $bulan=="" && $tahun=="") {
                     $this->db->like("tanggal_surat", "-".$tanggal);
                 }
-                if ($tanggal == "x" && $bulan!="x" && $tahun=="x") {
+                if ($tanggal == "" && $bulan!="" && $tahun=="") {
                     $this->db->like("tanggal_surat", "-".$bulan."-");
                 }
-                if ($tanggal == "x" && $bulan=="x" && $tahun!="x") {
+                if ($tanggal == "" && $bulan=="" && $tahun!="") {
                     $this->db->like("tanggal_surat", $tahun."-");
                 }
-                if ($tanggal != "x" && $bulan=="x" && $tahun!="x") {
+                if ($tanggal != "" && $bulan=="" && $tahun!="") {
                     $this->db->like("tanggal_surat", $tahun."-__-".$tanggal);
                 }
-                if ($tanggal == "x" && $bulan!="x" && $tahun!="x") {
+                if ($tanggal == "" && $bulan!="" && $tahun!="") {
                     $this->db->like("tanggal_surat", $tahun."-".$bulan."-");
                 }
-                if ($tanggal != "x" && $bulan!="x" && $tahun=="x") {
+                if ($tanggal != "" && $bulan!="" && $tahun=="") {
                     $this->db->like("tanggal_surat", "-".$bulan."-".$tanggal);
                 }
-                if ($tanggal != "x" && $bulan!="x" && $tahun!="x") {
+                if ($tanggal != "" && $bulan!="" && $tahun!="") {
                     $this->db->like("tanggal_surat", $tahun."-".$bulan."-".$tanggal);
                 }
             }
@@ -91,25 +91,25 @@ class Model_Home extends CI_model
         {
             $like=$tahun."-".$bulan."-".$tanggal;
             if($like != "--"){
-                if ($tanggal != "x" && $bulan=="x" && $tahun=="x") {
+                if ($tanggal != "" && $bulan=="" && $tahun=="") {
                     $this->db->like("tanggal_surat", "-".$tanggal);
                 }
-                if ($tanggal == "x" && $bulan!="x" && $tahun=="x") {
+                if ($tanggal == "" && $bulan!="" && $tahun=="") {
                     $this->db->like("tanggal_surat", "-".$bulan."-");
                 }
-                if ($tanggal == "x" && $bulan=="x" && $tahun!="x") {
+                if ($tanggal == "" && $bulan=="" && $tahun!="") {
                     $this->db->like("tanggal_surat", $tahun."-");
                 }
-                if ($tanggal != "x" && $bulan=="x" && $tahun!="x") {
+                if ($tanggal != "" && $bulan=="" && $tahun!="") {
                     $this->db->like("tanggal_surat", $tahun."-__-".$tanggal);
                 }
-                if ($tanggal == "x" && $bulan!="x" && $tahun!="x") {
+                if ($tanggal == "" && $bulan!="" && $tahun!="") {
                     $this->db->like("tanggal_surat", $tahun."-".$bulan."-");
                 }
-                if ($tanggal != "x" && $bulan!="x" && $tahun=="x") {
+                if ($tanggal != "" && $bulan!="" && $tahun=="") {
                     $this->db->like("tanggal_surat", "-".$bulan."-".$tanggal);
                 }
-                if ($tanggal != "x" && $bulan!="x" && $tahun!="x") {
+                if ($tanggal != "" && $bulan!="" && $tahun!="") {
                     $this->db->like("tanggal_surat", $tahun."-".$bulan."-".$tanggal);
                 }
             }
@@ -125,25 +125,25 @@ class Model_Home extends CI_model
         {   
             $like=$tahun."-".$bulan."-".$tanggal;
             if($like != "--"){
-                if ($tanggal != "x" && $bulan=="x" && $tahun=="x") {
+                if ($tanggal != "" && $bulan=="" && $tahun=="") {
                     $this->db->like("tanggal_surat", "-".$tanggal);
                 }
-                if ($tanggal == "x" && $bulan!="x" && $tahun=="x") {
+                if ($tanggal == "" && $bulan!="" && $tahun=="") {
                     $this->db->like("tanggal_surat", "-".$bulan."-");
                 }
-                if ($tanggal == "x" && $bulan=="x" && $tahun!="x") {
+                if ($tanggal == "" && $bulan=="" && $tahun!="") {
                     $this->db->like("tanggal_surat", $tahun."-");
                 }
-                if ($tanggal != "x" && $bulan=="x" && $tahun!="x") {
+                if ($tanggal != "" && $bulan=="" && $tahun!="") {
                     $this->db->like("tanggal_surat", $tahun."-__-".$tanggal);
                 }
-                if ($tanggal == "x" && $bulan!="x" && $tahun!="x") {
+                if ($tanggal == "" && $bulan!="" && $tahun!="") {
                     $this->db->like("tanggal_surat", $tahun."-".$bulan."-");
                 }
-                if ($tanggal != "x" && $bulan!="x" && $tahun=="x") {
+                if ($tanggal != "" && $bulan!="" && $tahun=="") {
                     $this->db->like("tanggal_surat", "-".$bulan."-".$tanggal);
                 }
-                if ($tanggal != "x" && $bulan!="x" && $tahun!="x") {
+                if ($tanggal != "" && $bulan!="" && $tahun!="") {
                     $this->db->like("tanggal_surat", $tahun."-".$bulan."-".$tanggal);
                 }
             }

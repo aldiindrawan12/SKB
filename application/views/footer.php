@@ -86,7 +86,7 @@
         });
     });
     </script>
-    <script> //script datatables kendaraan
+    <script> //script datatables job order
     $(document).ready(function() {
         var table = null;
         table = $('#Table-Job-Order').DataTable({
@@ -98,7 +98,12 @@
             ],
             "ajax": {
                 "url": "<?php echo base_url('index.php/home/view_JO/') ?>",
-                "type": "POST"
+                "type": "POST",
+                'data': function(data) {
+                    data.tanggal = $('#Tanggal').val();
+                    data.bulan = $('#Bulan').val();
+                    data.tahun = $('#Tahun').val();
+                }
             },
             "deferRender": true,
             "aLengthMenu": [
@@ -137,6 +142,24 @@
                     }
                 }
             ]
+        });
+        $("#Tanggal").change(function() {
+            // alert($('#Tanggal').val());   
+            table.ajax.reload();
+            $('#link_cetaklaporanpdf').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanpdf/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val());
+            $('#link_cetaklaporanexcel').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanexcel/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val());
+        });
+        $("#Bulan").change(function() {
+            // alert($('#Bulan').val());   
+            table.ajax.reload();
+            $('#link_cetaklaporanpdf').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanpdf/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val());
+            $('#link_cetaklaporanexcel').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanexcel/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val());
+        });
+        $("#Tahun").change(function() {
+            // alert($('#Tahun').val());   
+            table.ajax.reload();
+            $('#link_cetaklaporanpdf').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanpdf/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val());
+            $('#link_cetaklaporanexcel').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanexcel/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val());
         });
     });
     </script>

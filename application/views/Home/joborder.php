@@ -1,5 +1,5 @@
 <div class="container">
-    <a href="<?=base_url("index.php/form/joborder")?>" class="btn btn-primary btn-icon-split mb-5">
+    <a href="<?=base_url("index.php/form/joborder/x")?>" class="btn btn-primary btn-icon-split mb-5">
         <span class="icon text-white-100">
             <i class="fas fa-plus"></i>
         </span>

@@ -9,8 +9,9 @@ class Form extends CI_Controller {
         $this->load->model('model_home');//load model
     }
 
-    public function joborder(){
+    public function joborder($customer_name){
         $data["customer"] = $this->model_home->getcustomer();
+        $data["customer_by_name"] = $this->model_form->getcustomerbyname($customer_name);
         $data["mobil"] = $this->model_home->gettruck();
         $data["supir"] = $this->model_home->getsupir();
         $this->load->view('header');
@@ -57,5 +58,14 @@ class Form extends CI_Controller {
         // echo print_r($data);
         $this->model_form->insert_bon($data);
         redirect(base_url("index.php/home/bon"));
+    }
+
+    public function insert_customer(){
+        $data=array(
+            "customer_name"=>$this->input->post("Customer")
+        );
+        // echo($data["customer_name"]);
+        $this->model_form->insert_customer($data);
+        redirect(base_url("index.php/form/joborder/").$data["customer_name"]);
     }
 }
