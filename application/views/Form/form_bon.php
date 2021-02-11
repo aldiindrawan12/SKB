@@ -2,7 +2,7 @@
     <form action="<?=base_url("index.php/form/insert_bon")?>" method="POST" class="row">
         <div class="col-md-5">
             <label class="form-label" for="Supir">Supir</label>
-            <select name="Supir" id="Supir" class="form-control custom-select" required>
+            <select name="Supir" id="Supir" class="form-control selectpicker" data-live-search="true" required>
                 <option class="font-w700" disabled="disabled" selected value="">Supir Pengiriman</option>
                 <?php foreach($supir as $value){ ?>
                     <option value="<?=$value["supir_id"]?>"><?=$value["supir_name"]?></option>

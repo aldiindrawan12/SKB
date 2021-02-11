@@ -9,7 +9,7 @@
     <form action="<?=base_url("index.php/form/insert_JO")?>" method="POST" class="row">
         <div class="col-md-5">
             <label class="form-label" for="Customer">Customer</label>
-            <select name="Customer" id="Customer" class="form-control custom-select" required>
+            <select name="Customer" id="Customer" class="form-control selectpicker" data-live-search="true" required>
                 <?php if(count($customer_by_name)==0){?>
                     <option class="font-w700" disabled="disabled" selected value="">Customer</option>
                 <?php }else{?>
@@ -28,7 +28,7 @@
         </div>
         <div class="col-md-5">
             <label class="form-label" for="Asal">Asal</label>
-            <select name="Asal" id="Asal" class="form-control custom-select" required>
+            <select name="Asal" id="Asal" class="form-control selectpicker" data-live-search="true" required>
                 <option class="font-w700" disabled="disabled" selected value="">Asal Pengiriman</option>
                 <option value="Sumatera Selatan">Sumatera Selatan</option>
                 <option value="Jakarta">Jakarta</option>
@@ -38,7 +38,7 @@
         </div>
         <div class="col-md-5">
             <label class="form-label" for="Tujuan">Tujuan</label>
-            <select name="Tujuan" id="Tujuan" class="form-control custom-select" required>
+            <select name="Tujuan" id="Tujuan" class="form-control selectpicker" data-live-search="true" required>
                 <option class="font-w700" disabled="disabled" selected value="">Tujuan Pengiriman</option>
                 <option value="Sumatera Selatan">Sumatera Selatan</option>
                 <option value="Jakarta">Jakarta</option>
@@ -48,7 +48,7 @@
         </div>
         <div class="col-md-5">
             <label class="form-label" for="Kendaraan">Kendaraan</label>
-            <select name="Kendaraan" id="Kendaraan" class="form-control custom-select" required>
+            <select name="Kendaraan" id="Kendaraan" class="form-control selectpicker" data-live-search="true" required>
                 <option class="font-w700" disabled="disabled" selected value="">Kendaraan Pengiriman</option>
                 <?php foreach($mobil as $value){
                     if($value["status_jalan"]!="Jalan"){?>
@@ -59,7 +59,7 @@
         </div>
         <div class="col-md-5">
             <label class="form-label" for="Supir">Supir</label>
-            <select name="Supir" id="Supir" class="form-control custom-select" required>
+            <select name="Supir" id="Supir" class="form-control selectpicker" data-live-search="true" required>
                 <option class="font-w700" disabled="disabled" selected value="">Supir Pengiriman</option>
                 <?php foreach($supir as $value){
                     if($value["status_jalan"]!="Jalan"){?>

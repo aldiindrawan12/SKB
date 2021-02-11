@@ -52,7 +52,7 @@
     <script src="<?=base_url("assets/vendor/chart.js/Chart.min.js")?>"></script>
     <script src="<?=base_url("assets/vendor/datatables/jquery.dataTables.min.js")?>"></script>
     <script src="<?=base_url("assets/vendor/datatables/dataTables.bootstrap4.min.js")?>"></script>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/bootstrap-select.min.js"></script>
     <script> //script datatables kendaraan
     $(document).ready(function() {
         var table = null;
