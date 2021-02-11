@@ -1,12 +1,12 @@
-    <!-- Footer -->
-    <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; PT.Sumber Karya Berkah</span>
-                    </div>
+        <!-- Footer -->
+        <footer class="sticky-footer bg-white">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright &copy; PT.Sumber Karya Berkah</span>
                 </div>
-            </footer>
-            <!-- End of Footer -->
+            </div>
+        </footer>
+        <!-- End of Footer -->
 
         </div>
         <!-- End of Content Wrapper -->
@@ -137,6 +137,76 @@
                     }
                 }
             ]
+        });
+    });
+    </script>
+     <script> //script datatables kendaraan
+    $(document).ready(function() {
+        var table = null;
+        table = $('#Table-Bon').DataTable({
+            "processing": true,
+            "serverSide": true,
+            "ordering": true,
+            "order": [
+                [0, 'asc']
+            ],
+            "ajax": {
+                "url": "<?php echo base_url('index.php/home/view_bon/') ?>",
+                "type": "POST"
+            },
+            "deferRender": true,
+            "aLengthMenu": [
+                [5, 10, 30, 50, 100],
+                [5, 10, 30, 50, 100]
+            ],
+            "columns": [
+                {
+                    "data": "bon_id"
+                },
+                {
+                    "data": "supir_name"
+                },
+                {
+                    "data": "bon_jenis"
+                },
+                {
+                    "data": "bon_nominal"
+                },
+                {
+                    "data": "bon_tanggal"
+                },
+                {
+                    "data": "bon_id",
+                    "orderable": false,
+                    render: function(data, type, row) {
+                    let html = "<a class='btn btn-light btn-detail-bon' href='javascript:void(0)' data-toggle='modal' data-target='#popup-bon' data-pk='"+data+"'><i class='fas fa-eye'></i></a>";
+                        return html;
+                    }
+                }
+            ],
+            drawCallback: function() {
+                $('.btn-detail-bon').click(function() {
+                    let pk = $(this).data('pk');
+                    // alert(pk);
+                    $.ajax({ //ajax ambil data bon
+                        type: "GET",
+                        url: "<?php echo base_url('index.php/detail/getbon') ?>",
+                        dataType: "JSON",
+                        data: {
+                            id: pk
+                        },
+                        success: function(data) { //jika ambil data sukses
+                            $('td[name="id"]').text(data["bon_id"]); //set value
+                            $('td[name="supir"]').text(data["supir_name"]); //set value
+                            $('td[name="jenis"]').text(data["bon_jenis"]); //set value
+                            $('td[name="nominal"]').text(data["bon_nominal"]); //set value
+                            $('td[name="tanggal"]').text(data["bon_tanggal"]); //set value
+                            $('td[name="keterangan"]').text(data["bon_keterangan"]); //set value
+                            // alert(data["supir_id"]+data["supir_name"]+data["bon_id"]+data["bon_jenis"]+data["bon_nominal"]);
+                        }
+                    });
+                });
+            }
         });
     });
     </script>

@@ -21,4 +21,9 @@ class Model_Detail extends CI_model
         $this->db->where("mobil_no",str_replace("%20"," ",$mobil));
         $this->db->update("skb_mobil");
     }
+
+    public function getbonbyid($bon_id){
+        $this->db->join("skb_supir","skb_supir.supir_id=skb_bon.bon_id","left");
+        return $this->db->get_where("skb_bon",array("bon_id"=>$bon_id))->row_array();
+    }
 }

@@ -38,5 +38,11 @@ class Detail extends CI_Controller {
         redirect(base_url("index.php/detail/detail_jo/").$this->input->post("jo_id"));
     }
 
+    function getbon()
+    {
+        $bon_id = $this->input->get('id');
+        $data = $this->model_detail->getbonbyid($bon_id);
+        echo json_encode($data);
+    }
     
 }

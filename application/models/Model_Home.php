@@ -81,4 +81,29 @@ class Model_Home extends CI_model
             return $this->db->get('skb_job_order')->num_rows();
         }
      //akhir function-fiunction datatable JO
+     //function-fiunction datatable truck
+        public function count_all_bon()
+        {
+            $this->db->join("skb_supir", "skb_supir.supir_id = skb_bon.supir_id", 'left');
+            return $this->db->count_all_results("skb_bon");
+        }
+
+        public function filter_bon($search, $limit, $start, $order_field, $order_ascdesc)
+        {
+            $this->db->like('bon_id', $search);
+            $this->db->or_like('supir_name', $search);
+            $this->db->order_by($order_field, $order_ascdesc);
+            $this->db->limit($limit, $start);
+            $this->db->join("skb_supir", "skb_supir.supir_id = skb_bon.supir_id", 'left');
+            return $this->db->get('skb_bon')->result_array();
+        }
+
+        public function count_filter_bon($search)
+        {
+            $this->db->like('bon_id', $search);
+            $this->db->or_like('supir_name', $search);
+            $this->db->join("skb_supir", "skb_supir.supir_id = skb_bon.supir_id", 'left');
+            return $this->db->get('skb_bon')->num_rows();
+        }
+     //akhir function-fiunction datatable truck
 }

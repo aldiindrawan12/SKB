@@ -61,6 +61,27 @@ class Home extends CI_Controller {
 		$this->load->view('home/bon');
         $this->load->view('footer');
 	}
+    public function view_bon(){
+        $search = $_POST['search']['value'];
+        $limit = $_POST['length'];
+        $start = $_POST['start'];
+        // $status = $this->input->post('searchStatus');
+        $order_index = $_POST['order'][0]['column'];
+        $order_field = $_POST['columns'][$order_index]['data'];
+        $order_ascdesc = $_POST['order'][0]['dir'];
+        $sql_total = $this->model_home->count_all_bon();
+        $sql_data = $this->model_home->filter_bon($search, $limit, $start, $order_field, $order_ascdesc);
+        $sql_filter = $this->model_home->count_filter_bon($search);
+        $callback = array(
+            'draw' => $_POST['draw'],
+            'recordsTotal' => $sql_total,
+            'recordsFiltered' => $sql_filter,
+            'data' => $sql_data
+        );
+
+        header('Content-Type: application/json');
+        echo json_encode($callback);
+    }
 
     //fungsi untuk truk
     public function truck()

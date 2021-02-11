@@ -18,7 +18,7 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="<?=base_url()?>">
                     <i class="fas fa-envelope-open-text"></i>
                     <span>Job Order</span></a>

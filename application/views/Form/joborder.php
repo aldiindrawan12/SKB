@@ -13,7 +13,7 @@
         </div>
         <div class="col-md-5">
             <label for="Keterangan" class="form-label">Keterangan/Catatan</label>
-            <textarea class="form-control" id="Keterangan" rows="3"></textarea>
+            <textarea class="form-control" name="Keterangan" id="Keterangan" rows="3"></textarea>
         </div>
         <div class="col-md-5">
             <label class="form-label" for="Asal">Asal</label>
