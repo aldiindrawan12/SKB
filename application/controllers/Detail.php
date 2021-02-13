@@ -34,7 +34,15 @@ class Detail extends CI_Controller {
             "tanggal_bongkar"=>date('Y-m-d'),
             "Jo_id"=>$this->input->post("jo_id")
         );
-        $this->model_detail->updatestatusjo($data,$supir,$mobil);
+
+        $data_invoice = array(
+            "jo_id"=>$this->input->post("jo_id"),
+            "customer_id"=>$data_jo["customer_id"],
+            "tanggal_invoice"=>date("Y-m-d"),
+            "batas_pembayaran"=>date("Y-m-d",strtotime('+14 days', strtotime(date("Y-m-d")))),
+            "grand_total"=>$data["tonase"]*$data["harga/kg"]*1000
+        );
+        $this->model_detail->updatestatusjo($data,$supir,$mobil,$data_invoice);
         redirect(base_url("index.php/detail/detail_jo/").$this->input->post("jo_id"));
     }
 

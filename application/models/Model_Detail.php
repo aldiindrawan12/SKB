@@ -2,7 +2,7 @@
 // error_reporting(0);
 class Model_Detail extends CI_model
 {
-    public function updatestatusjo($data,$supir,$mobil){
+    public function updatestatusjo($data,$supir,$mobil,$data_invoice){
         $this->db->set("tonase",$data["tonase"]);
         $this->db->set("upah",$data["upah"]);
         $this->db->set("harga/kg",$data["harga/kg"]);
@@ -20,6 +20,8 @@ class Model_Detail extends CI_model
         $this->db->set("status_jalan","Tidak Jalan");
         $this->db->where("mobil_no",str_replace("%20"," ",$mobil));
         $this->db->update("skb_mobil");
+
+        $this->db->insert("skb_invoice",$data_invoice);
     }
 
     public function getbonbyid($bon_id){
