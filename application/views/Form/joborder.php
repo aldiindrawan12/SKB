@@ -70,7 +70,7 @@
         </div>
         <div class="col-md-4">
             <label for="Uang" class="form-label">Uang Jalan</label>
-            <input autocomplete="off" type="number" class="form-control" id="Uang" name="Uang" required onkeyup="terbilang()">
+            <input autocomplete="off" type="text" class="form-control" id="Uang" name="Uang" required onkeyup="terbilang()">
         </div>
         <div class="col-md-6">
             <label for="Terbilang" class="form-label">Terbilang</label>
@@ -110,6 +110,7 @@
 <script>
     function terbilang(){
         var uang = $('#Uang').val();
+        $( '#Uang' ).mask('000.000.000', {reverse: true});
         $.ajax({
             type: "GET",
             url: "<?php echo base_url('index.php/form/generate_terbilang_fix/') ?>"+uang,

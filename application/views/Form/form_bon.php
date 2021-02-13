@@ -15,7 +15,7 @@
                 <option value="Pembayaran">Pembayaran</option>
             </select>
             <label for="Nominal" class="form-label">Nominal</label>
-            <input autocomplete="off" type="number" class="form-control" id="Nominal" name="Nominal" required>
+            <input autocomplete="off" type="text" class="form-control" id="Nominal" name="Nominal" required onkeyup="nominal()">
         </div>
         <div class="col-md-5">
             <label for="Keterangan" class="form-label">Keterangan/Catatan</label>
@@ -27,3 +27,9 @@
         </div>
     </form>
 </div>
+
+<script>
+    function nominal(){
+        $( '#Nominal' ).mask('000.000.000', {reverse: true});
+    }
+</script>

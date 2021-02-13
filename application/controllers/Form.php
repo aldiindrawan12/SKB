@@ -27,7 +27,7 @@ class Form extends CI_Controller {
             "muatan"=>$this->input->post("Muatan"),
             "asal"=>$this->input->post("Asal"),
             "tujuan"=>$this->input->post("Tujuan"),
-            "uang_jalan"=>$this->input->post("Uang"),
+            "uang_jalan"=>str_replace(".","",$this->input->post("Uang")),
             "terbilang"=>$this->input->post("Terbilang"),
             "tanggal_surat"=>date("Y-m-d"),
             "keterangan"=>$this->input->post("Keterangan"),
@@ -51,7 +51,7 @@ class Form extends CI_Controller {
         $data=array(
             "supir_id"=>$this->input->post("Supir"),
             "bon_jenis"=>$this->input->post("Jenis"),
-            "bon_nominal"=>$this->input->post("Nominal"),
+            "bon_nominal"=>str_replace(".","",$this->input->post("Nominal")),
             "bon_keterangan"=>$this->input->post("Keterangan"),
             "bon_tanggal"=>date("Y-m-d H:i:s")
         );
@@ -95,6 +95,6 @@ class Form extends CI_Controller {
     }
 
     public function generate_terbilang_fix($uang){
-        echo $this->generate_terbilang($uang)." Rupiah";
+        echo $this->generate_terbilang(str_replace(".","",$uang))." Rupiah";
     }
 }

@@ -27,9 +27,9 @@ class Detail extends CI_Controller {
 
         $data = array(
             "tonase"=>$this->input->post("tonase"),
-            "upah"=>$this->input->post("upah"),
-            "harga/kg"=>$this->input->post("harga"),
-            "bonus"=>$this->input->post("bonus"),
+            "upah"=>str_replace(".","",$this->input->post("upah")),
+            "harga/kg"=>str_replace(".","",$this->input->post("harga")),
+            "bonus"=>str_replace(".","",$this->input->post("bonus")),
             "keterangan"=>$keterangan,
             "tanggal_bongkar"=>date('Y-m-d'),
             "Jo_id"=>$this->input->post("jo_id")
