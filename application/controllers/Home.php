@@ -65,6 +65,30 @@ class Home extends CI_Controller {
         echo json_encode($callback);
     }
 
+// Supir
+public function view_Supir(){
+    $search = $_POST['search']['value'];
+    $limit = $_POST['length'];
+    $start = $_POST['start'];
+    
+    // $tanggal,$bulan,$tahun
+    $order_index = $_POST['order'][0]['column'];
+    $order_field = $_POST['columns'][$order_index]['data'];
+    $order_ascdesc = $_POST['order'][0]['dir'];
+    $sql_total = $this->model_home->count_all_supir();
+    $sql_data = $this->model_home->filter_supir($search, $limit, $start, $order_field, $order_ascdesc);
+    $sql_filter = $this->model_home->count_filter_supir($search);
+    $callback = array(
+        'draw' => $_POST['draw'],
+        'recordsTotal' => $sql_total,
+        'recordsFiltered' => $sql_filter,
+        'data' => $sql_data
+    );
+
+    header('Content-Type: application/json');
+    echo json_encode($callback);
+}
+// end Supir
 
     public function invoice()
 	{

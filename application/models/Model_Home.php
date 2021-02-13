@@ -201,4 +201,28 @@ class Model_Home extends CI_model
         $this->db->or_like('customer_name', $search);
         return $this->db->get('skb_customer')->num_rows();
     }
+
+    //  Function Supir
+    public function count_all_supir()
+    {
+        return $this->db->count_all_results("skb_supir");
+    }
+
+    public function filter_supir($search, $limit, $start, $order_field, $order_ascdesc)
+    {
+        $this->db->like('supir_id', $search);
+        $this->db->or_like('supir_name', $search);
+        $this->db->or_like('status_jalan', $search);
+        $this->db->order_by($order_field, $order_ascdesc);
+        $this->db->limit($limit, $start);
+        return $this->db->get('skb_supir')->result_array();
+    }
+
+    public function count_filter_supir($search)
+    {
+        $this->db->like('supir_id', $search);
+        $this->db->or_like('supir_name', $search);
+        $this->db->or_like('status_jalan', $search);
+        return $this->db->get('skb_supir')->num_rows();
+    }
 }

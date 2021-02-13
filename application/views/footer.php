@@ -274,26 +274,58 @@
                 }
             ]
         });
-        $("#Tanggal").change(function() {
-            // alert($('#Tanggal').val());   
-            table.ajax.reload();
-            $('#link_cetaklaporanpdf').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanpdf/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val());
-            $('#link_cetaklaporanexcel').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanexcel/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val());
-        });
-        $("#Bulan").change(function() {
-            // alert($('#Bulan').val());   
-            table.ajax.reload();
-            $('#link_cetaklaporanpdf').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanpdf/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val());
-            $('#link_cetaklaporanexcel').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanexcel/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val());
-        });
-        $("#Tahun").change(function() {
-            // alert($('#Tahun').val());   
-            table.ajax.reload();
-            $('#link_cetaklaporanpdf').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanpdf/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val());
-            $('#link_cetaklaporanexcel').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanexcel/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val());
-        });
     });
     </script>
+    <!-- end Customer -->
+
+<!-- Supir -->
+<script> //script datatables Supir
+    $(document).ready(function() {
+        var table = null;
+        table = $('#Table-Supir').DataTable({
+            "processing": true,
+            "serverSide": true,
+            "ordering": true,
+            "order": [
+                [0, 'asc']
+            ],
+            "ajax": {
+                "url": "<?php echo base_url('index.php/home/view_Supir/') ?>",
+                "type": "POST",
+                
+            },
+            "deferRender": true,
+            "aLengthMenu": [
+                [5, 10, 30, 50, 100],
+                [5, 10, 30, 50, 100]
+            ],
+            "columns": [
+                {
+                    "data": "supir_id"
+                },
+                {
+                    "data": "supir_name"
+                },
+                {
+                    "data": "supir_kasbon"
+                },
+                {
+                    "data": "status_jalan"
+                },
+                {
+                    "data": "supir_id",
+                    "orderable": false,
+                    render: function(data, type, row) {
+                        let html = "<a class='btn btn-light' href='<?= base_url('index.php/detail/detail_jo/"+data+"')?>'><i class='fas fa-eye'></i></a>";
+                        return html;
+                    }
+                }
+            ]
+        });
+
+    });
+    </script>
+// end Supir
 
 </body>
 
