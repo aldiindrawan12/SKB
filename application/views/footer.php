@@ -112,7 +112,8 @@
             ],
             "columns": [
                 {
-                    "data": "Jo_id"
+                    "data": "Jo_id",
+                    className: 'text-center'
                 },
                 {
                     "data": "customer_name"
@@ -131,7 +132,17 @@
                 },
                 {
                     "data": "status",
-                    "orderable": false
+                    className: 'text-center',
+                    "orderable": false,
+                        render: function(data, type, row) {
+                            if (data == "Sampai Tujuan") {
+                                let html = "<span class='btn-sm btn-block btn-success'><i class='fa fa-fw fa-check'></i>" + data + "</span>";
+                                return html;
+                            } else {
+                                let html = "<span class='btn-sm btn-block btn-warning'><i class='fa fa-fw fa-exclamation-circle'></i>" + data + "</span>";
+                                return html;
+                            }
+                        }
                 },
                 {
                     "data": "Jo_id",
@@ -259,13 +270,15 @@
             ],
             "columns": [
                 {
-                    "data": "customer_id"
+                    "data": "customer_id",
+                    className: 'text-center'
                 },
                 {
                     "data": "customer_name"
                 },
                 {
                     "data": "Customer_id",
+                    className: 'text-center',
                     "orderable": false,
                     render: function(data, type, row) {
                         let html = "<a class='btn btn-light' href='<?= base_url('index.php/detail/detail_jo/"+data+"')?>'><i class='fas fa-eye'></i></a>";
@@ -301,19 +314,34 @@
             ],
             "columns": [
                 {
-                    "data": "supir_id"
+                    "data": "supir_id",
+                    className: 'text-center'
                 },
                 {
-                    "data": "supir_name"
+                    "data": "supir_name",
+                    
                 },
                 {
                     "data": "supir_kasbon"
                 },
                 {
-                    "data": "status_jalan"
+                    "data": "status_jalan",
+                    className: 'text-center font-weight-bold',
+                    "orderable": false,
+                        render: function(data, type, row) {
+                            if (data == "Jalan") {
+                                let html = "<span class='btn-sm btn-block btn-success'><i class='fa fa-fw fa-check'></i>" + data + "</span>";
+                                return html;
+                            } else {
+                                let html = "<span class='btn-sm btn-block btn-warning'><i class='fa fa-fw fa-exclamation-circle'></i>" + data + "</span>";
+                                return html;
+                            }
+                        }
+
                 },
                 {
                     "data": "supir_id",
+                    className: 'text-center font-weight-bold',
                     "orderable": false,
                     render: function(data, type, row) {
                         let html = "<a class='btn btn-light' href='<?= base_url('index.php/detail/detail_jo/"+data+"')?>'><i class='fas fa-eye'></i></a>";
@@ -325,7 +353,7 @@
 
     });
     </script>
-// end Supir
+
 
 </body>
 

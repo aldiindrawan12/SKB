@@ -10,10 +10,10 @@
                 <thead>
                     <tr>
                     
-                        <th width="15%" scope="col">ID Supir</th>
-                        <th width="40%" scope="col">Nama Supir</th>
-                        <th width="5%" scope="col">Kasbon</th>
-                        <th width="5%" scope="col">Status</th>
+                        <th class="text-center" width="3%" scope="col">ID Supir</th>
+                        <th class="text-center" width="13%" scope="col">Nama Supir</th>
+                        <th class="text-center" width="10%" scope="col">Kasbon</th>
+                        <th width="8%" scope="col">Status</th>
                         <th width="5%" scope="col">Detail</th>
                     </tr>
                 </thead>

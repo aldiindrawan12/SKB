@@ -10,9 +10,9 @@
                 <thead>
                     <tr>
                     
-                        <th width="15%" scope="col">ID Customer</th>
-                        <th width="40%" scope="col">Nama Customer</th>
-                        <th width="5%" scope="col">Detail</th>
+                        <th class="text-center" width="3%" scope="col">ID Customer</th>
+                        <th class="text-center" width="20%" scope="col">Nama Customer</th>
+                        <th class="text-center" width="5%" scope="col">Detail</th>
                     </tr>
                 </thead>
                 <tbody>
