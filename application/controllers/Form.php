@@ -68,4 +68,33 @@ class Form extends CI_Controller {
         $this->model_form->insert_customer($data);
         redirect(base_url("index.php/form/joborder/").$data["customer_name"]);
     }
+
+    public function generate_terbilang($uang){
+        $uang = abs($uang);
+		$huruf = array("", "Satu", "Dua", "Tiga", "Empat", "Lima", "Enam", "Tujuh", "Delapan", "Sembilan", "Sepuluh", "sebelas");
+		$temp = "";
+
+		if ($uang < 12) {
+			$temp = " ". $huruf[$uang];
+		} else if ($uang <20) {
+			$temp = $this->generate_terbilang($uang - 10). " Belas";
+		} else if ($uang < 100) {
+			$temp = $this->generate_terbilang($uang/10)." Puluh". $this->generate_terbilang($uang % 10);
+		} else if ($uang < 200) {
+			$temp = " Seratus" . $this->generate_terbilang($uang - 100);
+		} else if ($uang < 1000) {
+			$temp = $this->generate_terbilang($uang/100) . " Ratus" . $this->generate_terbilang($uang % 100);
+		} else if ($uang < 2000) {
+			$temp = " Seribu" . $this->generate_terbilang($uang - 1000);
+		} else if ($uang < 1000000) {
+			$temp = $this->generate_terbilang($uang/1000) . " Ribu" . $this->generate_terbilang($uang % 1000);
+		} else if ($uang < 1000000000) {
+			$temp = $this->generate_terbilang($uang/1000000) . " Juta" . $this->generate_terbilang($uang % 1000000);
+		}     
+		return $temp;
+    }
+
+    public function generate_terbilang_fix($uang){
+        echo $this->generate_terbilang($uang)." Rupiah";
+    }
 }

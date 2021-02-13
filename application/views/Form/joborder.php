@@ -70,11 +70,11 @@
         </div>
         <div class="col-md-4">
             <label for="Uang" class="form-label">Uang Jalan</label>
-            <input autocomplete="off" type="number" class="form-control" id="Uang" name="Uang" required>
+            <input autocomplete="off" type="number" class="form-control" id="Uang" name="Uang" required onkeyup="terbilang()">
         </div>
         <div class="col-md-6">
             <label for="Terbilang" class="form-label">Terbilang</label>
-            <input autocomplete="off" type="text" class="form-control" id="Terbilang" name="Terbilang" required>
+            <input autocomplete="off" type="text" class="form-control" id="Terbilang" name="Terbilang" required readonly>
         </div>
         <div class="col-md-3 mt-5">
             <button type="submit" class="btn btn-primary mb-3">Simpan</button>
@@ -106,3 +106,17 @@
         </div>
     </div>
 </div>
+
+<script>
+    function terbilang(){
+        var uang = $('#Uang').val();
+        $.ajax({
+            type: "GET",
+            url: "<?php echo base_url('index.php/form/generate_terbilang_fix/') ?>"+uang,
+            dataType: "text",
+            success: function(data) {
+                $('#Terbilang').val(data);
+            }
+        });
+    }
+</script>
