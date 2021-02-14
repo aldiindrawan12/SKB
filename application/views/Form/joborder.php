@@ -77,7 +77,7 @@
             <input autocomplete="off" type="text" class="form-control" id="Terbilang" name="Terbilang" required readonly>
         </div>
         <div class="col-md-3 mt-5">
-            <button type="submit" class="btn btn-primary mb-3">Simpan</button>
+            <button type="submit" class="btn btn-primary mb-3">Simpan Dan Cetak JO</button>
             <button type="reset" class="btn btn-warning mb-3">Reset</button>
         </div>
     </form>

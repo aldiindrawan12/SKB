@@ -21,7 +21,7 @@ class Form extends CI_Controller {
     }
 
     public function insert_JO(){
-        $data=array(
+        $data["data"]=array(
             "mobil_no"=>$this->input->post("Kendaraan"),
             "supir_id"=>$this->input->post("Supir"),
             "muatan"=>$this->input->post("Muatan"),
@@ -34,8 +34,10 @@ class Form extends CI_Controller {
             "customer_id"=>$this->input->post("Customer"),
             "status"=>"Dalam Perjalanan"
         );
-        $this->model_form->insert_JO($data);
-        redirect(base_url());
+        $this->model_form->insert_JO($data["data"]);
+        $data["supir"] = $this->model_home->getsupirbyid($data["data"]["supir_id"]);
+        $data["mobil"] = $this->model_home->getmobilbyid($data["data"]["mobil_no"]);
+        $this->load->view("print/jo_print",$data);
     }
 
     public function bon(){
@@ -48,7 +50,7 @@ class Form extends CI_Controller {
 
     public function insert_bon(){
         date_default_timezone_set('Asia/Jakarta');
-        $data=array(
+        $data["data"]=array(
             "supir_id"=>$this->input->post("Supir"),
             "bon_jenis"=>$this->input->post("Jenis"),
             "bon_nominal"=>str_replace(".","",$this->input->post("Nominal")),
@@ -56,8 +58,9 @@ class Form extends CI_Controller {
             "bon_tanggal"=>date("Y-m-d H:i:s")
         );
         // echo print_r($data);
-        $this->model_form->insert_bon($data);
-        redirect(base_url("index.php/home/bon"));
+        $this->model_form->insert_bon($data["data"]);
+        $data["supir"] = $this->model_home->getsupirbyid($data["data"]["supir_id"]);
+        $this->load->view("print/bon_print",$data);
     }
 
     public function insert_customer(){
