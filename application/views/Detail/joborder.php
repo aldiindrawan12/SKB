@@ -2,36 +2,62 @@
     <table class="table table-bordered">
         <tbody>
             <tr>
-                <td class="d-none d-sm-table-cell text-center" rowspan="11" style="width: 15%;">
+                <td class="d-none d-sm-table-cell text-center" rowspan="15" style="width: 15%;">
                     <p>Customer</p>
                     <p class="font-size-sm "><?= $customer["customer_name"] ?></p>
+                    <hr>
+                    <p>Jo ID</p>
+                    <p class="font-size-sm "><?= $jo["Jo_id"] ?></p>
                 </td>
                 <td class="font-weight-bold mt-2" style="width: 20%;">Muatan</td>
-                <td width="70%"><?= $jo["muatan"]?> </td>
+                <td colspan=3 width="70%"><?= $jo["muatan"]?> </td>
             </tr>
             <tr>
                 <td class="font-weight-bold" style="width: 20%;">Asal-Tujuan</td>
-                <td><?= $jo["asal"]."--".$jo["tujuan"] ?></td>
+                <td colspan=3><?= $jo["asal"]."--".$jo["tujuan"] ?></td>
             </tr>
             <tr>
                 <td class="font-weight-bold" style="width: 20%;">Tanggal Berangkat</td>
-                <td><?= $jo["tanggal_surat"] ?></td>
+                <td colspan=3><?= $jo["tanggal_surat"] ?></td>
+            </tr>
+            <tr>
+                <td class="font-weight-bold" style="width: 20%;">Tanggal Bongkar</td>
+                <td colspan=3><?= $jo["tanggal_bongkar"] ?></td>
             </tr>
             <tr>
                 <td class="font-weight-bold" style="width: 20%;">Status</td>
-                <td><?= $jo["status"] ?></td>
+                <td colspan=3><?= $jo["status"] ?></td>
             </tr>
             <tr>
                 <td class="font-weight-bold" style="width: 20%;">Supir</td>
-                <td><?= $supir["supir_name"] ?></td>
+                <td colspan=3><?= $supir["supir_name"] ?></td>
             </tr>
             <tr>
                 <td class="font-weight-bold" style="width: 20%;">Kendaraan</td>
-                <td><?= $mobil["mobil_no"]." == ".$mobil["mobil_jenis"] ?></td>
+                <td colspan=3><?= $mobil["mobil_no"]." == ".$mobil["mobil_jenis"] ?></td>
             </tr>
             <tr>
                 <td class="font-weight-bold " style="width: 20%;">Uang Jalan</td>
-                <td><p><?= $jo["uang_jalan"]." (".$jo["terbilang"].")" ?></p></td>
+                <td colspan=3><p>Rp.<?= number_format($jo["uang_jalan"],2,',','.')." (".$jo["terbilang"].")" ?></p></td>
+            </tr>
+            <tr class="text-center">
+                <td colspan=3><strong>Detail Muatan</strong></td>
+            </tr>
+            <tr>
+                <td>Tonase : <?= $jo["tonase"]?> Ton</td>
+                <td>Harga : <?= $jo["harga/kg"]?> / KG</td>
+                <td>Jumlah : Rp.<?= number_format($jo["tonase"]*$jo["harga/kg"]*1000,2,',','.')?></td>
+            </tr>
+            <tr class="text-center">
+                <td colspan=3><strong>Upah Supir</strong></td>
+            </tr>
+            <tr>
+                <td>Upah : Rp.<?= number_format($jo["upah"],2,',','.')?></td>
+                <td>Berat : Rp.<?= number_format($jo["bonus"],2,',','.')?></td>
+                <td>Jumlah : Rp.<?= number_format($jo["bonus"]+$jo["upah"],2,',','.')?></td>
+            </tr>
+            <tr>
+                <td colspan=3>Catatan/Keterangan : <?= $jo["keterangan"]?></td>
             </tr>
             <?php if($jo["status"]=="Dalam Perjalanan"){?>
             <tr>

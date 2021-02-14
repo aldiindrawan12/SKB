@@ -23,7 +23,7 @@ class Detail extends CI_Controller {
 	}
     public function updatestatusjo($supir,$mobil){
         $data_jo = $this->model_home->getjobyid($this->input->post("jo_id"));
-        $keterangan = $data_jo["keterangan"]."==tambahan:".$this->input->post("Keterangan");
+        $keterangan = $data_jo["keterangan"].",".$this->input->post("Keterangan");
 
         $data = array(
             "tonase"=>$this->input->post("tonase"),
