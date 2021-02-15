@@ -33,4 +33,9 @@ class Model_Detail extends CI_model
         $this->db->join("skb_supir","skb_supir.supir_id=skb_job_order.supir_id","left");
         return $this->db->get_where("skb_job_order",array("skb_job_order.supir_id"=>$supir_id))->result_array();
     }
+
+    public function getinvoicebyjo($jo_id){
+        $this->db->join("skb_job_order","skb_job_order.Jo_id=skb_invoice.jo_id","left");
+        return $this->db->get_where("skb_invoice",array("skb_invoice.jo_id"=>$jo_id))->row_array();
+    }
 }
