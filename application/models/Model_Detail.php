@@ -28,4 +28,9 @@ class Model_Detail extends CI_model
         $this->db->join("skb_supir","skb_supir.supir_id=skb_bon.supir_id","left");
         return $this->db->get_where("skb_bon",array("bon_id"=>$bon_id))->row_array();
     }
+
+    public function getjobbysupir($supir_id){
+        $this->db->join("skb_supir","skb_supir.supir_id=skb_job_order.supir_id","left");
+        return $this->db->get_where("skb_job_order",array("skb_job_order.supir_id"=>$supir_id))->result_array();
+    }
 }

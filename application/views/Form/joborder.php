@@ -33,7 +33,7 @@
                 <option value="Sumatera Selatan">Sumatera Selatan</option>
                 <option value="Jakarta">Jakarta</option>
                 <option value="Aceh">Aceh</option>
-                <option value="Aceh">Lampung</option>
+                <option value="Lampung">Lampung</option>
             </select>
         </div>
         <div class="col-md-5">
@@ -43,7 +43,7 @@
                 <option value="Sumatera Selatan">Sumatera Selatan</option>
                 <option value="Jakarta">Jakarta</option>
                 <option value="Aceh">Aceh</option>
-                <option value="Aceh">Lampung</option>
+                <option value="Lampung">Lampung</option>
             </select>
         </div>
         <div class="col-md-5">

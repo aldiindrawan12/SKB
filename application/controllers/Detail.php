@@ -21,6 +21,7 @@ class Detail extends CI_Controller {
 		$this->load->view('detail/joborder',$data);
         $this->load->view('footer');
 	}
+
     public function updatestatusjo($supir,$mobil){
         $data_jo = $this->model_home->getjobyid($this->input->post("jo_id"));
         $keterangan = $data_jo["keterangan"].",".$this->input->post("Keterangan");
@@ -53,4 +54,14 @@ class Detail extends CI_Controller {
         echo json_encode($data);
     }
     
+    //fungsi untuk Detail penggajian
+	public function detail_penggajian($supir_id)
+	{
+        $data["jo"] = $this->model_detail->getjobbysupir($supir_id);
+        $data["supir"] = $this->model_home->getsupirbyid($supir_id);
+        $this->load->view('header');
+        $this->load->view('sidebar');
+		$this->load->view('detail/penggajian',$data);
+        $this->load->view('footer');
+	}
 }
