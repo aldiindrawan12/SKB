@@ -367,6 +367,64 @@
 
     });
     </script>
+    <!-- End Supir -->
+
+
+<script> //script datatables Invoice
+    $(document).ready(function() {
+        var table = null;
+        table = $('#Table-Invoice').DataTable({
+            "processing": true,
+            "serverSide": true,
+            "ordering": true,
+            "order": [
+                [0, 'asc']
+            ],
+            "ajax": {
+                "url": "<?php echo base_url('index.php/home/view_Invoice') ?>",
+                "type": "POST",
+                
+            },
+            "deferRender": true,
+            "aLengthMenu": [
+                [5, 10, 30, 50, 100],
+                [5, 10, 30, 50, 100]
+            ],
+            "columns": [
+                {
+                    "data": "invoice_kode",
+                    className: 'text-center'
+                },
+                {
+                    "data": "jo_id",
+                    className: 'text-center'
+                },
+                {
+                    "data": "customer_id"
+                },
+                {
+                    "data": "tanggal_invoice"
+                },
+                {
+                    "data": "batas_pembayaran"
+                },
+                {
+                    "data": "grand_total"
+                },
+                {
+                    "data": "Customer_id",
+                    className: 'text-center',
+                    "orderable": false,
+                    render: function(data, type, row) {
+                        let html = "<a class='btn btn-light' href='<?= base_url('index.php/detail/detail_jo/"+data+"')?>'><i class='fas fa-eye'></i></a>";
+                        return html;
+                    }
+                }
+            ]
+        });
+    });
+    </script>
+    <!-- End Invoice -->
 
 
 </body>

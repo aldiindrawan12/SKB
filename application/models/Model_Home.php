@@ -225,4 +225,39 @@ class Model_Home extends CI_model
         $this->db->or_like('status_jalan', $search);
         return $this->db->get('skb_supir')->num_rows();
     }
+
+
+
+    // Function Invoice
+        public function count_all_invoice()
+        {
+            return $this->db->count_all_results("skb_invoice");
+        }
+    
+        public function filter_invoice($search, $limit, $start, $order_field, $order_ascdesc)
+        {
+            $this->db->like('invoice_kode', $search);
+            $this->db->or_like('jo_id', $search);
+            $this->db->or_like('customer_id', $search);
+            $this->db->or_like('tanggal_invoice', $search);
+            $this->db->or_like('batas_pembayaran', $search);
+            $this->db->or_like('grand_total', $search);
+            $this->db->order_by($order_field, $order_ascdesc);
+            $this->db->limit($limit, $start);
+            return $this->db->get('skb_invoice')->result_array();
+        }
+    
+        public function count_filter_invoice($search)
+        {
+            $this->db->like('invoice_kode', $search);
+            $this->db->or_like('jo_id', $search);
+            $this->db->or_like('customer_id', $search);
+            $this->db->or_like('tanggal_invoice', $search);
+            $this->db->or_like('batas_pembayaran', $search);
+            $this->db->or_like('grand_total', $search);
+            return $this->db->get('skb_invoice')->num_rows();
+        }
+    
+
+
 }
