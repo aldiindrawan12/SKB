@@ -1,6 +1,6 @@
 
 <div class="container">
-    <a href="" class="btn btn-primary btn-icon-split mb-5" data-toggle='modal' data-target='#popup-customer'>
+    <a href="" class="btn btn-secondary btn-icon-split mb-5" data-toggle='modal' data-target='#popup-customer'>
         <span class="icon text-white-100">
             <i class="fas fa-plus"></i>
         </span>
