@@ -23,15 +23,15 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered table-striped" id="Table-Bon" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="Table-Bon" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th scope="col">ID Transaksi</th>
-                            <th scope="col">Nama Supir</th>
-                            <th scope="col">Jenis Transaksi</th>
-                            <th scope="col">Nominal</th>
-                            <th scope="col">Tanggal Transaksi</th>
-                            <th scope="col">Detail</th>
+                            <th class="text-center" scope="col">ID Transaksi</th>
+                            <th class="text-center" scope="col">Nama Supir</th>
+                            <th class="text-center" scope="col">Jenis Transaksi</th>
+                            <th class="text-center" scope="col">Nominal</th>
+                            <th class="text-center" scope="col">Tanggal Transaksi</th>
+                            <th class="text-center" scope="col">Detail</th>
                         </tr>
                     </thead>
                     <tbody>

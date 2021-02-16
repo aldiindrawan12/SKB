@@ -59,14 +59,14 @@
             <table class="table table-bordered table-striped" id="Table-Job-Order" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th scope="col">No JO</th>
-                        <th scope="col">Customer</th>
-                        <th scope="col">Muatan</th>
-                        <th scope="col">Asal</th>
-                        <th scope="col">Tujuan</th>
-                        <th scope="col">Tanggal</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Detail</th>
+                        <th class="text-center" scope="col">No JO</th>
+                        <th class="text-center" scope="col">Customer</th>
+                        <th class="text-center" scope="col">Muatan</th>
+                        <th class="text-center" scope="col">Asal</th>
+                        <th class="text-center" scope="col">Tujuan</th>
+                        <th class="text-center" scope="col">Tanggal</th>
+                        <th width="17%" class="text-center" scope="col">Status</th>
+                        <th class="text-center" scope="col">Detail</th>
                     </tr>
                 </thead>
                 <tbody>

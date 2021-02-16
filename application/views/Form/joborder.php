@@ -1,11 +1,25 @@
-
 <div class="container">
-    <a href="" class="btn btn-secondary btn-icon-split mb-5" data-toggle='modal' data-target='#popup-customer'>
-        <span class="icon text-white-100">
-            <i class="fas fa-plus"></i>
-        </span>
-        <span class="text">Customer Baru</span>
-    </a>
+
+
+
+ <!-- Page Heading -->
+ <div class="d-sm-flex align-items-center justify-content-between mb-5">
+                        <h1 class="h3 mb-0 text-gray-800">Formulir Job Order</h1>
+                            <a href="<?=base_url("index.php/form/joborder/x")?>" class="btn btn-secondary btn-icon-split" data-toggle='modal' data-target='#popup-customer'>
+                        
+                            <span class="icon text-white-100">
+                                <i class="fas fa-plus"></i> 
+                            </span>
+                       
+                                <span class="text">
+                                     Tambah Customer Baru
+                                </span>
+                            </a>
+ </div> 
+
+
+
+
     <form action="<?=base_url("index.php/form/insert_JO")?>" method="POST" class="row">
         <div class="col-md-5">
             <label class="form-label" for="Customer">Customer</label>
@@ -76,18 +90,18 @@
             <label for="Terbilang" class="form-label">Terbilang</label>
             <input autocomplete="off" type="text" class="form-control" id="Terbilang" name="Terbilang" required readonly>
         </div>
-        <div class="col-md-3 mt-5">
-            <button type="submit" class="btn btn-primary mb-3">Simpan Dan Cetak JO</button>
-            <button type="reset" class="btn btn-warning mb-3">Reset</button>
+        <div class="col-md-3 mt-5" >
+            <button type="submit" class="btn btn-success mb-3">Simpan Dan Cetak JO</button>
+            <button type="reset" class="btn btn-danger mb-3">Reset</button>
         </div>
     </form>
 </div>
 
 <div class="modal fade" id="popup-customer" tabindex="-1" role="dialog" aria-labelledby="modal-block-large" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary-dark">
-                <h5 class="block-title">Customer Baru</h5>
+                <h5 class="font-weight-bold">Menambah Customer Baru</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">X</span>
                 </button>
@@ -95,11 +109,11 @@
             <div class="font-size-sm m-3 text-justify">
                 <form action="<?= base_url("index.php/form/insert_customer")?>" method="POST">
                     <div class="form-group">
-                        <label for="Customer" class="form-label">Customer</label>
+                        <label for="Customer" class="form-label">Nama Customer</label>
                         <input autocomplete="off" type="text" class="form-control" id="Customer" name="Customer" required>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary mb-3">Simpan</button>
+                    <button type="submit" class="btn btn-success mb-3 float-right">Simpan</button>
                     </div>
                 </form>
             </div>

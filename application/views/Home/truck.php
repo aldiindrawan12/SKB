@@ -11,12 +11,12 @@
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered table-striped" id="Table-Truck" width="100%" cellspacing="0">
+            <table class="table table-bordered" id="Table-Truck" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th scope="col">No Polisi</th>
-                        <th scope="col">Jenis Kendaraan</th>
-                        <th scope="col">Maximum Load</th>
+                        <th class="text-center" scope="col">No Polisi</th>
+                        <th class="text-center" scope="col">Jenis Kendaraan</th>
+                        <th class="text-center" scope="col">Maximum Load</th>
                     </tr>
                 </thead>
                 <tbody>
