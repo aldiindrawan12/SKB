@@ -1,13 +1,25 @@
 <div class="container">
-    <a href="<?=base_url("index.php/form/bon")?>" class="btn btn-primary btn-icon-split mb-5">
-        <span class="icon text-white-100">
-            <i class="fas fa-plus"></i>
-        </span>
-        <span class="text">Bikin Transaksi Bon</span>
-    </a>
+    
+
+<!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Seluruh Data Transaksi BON</h1>
+                            <a href="<?=base_url("index.php/form/bon")?>" class="btn btn-primary btn-icon-split">
+                        
+                            <span class="icon text-white-100">
+                                <i class="fas fa-plus"></i> 
+                            </span>
+                       
+                                <span class="text">
+                                Buat Transaksi BON
+                                </span>
+                            </a>
+                    </div> 
+
+
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Data Transaksi Bon</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Transaksi Bon</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">

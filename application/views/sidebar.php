@@ -27,7 +27,7 @@
             <!-- Nav Item -->
             <li class="nav-item">
                 <a class="nav-link" href="<?=base_url("index.php/home/invoice")?>">   
-                    <i class="fas fa-receipt"></i>
+                    <i class="fas fa-receipt mr-2"></i>
                     <span>Invoice</span>
                 </a>
             </li>
