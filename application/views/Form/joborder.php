@@ -102,8 +102,12 @@
         <div class="modal-content">
             <div class="modal-header bg-primary-dark">
                 <h5 class="font-weight-bold">Menambah Customer Baru</h5>
+                
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">X</span>
+                    <span aria-hidden="true">&times;</span>
+
+
+                    
                 </button>
             </div>
             <div class="font-size-sm m-3 text-justify">
