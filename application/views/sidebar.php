@@ -4,23 +4,23 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?=base_url()?>">
-                <div class="sidebar-brand-icon rotate-n-15">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center my-4" href="<?=base_url()?>">
+                <div class="sidebar-brand-icon fa-flip-horizontal">
                     <i class="fa fa-truck"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">TLEMU SKB</div>
+                <div class="sidebar-brand-text mx-3 ">TLEMU SKB</div>
             </a>
 
             <!-- Divider -->
-            <hr class="sidebar-divider my-0">
+            <hr class="sidebar-divider ">
 
             <!-- Nav Item -->
-            <li class="nav-item">
+            <li class="nav-item ">
                 <a class="nav-link" href="<?=base_url()?>">
-                    <i class="fas fa-envelope-open-text"></i>
+                    <i class="fas fa-envelope-open-text "></i>
                     <span>Job Order</span></a>
             </li>
 
@@ -73,7 +73,7 @@
             </li>
 
             <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
+            <hr class="sidebar-divider d-none d-md-block my-4">
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
