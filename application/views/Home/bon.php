@@ -26,9 +26,9 @@
                 <table class="table table-bordered" id="Table-Bon" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th class="text-center" scope="col">ID Transaksi</th>
+                            <th class="text-center" width="13%" scope="col">ID Transaksi</th>
                             <th class="text-center" scope="col">Nama Supir</th>
-                            <th class="text-center" scope="col">Jenis Transaksi</th>
+                            <th class="text-center" width="14%" scope="col">Jenis Transaksi</th>
                             <th class="text-center" scope="col">Nominal</th>
                             <th class="text-center" scope="col">Tanggal Transaksi</th>
                             <th class="text-center" scope="col">Detail</th>

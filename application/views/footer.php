@@ -176,6 +176,7 @@
     });
     </script>
      <script> //script datatables kendaraan
+
     $(document).ready(function() {
         var table = null;
         table = $('#Table-Bon').DataTable({
@@ -196,13 +197,24 @@
             ],
             "columns": [
                 {
-                    "data": "bon_id"
+                    "data": "bon_id",
+                    className: 'text-center'
                 },
                 {
                     "data": "supir_name"
                 },
                 {
-                    "data": "bon_jenis"
+                    "data": "bon_jenis",
+                    "orderable": false,
+                        render: function(data, type, row) {
+                            if (data == "Pembayaran") {
+                                let html = "<span class='btn-sm btn-block btn-success'><i class='fa fa-fw fa-check mr-2'></i>" + data + "</span>";
+                                return html;
+                            } else {
+                                let html = "<span class='btn-sm btn-block btn-warning   '><i class='fa fa-fw fa-exclamation-circle mr-2'></i>" + data + "</span>";
+                                return html;
+                            }
+                        }
                 },
                 {
                     "data": "bon_nominal"
@@ -213,6 +225,7 @@
                 {
                     "data": "bon_id",
                     "orderable": false,
+                    className: 'text-center',
                     render: function(data, type, row) {
                     let html = "<a class='btn btn-light btn-detail-bon' href='javascript:void(0)' data-toggle='modal' data-target='#popup-bon' data-pk='"+data+"'><i class='fas fa-eye'></i></a>";
                         return html;
