@@ -81,7 +81,8 @@
                     "data": "mobil_jenis"
                 },
                 {
-                    "data": "mobil_max_load"
+                    "data": "mobil_max_load",
+                    className: 'text-center'
                 }
             ]
         });
@@ -400,8 +401,7 @@
                     className: 'text-center'
                 },
                 {
-                    "data": "customer_id",
-                    className: 'text-center'
+                    "data": "customer_name"
                 },
                 {
                     "data": "tanggal_invoice",

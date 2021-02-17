@@ -3,11 +3,11 @@
     <table class="table table-bordered">
         <tbody>
             <tr>
-                <td class="d-none d-sm-table-cell text-center" rowspan="15" style="width: 15%;">
-                    <p>Customer</p>
+                <td class="d-none d-sm-table-cell text-center " rowspan="15" style="width: 15%;">
+                    <p class="font-weight-bold">Customer</p>
                     <p class="font-size-sm "><?= $customer["customer_name"] ?></p>
                     <hr>
-                    <p>Jo ID</p>
+                    <p class="font-weight-bold">ID JO</p>
                     <p class="font-size-sm "><?= $jo["Jo_id"] ?></p>
                 </td>
                 <td class="font-weight-bold mt-2" style="width: 20%;">Muatan</td>
@@ -71,7 +71,7 @@
             <?php }else{?>
             <tr>
                 <td>
-                    <button class='btn-sm btn-block btn-warning text-dark' href='' id="" onclick="cetak_invoice()">
+                    <button class='btn-sm btn-block btn-success text-light' href='' id="" onclick="cetak_invoice()">
                     Cetak Invoice
                     </button>
                 </td>

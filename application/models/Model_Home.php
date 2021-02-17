@@ -153,6 +153,7 @@ class Model_Home extends CI_model
             return $this->db->get('skb_job_order')->num_rows();
         }
      //akhir function-fiunction datatable JO
+
      //function-fiunction datatable truck
         public function count_all_bon()
         {
@@ -231,6 +232,8 @@ class Model_Home extends CI_model
     // Function Invoice
         public function count_all_invoice()
         {
+            $this->db->join("skb_customer", "skb_customer.customer_id = skb_invoice.customer_id", 'left');
+     
             return $this->db->count_all_results("skb_invoice");
         }
     
@@ -238,12 +241,14 @@ class Model_Home extends CI_model
         {
             $this->db->like('invoice_kode', $search);
             $this->db->or_like('jo_id', $search);
-            $this->db->or_like('customer_id', $search);
+            $this->db->or_like('customer_name', $search);
             $this->db->or_like('tanggal_invoice', $search);
             $this->db->or_like('batas_pembayaran', $search);
             $this->db->or_like('grand_total', $search);
             $this->db->order_by($order_field, $order_ascdesc);
             $this->db->limit($limit, $start);
+
+            $this->db->join("skb_customer", "skb_customer.customer_id = skb_invoice.customer_id", 'left');
             return $this->db->get('skb_invoice')->result_array();
         }
     
@@ -251,13 +256,13 @@ class Model_Home extends CI_model
         {
             $this->db->like('invoice_kode', $search);
             $this->db->or_like('jo_id', $search);
-            $this->db->or_like('customer_id', $search);
+            $this->db->or_like('customer_name', $search);
             $this->db->or_like('tanggal_invoice', $search);
             $this->db->or_like('batas_pembayaran', $search);
             $this->db->or_like('grand_total', $search);
+            $this->db->join("skb_customer", "skb_customer.customer_id = skb_invoice.customer_id", 'left');
             return $this->db->get('skb_invoice')->num_rows();
         }
     
 
-
-}
+    }

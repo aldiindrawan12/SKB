@@ -1,7 +1,6 @@
 <div class="container">
 
 
-
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-5">
                         <h1 class="h3 mb-0 text-gray-800">Formulir Job Order</h1>
@@ -45,6 +44,7 @@
                 <option value="Jakarta">Jakarta</option>
                 <option value="Aceh">Aceh</option>
                 <option value="Lampung">Lampung</option>
+                <option value="Jawa Barat">Jawa Barat</option>
             </select>
         </div>
         <div class="col-md-5">
@@ -55,6 +55,7 @@
                 <option value="Jakarta">Jakarta</option>
                 <option value="Aceh">Aceh</option>
                 <option value="Lampung">Lampung</option>
+                <option value="Jawa Barat">Jawa Barat</option>
             </select>
         </div>
         <div class="col-md-5">
