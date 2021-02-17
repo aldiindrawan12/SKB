@@ -38,25 +38,27 @@
         </div>
         <div class="col-md-5">
             <label class="form-label" for="Asal">Asal</label>
-            <select name="Asal" id="Asal" class="form-control selectpicker" data-live-search="true" required>
+            <input autocomplete="off" type="text" class="form-control" id="Asal" name="Asal" required>
+            <!-- <select name="Asal" id="Asal" class="form-control selectpicker" data-live-search="true" required>
                 <option class="font-w700" disabled="disabled" selected value="">Asal Pengiriman</option>
                 <option value="Sumatera Selatan">Sumatera Selatan</option>
                 <option value="Jakarta">Jakarta</option>
                 <option value="Aceh">Aceh</option>
                 <option value="Lampung">Lampung</option>
                 <option value="Jawa Barat">Jawa Barat</option>
-            </select>
+            </select> -->
         </div>
         <div class="col-md-5">
             <label class="form-label" for="Tujuan">Tujuan</label>
-            <select name="Tujuan" id="Tujuan" class="form-control selectpicker" data-live-search="true" required>
+            <input autocomplete="off" type="text" class="form-control" id="Tujuan" name="Tujuan" required>
+            <!-- <select name="Tujuan" id="Tujuan" class="form-control selectpicker" data-live-search="true" required>
                 <option class="font-w700" disabled="disabled" selected value="">Tujuan Pengiriman</option>
                 <option value="Sumatera Selatan">Sumatera Selatan</option>
                 <option value="Jakarta">Jakarta</option>
                 <option value="Aceh">Aceh</option>
                 <option value="Lampung">Lampung</option>
                 <option value="Jawa Barat">Jawa Barat</option>
-            </select>
+            </select> -->
         </div>
         <div class="col-md-5">
             <label class="form-label" for="Kendaraan">Kendaraan</label>

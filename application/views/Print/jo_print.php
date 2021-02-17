@@ -93,5 +93,6 @@
 </body>
 <script>
     window.print();
+    window.location.replace("<?= base_url()?>");
 </script>
 </html>
