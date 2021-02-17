@@ -54,6 +54,8 @@
     <script src="<?=base_url("assets/vendor/datatables/jquery.dataTables.min.js")?>"></script>
     <script src="<?=base_url("assets/vendor/datatables/dataTables.bootstrap4.min.js")?>"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.2/js/bootstrap-select.min.js"></script>
+    
+    <!-- kendaraan -->
     <script> //script datatables kendaraan
     $(document).ready(function() {
         var table = null;
@@ -88,6 +90,9 @@
         });
     });
     </script>
+    <!-- end kendaraan -->
+
+    <!-- JO -->
     <script> //script datatables job order
     $(document).ready(function() {
         var table = null;
@@ -176,9 +181,10 @@
         });
     });
     </script>
+    <!-- end JO -->
 
-    <!-- kendaraan -->
-    <script> //script datatables kendaraan
+    <!-- bon -->
+    <script> //script datatables bon
         $(document).ready(function() {
             var table = null;
             table = $('#Table-Bon').DataTable({
@@ -260,7 +266,7 @@
             });
         });
     </script>
-    <!-- end kendaraan -->
+    <!-- end bon -->
 
 
     <!-- Customer -->

@@ -66,4 +66,14 @@ class Detail extends CI_Controller {
 		$this->load->view('detail/penggajian',$data);
         $this->load->view('footer');
 	}
+
+    public function update_upah(){
+        $data = array(
+            "supir_id"=>$this->input->get("supir_id"),
+            "supir_kasbon"=>$this->input->get("supir_kasbon"),
+            "upah"=>$this->input->get("upah"),
+            "Jo_id"=>$this->input->get("jo_id")
+        );
+        echo $this->model_detail->update_upah($data);
+    }
 }

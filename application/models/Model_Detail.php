@@ -30,6 +30,7 @@ class Model_Detail extends CI_model
     }
 
     public function getjobbysupir($supir_id){
+        $this->db->where("status_upah","Belum Dibayar");
         $this->db->join("skb_supir","skb_supir.supir_id=skb_job_order.supir_id","left");
         return $this->db->get_where("skb_job_order",array("skb_job_order.supir_id"=>$supir_id))->result_array();
     }
@@ -37,5 +38,34 @@ class Model_Detail extends CI_model
     public function getinvoicebyjo($jo_id){
         $this->db->join("skb_job_order","skb_job_order.Jo_id=skb_invoice.jo_id","left");
         return $this->db->get_where("skb_invoice",array("skb_invoice.jo_id"=>$jo_id))->row_array();
+    }
+
+    public function update_upah($data){
+        $supir_id = $data["supir_id"];
+        $Jo_id = $data["Jo_id"];
+        $upah = $data["upah"];
+        $supir_kasbon = $data["supir_kasbon"];
+
+        $grand_upah = $upah-$supir_kasbon;
+        if($grand_upah < 0){
+            $this->db->set("supir_kasbon",$grand_upah*(-1));
+            $this->db->where("supir_id",$supir_id);
+            $this->db->update("skb_supir");
+        }else{
+            $this->db->set("supir_kasbon",0);
+            $this->db->where("supir_id",$supir_id);
+            $this->db->update("skb_supir");
+        }
+
+        //update status upah pada jo id
+        for($i=0;$i<count($Jo_id);$i++){
+            $this->db->set("status_upah","Sudah Dibayar");
+            $this->db->where("Jo_id",$Jo_id[$i]);
+            $this->db->update("skb_job_order");
+        }
+        //end update status upah pada jo id
+
+        return $supir_id."==".$Jo_id[1]."==".$upah."==".$supir_kasbon;
+        
     }
 }

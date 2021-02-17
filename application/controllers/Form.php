@@ -32,7 +32,8 @@ class Form extends CI_Controller {
             "tanggal_surat"=>date("Y-m-d"),
             "keterangan"=>$this->input->post("Keterangan"),
             "customer_id"=>$this->input->post("Customer"),
-            "status"=>"Dalam Perjalanan"
+            "status"=>"Dalam Perjalanan",
+            "status_upah"=>"Belum Dibayar"
         );
         $this->model_form->insert_JO($data["data"]);
         $data["supir"] = $this->model_home->getsupirbyid($data["data"]["supir_id"]);

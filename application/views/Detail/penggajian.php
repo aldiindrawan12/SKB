@@ -39,9 +39,11 @@
                     <tbody>
                     <?php $uang_jalan = 0;
                     $upah = 0;
+                    $data_jo_id = [];
                     foreach($jo as $value){ 
                         $uang_jalan += $value["uang_jalan"];
                         $upah += $value["upah"];
+                        $data_jo_id[] = $value["Jo_id"];
                         ?>
                         <tr>
                             <td><?= $value["Jo_id"]?></td>
@@ -79,15 +81,16 @@
 
 
 <div class="conatiner ml-4">
-<!-- button print daftar gaji -->
+    <!-- button print daftar gaji -->
     <button onclick="print_gaji()" class="btn btn-primary">Cetak Bukti Upah</button>
-<!-- end button print daftar gaji -->
+    <!-- end button print daftar gaji -->
 
-<!-- button print memo tunai -->
-    <button onclick="print_memo_tunai()" class="btn btn-primary">Cetak Memo Tunai</button>
-<!-- end button print memo tunai -->
+    <!-- button print memo tunai -->
+    <button onclick="print_memo_tunai(),update_upah()" class="btn btn-primary">Cetak Memo Tunai</button>
+    <!-- end button print memo tunai -->
 </div>
 
+<!-- form rekening supir -->
 <div class="container mt-5 row">
         <div class="form-group col-md-6">
             <label for="Bank" class="form-label">Bank</label>
@@ -102,10 +105,12 @@
             <textarea class="form-control" name="Keterangan" id="Keterangan" rows="3"></textarea>
         </div>
         <div class="form-group">
-            <button class="btn btn-primary mb-3" onclick="print_memo_tf()" type="reset">Cetak Memo Transfer</button>
+            <button class="btn btn-primary mb-3" onclick="print_memo_tf(),update_upah()" type="reset">Cetak Memo Transfer</button>
         </div>
 </div>
+<!-- end form rekening supir -->
 
+<!-- memo transfer -->
 <div class="container" id="print-memo-tf" style="display:none">
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -175,7 +180,9 @@
         </div>
     </div>
 </div>
+<!-- end memo transfer -->
 
+<!-- memo tunai -->
 <div class="container w-50" id="print-memo-tunai" style="display:none">
     <div class="body-card text-center">
         <span class="h3">Memo Tunai</span>
@@ -227,6 +234,7 @@
         </div>
     </div>
 </div>
+<!-- end memo tunai -->
 
 <script>
     function print_gaji(){
@@ -258,5 +266,28 @@
         document.body.innerHTML = print;
         window.print();
         document.body.innerHTML = restore;
+    }
+
+    function update_upah(){
+        var data_jo_id = [];
+        <?php for($i=0;$i<count($data_jo_id);$i++){?>
+            data_jo_id.push(<?= $data_jo_id[$i]?>)
+        <?php }?>
+        // alert('<?= $supir["supir_id"]."==".$upah?>'+'=='+'<?= $supir["supir_kasbon"]?>');
+        $.ajax({
+            type: "GET",
+            url: "<?php echo base_url('index.php/detail/update_upah') ?>",
+            dataType: "text",
+            data: {
+                upah:<?= $upah?>,
+                supir_id:<?= $supir["supir_id"]?>,
+                supir_kasbon:<?= $supir["supir_kasbon"]?>,
+                jo_id:data_jo_id
+            },
+            success: function(data) {
+                // $('#Terbilang').val(data);
+                alert(data);
+            }
+        });
     }
 </script>
