@@ -225,7 +225,7 @@
                             <input autocomplete="off" class="form-control" type="number" name="upah" id="upah" required>
                         </div>
                     </div>
-                     <div class="mb-3 row">
+                    <div class="mb-3 row">
                         <label class="col-sm-5 col-form-label" for="bonus">Bonus Supir</label>
                         <div class="col-sm-6">
                             <input autocomplete="off" class="form-control" type="number" name="bonus" id="bonus" required>
@@ -237,9 +237,14 @@
                             <textarea class="form-control" name="Keterangan" rows="3"></textarea>
                         </div>
                     </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-5 col-form-label" for="TOD">Batas Waktu Pembayaran Invoice (hari)</label>
+                        <div class="col-sm-6">
+                            <input autocomplete="off" class="form-control" type="number" name="TOD" id="TOD" required>
+                        </div>
+                    </div>
                     <div style="float:right;margin-bottom:3%">
                         <button type="submit" class="btn btn-primary">Simpan</button>
-                        <button type="#" class="btn btn-primary">Simpan dan Cetak Invoice</button>
                     </div>
                 </form>
             </div>

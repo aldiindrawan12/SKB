@@ -26,7 +26,7 @@ class Detail extends CI_Controller {
     public function updatestatusjo($supir,$mobil){
         $data_jo = $this->model_home->getjobyid($this->input->post("jo_id"));
         $keterangan = $data_jo["keterangan"].",".$this->input->post("Keterangan");
-
+        $TOD = $this->input->post("TOD");
         $data = array(
             "tonase"=>$this->input->post("tonase"),
             "upah"=>str_replace(".","",$this->input->post("upah")),
@@ -41,9 +41,10 @@ class Detail extends CI_Controller {
             "jo_id"=>$this->input->post("jo_id"),
             "customer_id"=>$data_jo["customer_id"],
             "tanggal_invoice"=>date("Y-m-d"),
-            "batas_pembayaran"=>date("Y-m-d",strtotime('+14 days', strtotime(date("Y-m-d")))),
+            "batas_pembayaran"=>date("Y-m-d",strtotime('+'.$TOD.' days', strtotime(date("Y-m-d")))),
             "grand_total"=>$data["tonase"]*$data["harga/kg"]*1000
         );
+
         $this->model_detail->updatestatusjo($data,$supir,$mobil,$data_invoice);
         redirect(base_url("index.php/detail/detail_jo/").$this->input->post("jo_id"));
     }

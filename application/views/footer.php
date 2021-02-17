@@ -176,256 +176,257 @@
         });
     });
     </script>
-     <script> //script datatables kendaraan
 
-    $(document).ready(function() {
-        var table = null;
-        table = $('#Table-Bon').DataTable({
-            "processing": true,
-            "serverSide": true,
-            "ordering": true,
-            "order": [
-                [0, 'asc']
-            ],
-            "ajax": {
-                "url": "<?php echo base_url('index.php/home/view_bon/') ?>",
-                "type": "POST"
-            },
-            "deferRender": true,
-            "aLengthMenu": [
-                [5, 10, 30, 50, 100],
-                [5, 10, 30, 50, 100]
-            ],
-            "columns": [
-                {
-                    "data": "bon_id",
-                    className: 'text-center'
+    <!-- kendaraan -->
+    <script> //script datatables kendaraan
+        $(document).ready(function() {
+            var table = null;
+            table = $('#Table-Bon').DataTable({
+                "processing": true,
+                "serverSide": true,
+                "ordering": true,
+                "order": [
+                    [0, 'asc']
+                ],
+                "ajax": {
+                    "url": "<?php echo base_url('index.php/home/view_bon/') ?>",
+                    "type": "POST"
                 },
-                {
-                    "data": "supir_name"
-                },
-                {
-                    "data": "bon_jenis",
-                    "orderable": false,
-                        render: function(data, type, row) {
-                            if (data == "Pembayaran") {
-                                let html = "<span class='btn-sm btn-block btn-success'><i class='fa fa-fw fa-check mr-2'></i>" + data + "</span>";
-                                return html;
-                            } else {
-                                let html = "<span class='btn-sm btn-block btn-warning   '><i class='fa fa-fw fa-exclamation-circle mr-2'></i>" + data + "</span>";
-                                return html;
+                "deferRender": true,
+                "aLengthMenu": [
+                    [5, 10, 30, 50, 100],
+                    [5, 10, 30, 50, 100]
+                ],
+                "columns": [
+                    {
+                        "data": "bon_id",
+                        className: 'text-center'
+                    },
+                    {
+                        "data": "supir_name"
+                    },
+                    {
+                        "data": "bon_jenis",
+                        "orderable": false,
+                            render: function(data, type, row) {
+                                if (data == "Pembayaran") {
+                                    let html = "<span class='btn-sm btn-block btn-success'><i class='fa fa-fw fa-check mr-2'></i>" + data + "</span>";
+                                    return html;
+                                } else {
+                                    let html = "<span class='btn-sm btn-block btn-warning   '><i class='fa fa-fw fa-exclamation-circle mr-2'></i>" + data + "</span>";
+                                    return html;
+                                }
                             }
+                    },
+                    {
+                        "data": "bon_nominal"
+                    },
+                    {
+                        "data": "bon_tanggal"
+                    },
+                    {
+                        "data": "bon_id",
+                        "orderable": false,
+                        className: 'text-center',
+                        render: function(data, type, row) {
+                        let html = "<a class='btn btn-light btn-detail-bon' href='javascript:void(0)' data-toggle='modal' data-target='#popup-bon' data-pk='"+data+"'><i class='fas fa-eye'></i></a>";
+                            return html;
                         }
-                },
-                {
-                    "data": "bon_nominal"
-                },
-                {
-                    "data": "bon_tanggal"
-                },
-                {
-                    "data": "bon_id",
-                    "orderable": false,
-                    className: 'text-center',
-                    render: function(data, type, row) {
-                    let html = "<a class='btn btn-light btn-detail-bon' href='javascript:void(0)' data-toggle='modal' data-target='#popup-bon' data-pk='"+data+"'><i class='fas fa-eye'></i></a>";
-                        return html;
                     }
-                }
-            ],
-            drawCallback: function() {
-                $('.btn-detail-bon').click(function() {
-                    let pk = $(this).data('pk');
-                    // alert(pk);
-                    $.ajax({ //ajax ambil data bon
-                        type: "GET",
-                        url: "<?php echo base_url('index.php/detail/getbon') ?>",
-                        dataType: "JSON",
-                        data: {
-                            id: pk
-                        },
-                        success: function(data) { //jika ambil data sukses
-                            $('td[name="id"]').text(data["bon_id"]); //set value
-                            $('td[name="supir"]').text(data["supir_name"]); //set value
-                            $('td[name="jenis"]').text(data["bon_jenis"]); //set value
-                            $('td[name="nominal"]').text(data["bon_nominal"]); //set value
-                            $('td[name="tanggal"]').text(data["bon_tanggal"]); //set value
-                            $('td[name="keterangan"]').text(data["bon_keterangan"]); //set value
-                            // alert(data["supir_id"]+data["supir_name"]+data["bon_id"]+data["bon_jenis"]+data["bon_nominal"]);
-                        }
+                ],
+                drawCallback: function() {
+                    $('.btn-detail-bon').click(function() {
+                        let pk = $(this).data('pk');
+                        // alert(pk);
+                        $.ajax({ //ajax ambil data bon
+                            type: "GET",
+                            url: "<?php echo base_url('index.php/detail/getbon') ?>",
+                            dataType: "JSON",
+                            data: {
+                                id: pk
+                            },
+                            success: function(data) { //jika ambil data sukses
+                                $('td[name="id"]').text(data["bon_id"]); //set value
+                                $('td[name="supir"]').text(data["supir_name"]); //set value
+                                $('td[name="jenis"]').text(data["bon_jenis"]); //set value
+                                $('td[name="nominal"]').text(data["bon_nominal"]); //set value
+                                $('td[name="tanggal"]').text(data["bon_tanggal"]); //set value
+                                $('td[name="keterangan"]').text(data["bon_keterangan"]); //set value
+                                // alert(data["supir_id"]+data["supir_name"]+data["bon_id"]+data["bon_jenis"]+data["bon_nominal"]);
+                            }
+                        });
                     });
-                });
-            }
-        });
-    });
-    </script>
-
-
-
-<!-- Customer -->
-<script> //script datatables customer
-    $(document).ready(function() {
-        var table = null;
-        table = $('#Table-Customer').DataTable({
-            "processing": true,
-            "serverSide": true,
-            "ordering": true,
-            "order": [
-                [0, 'asc']
-            ],
-            "ajax": {
-                "url": "<?php echo base_url('index.php/home/view_Customer/') ?>",
-                "type": "POST",
-                
-            },
-            "deferRender": true,
-            "aLengthMenu": [
-                [5, 10, 30, 50, 100],
-                [5, 10, 30, 50, 100]
-            ],
-            "columns": [
-                {
-                    "data": "customer_id",
-                    className: 'text-center'
-                },
-                {
-                    "data": "customer_name"
-                },
-                {
-                    "data": "Customer_id",
-                    className: 'text-center',
-                    "orderable": false,
-                    render: function(data, type, row) {
-                        let html = "<a class='btn btn-light' href='<?= base_url('index.php/detail/detail_jo/"+data+"')?>'><i class='fas fa-eye'></i></a>";
-                        return html;
-                    }
                 }
-            ]
+            });
         });
-    });
+    </script>
+    <!-- end kendaraan -->
+
+
+    <!-- Customer -->
+    <script> //script datatables customer
+        $(document).ready(function() {
+            var table = null;
+            table = $('#Table-Customer').DataTable({
+                "processing": true,
+                "serverSide": true,
+                "ordering": true,
+                "order": [
+                    [0, 'asc']
+                ],
+                "ajax": {
+                    "url": "<?php echo base_url('index.php/home/view_Customer/') ?>",
+                    "type": "POST",
+                    
+                },
+                "deferRender": true,
+                "aLengthMenu": [
+                    [5, 10, 30, 50, 100],
+                    [5, 10, 30, 50, 100]
+                ],
+                "columns": [
+                    {
+                        "data": "customer_id",
+                        className: 'text-center'
+                    },
+                    {
+                        "data": "customer_name"
+                    },
+                    {
+                        "data": "Customer_id",
+                        className: 'text-center',
+                        "orderable": false,
+                        render: function(data, type, row) {
+                            let html = "<a class='btn btn-light' href='<?= base_url('index.php/detail/detail_jo/"+data+"')?>'><i class='fas fa-eye'></i></a>";
+                            return html;
+                        }
+                    }
+                ]
+            });
+        });
     </script>
     <!-- end Customer -->
 
-<!-- Supir -->
-<script> //script datatables Supir
-    $(document).ready(function() {
-        var table = null;
-        table = $('#Table-Supir').DataTable({
-            "processing": true,
-            "serverSide": true,
-            "ordering": true,
-            "order": [
-                [0, 'asc']
-            ],
-            "ajax": {
-                "url": "<?php echo base_url('index.php/home/view_Supir/') ?>",
-                "type": "POST",
-                
-            },
-            "deferRender": true,
-            "aLengthMenu": [
-                [5, 10, 30, 50, 100],
-                [5, 10, 30, 50, 100]
-            ],
-            "columns": [
-                {
-                    "data": "supir_id",
-                    className: 'text-center'
-                },
-                {
-                    "data": "supir_name",
+    <!-- Supir -->
+    <script> //script datatables Supir
+        $(document).ready(function() {
+            var table = null;
+            table = $('#Table-Supir').DataTable({
+                "processing": true,
+                "serverSide": true,
+                "ordering": true,
+                "order": [
+                    [0, 'asc']
+                ],
+                "ajax": {
+                    "url": "<?php echo base_url('index.php/home/view_Supir/') ?>",
+                    "type": "POST",
                     
                 },
-                {
-                    "data": "supir_kasbon"
-                },
-                {
-                    "data": "status_jalan",
-                    className: 'text-center',
-                    "orderable": false,
-                        render: function(data, type, row) {
-                            if (data == "Jalan") {
-                                let html = "<span class='btn-sm btn-block btn-success'><i class='fa fa-fw fa-check mr-2'></i>" + data + "</span>";
-                                return html;
-                            } else {
-                                let html = "<span class='btn-sm btn-block btn-warning'><i class='fa fa-fw fa-exclamation-circle mr-2'></i>" + data + "</span>";
-                                return html;
+                "deferRender": true,
+                "aLengthMenu": [
+                    [5, 10, 30, 50, 100],
+                    [5, 10, 30, 50, 100]
+                ],
+                "columns": [
+                    {
+                        "data": "supir_id",
+                        className: 'text-center'
+                    },
+                    {
+                        "data": "supir_name",
+                        
+                    },
+                    {
+                        "data": "supir_kasbon"
+                    },
+                    {
+                        "data": "status_jalan",
+                        className: 'text-center',
+                        "orderable": false,
+                            render: function(data, type, row) {
+                                if (data == "Jalan") {
+                                    let html = "<span class='btn-sm btn-block btn-success'><i class='fa fa-fw fa-check mr-2'></i>" + data + "</span>";
+                                    return html;
+                                } else {
+                                    let html = "<span class='btn-sm btn-block btn-warning'><i class='fa fa-fw fa-exclamation-circle mr-2'></i>" + data + "</span>";
+                                    return html;
+                                }
                             }
+
+                    },
+                    {
+                        "data": "supir_id",
+                        className: 'text-center font-weight-bold',
+                        "orderable": false,
+                        render: function(data, type, row) {
+                            let html = "<a class='btn btn-light' href='<?= base_url('index.php/detail/detail_penggajian/"+data+"')?>'><i class='fas fa-eye'></i></a>";
+                            return html;
                         }
-
-                },
-                {
-                    "data": "supir_id",
-                    className: 'text-center font-weight-bold',
-                    "orderable": false,
-                    render: function(data, type, row) {
-                        let html = "<a class='btn btn-light' href='<?= base_url('index.php/detail/detail_penggajian/"+data+"')?>'><i class='fas fa-eye'></i></a>";
-                        return html;
                     }
-                }
-            ]
-        });
+                ]
+            });
 
-    });
+        });
     </script>
     <!-- End Supir -->
 
-
-<script> //script datatables Invoice
-    $(document).ready(function() {
-        var table = null;
-        table = $('#Table-Invoice').DataTable({
-            "processing": true,
-            "serverSide": true,
-            "ordering": true,
-            "order": [
-                [0, 'asc']
-            ],
-            "ajax": {
-                "url": "<?php echo base_url('index.php/home/view_Invoice') ?>",
-                "type": "POST",
-                
-            },
-            "deferRender": true,
-            "aLengthMenu": [
-                [5, 10, 30, 50, 100],
-                [5, 10, 30, 50, 100]
-            ],
-            "columns": [
-                {
-                    "data": "invoice_kode",
-                    className: 'text-center'
+    <!-- invoice -->
+    <script> //script datatables Invoice
+        $(document).ready(function() {
+            var table = null;
+            table = $('#Table-Invoice').DataTable({
+                "processing": true,
+                "serverSide": true,
+                "ordering": true,
+                "order": [
+                    [0, 'asc']
+                ],
+                "ajax": {
+                    "url": "<?php echo base_url('index.php/home/view_Invoice') ?>",
+                    "type": "POST",
+                    
                 },
-                {
-                    "data": "jo_id",
-                    className: 'text-center'
-                },
-                {
-                    "data": "customer_name"
-                },
-                {
-                    "data": "tanggal_invoice",
-                    className: 'text-center'
-                },
-                {
-                    "data": "batas_pembayaran",
-                    className: 'text-center'
-                },
-                {
-                    "data": "grand_total"
-                },
-                {
-                    "data": "Customer_id",
-                    className: 'text-center',
-                    "orderable": false,
-                    render: function(data, type, row) {
-                        let html = "<a class='btn btn-light' href='<?= base_url('index.php/detail/detail_jo/"+data+"')?>'><i class='fas fa-eye'></i></a>";
-                        return html;
+                "deferRender": true,
+                "aLengthMenu": [
+                    [5, 10, 30, 50, 100],
+                    [5, 10, 30, 50, 100]
+                ],
+                "columns": [
+                    {
+                        "data": "invoice_kode",
+                        className: 'text-center'
+                    },
+                    {
+                        "data": "jo_id",
+                        className: 'text-center'
+                    },
+                    {
+                        "data": "customer_name"
+                    },
+                    {
+                        "data": "tanggal_invoice",
+                        className: 'text-center'
+                    },
+                    {
+                        "data": "batas_pembayaran",
+                        className: 'text-center'
+                    },
+                    {
+                        "data": "grand_total"
+                    },
+                    {
+                        "data": "Customer_id",
+                        className: 'text-center',
+                        "orderable": false,
+                        render: function(data, type, row) {
+                            let html = "<a class='btn btn-light' href='<?= base_url('index.php/detail/detail_jo/"+data+"')?>'><i class='fas fa-eye'></i></a>";
+                            return html;
+                        }
                     }
-                }
-            ]
+                ]
+            });
         });
-    });
     </script>
     <!-- End Invoice -->
 
