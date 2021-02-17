@@ -33,7 +33,7 @@
                         <th class="text-center" scope="col">Asal</th>
                         <th class="text-center" scope="col">Tujuan</th>
                         <th class="text-center" scope="col">Tanggal</th>
-                        <th scope="col">Status</th>
+                        <th width ="17%" scope="col">Status</th>
                         <th scope="col">Detail</th>
                     </tr>
                 </thead>

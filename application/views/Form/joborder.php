@@ -2,8 +2,8 @@
 
 
 
- <!-- Page Heading -->
- <div class="d-sm-flex align-items-center justify-content-between mb-5">
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-5">
                         <h1 class="h3 mb-0 text-gray-800">Formulir Job Order</h1>
                             <a href="<?=base_url("index.php/form/joborder/x")?>" class="btn btn-secondary btn-icon-split" data-toggle='modal' data-target='#popup-customer'>
                         
@@ -15,10 +15,7 @@
                                      Tambah Customer Baru
                                 </span>
                             </a>
- </div> 
-
-
-
+                    </div> 
 
     <form action="<?=base_url("index.php/form/insert_JO")?>" method="POST" class="row">
         <div class="col-md-5">
