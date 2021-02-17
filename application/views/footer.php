@@ -400,13 +400,16 @@
                     className: 'text-center'
                 },
                 {
-                    "data": "customer_id"
+                    "data": "customer_id",
+                    className: 'text-center'
                 },
                 {
-                    "data": "tanggal_invoice"
+                    "data": "tanggal_invoice",
+                    className: 'text-center'
                 },
                 {
-                    "data": "batas_pembayaran"
+                    "data": "batas_pembayaran",
+                    className: 'text-center'
                 },
                 {
                     "data": "grand_total"
