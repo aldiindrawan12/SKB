@@ -41,8 +41,33 @@ class Home extends CI_Controller {
         header('Content-Type: application/json');
         echo json_encode($callback);
     }
-// Customer
-    public function view_Customer(){
+
+    // Customer
+        public function view_Customer(){
+            $search = $_POST['search']['value'];
+            $limit = $_POST['length'];
+            $start = $_POST['start'];
+            
+            // $tanggal,$bulan,$tahun
+            $order_index = $_POST['order'][0]['column'];
+            $order_field = $_POST['columns'][$order_index]['data'];
+            $order_ascdesc = $_POST['order'][0]['dir'];
+            $sql_total = $this->model_home->count_all_Customer();
+            $sql_data = $this->model_home->filter_Customer($search, $limit, $start, $order_field, $order_ascdesc);
+            $sql_filter = $this->model_home->count_filter_Customer($search);
+            $callback = array(
+                'draw' => $_POST['draw'],
+                'recordsTotal' => $sql_total,
+                'recordsFiltered' => $sql_filter,
+                'data' => $sql_data
+            );
+
+            header('Content-Type: application/json');
+            echo json_encode($callback);
+        }
+
+    // Supir
+    public function view_Supir(){
         $search = $_POST['search']['value'];
         $limit = $_POST['length'];
         $start = $_POST['start'];
@@ -51,9 +76,9 @@ class Home extends CI_Controller {
         $order_index = $_POST['order'][0]['column'];
         $order_field = $_POST['columns'][$order_index]['data'];
         $order_ascdesc = $_POST['order'][0]['dir'];
-        $sql_total = $this->model_home->count_all_Customer();
-        $sql_data = $this->model_home->filter_Customer($search, $limit, $start, $order_field, $order_ascdesc);
-        $sql_filter = $this->model_home->count_filter_Customer($search);
+        $sql_total = $this->model_home->count_all_supir();
+        $sql_data = $this->model_home->filter_supir($search, $limit, $start, $order_field, $order_ascdesc);
+        $sql_filter = $this->model_home->count_filter_supir($search);
         $callback = array(
             'draw' => $_POST['draw'],
             'recordsTotal' => $sql_total,
@@ -64,40 +89,9 @@ class Home extends CI_Controller {
         header('Content-Type: application/json');
         echo json_encode($callback);
     }
-
-// Supir
-public function view_Supir(){
-    $search = $_POST['search']['value'];
-    $limit = $_POST['length'];
-    $start = $_POST['start'];
     
-    // $tanggal,$bulan,$tahun
-    $order_index = $_POST['order'][0]['column'];
-    $order_field = $_POST['columns'][$order_index]['data'];
-    $order_ascdesc = $_POST['order'][0]['dir'];
-    $sql_total = $this->model_home->count_all_supir();
-    $sql_data = $this->model_home->filter_supir($search, $limit, $start, $order_field, $order_ascdesc);
-    $sql_filter = $this->model_home->count_filter_supir($search);
-    $callback = array(
-        'draw' => $_POST['draw'],
-        'recordsTotal' => $sql_total,
-        'recordsFiltered' => $sql_filter,
-        'data' => $sql_data
-    );
 
-    header('Content-Type: application/json');
-    echo json_encode($callback);
-}
-// end Supir
-
-    public function invoice()
-	{
-        $this->load->view('header');
-        $this->load->view('sidebar');
-		$this->load->view('home/invoice');
-        $this->load->view('footer');
-	}
-
+    //customer
     public function customer()
 	{
         $this->load->view('header');
@@ -105,6 +99,8 @@ public function view_Supir(){
 		$this->load->view('home/customer');
         $this->load->view('footer');
 	}
+
+    // bon
     public function bon()
 	{
         $this->load->view('header');
@@ -165,6 +161,7 @@ public function view_Supir(){
         echo json_encode($callback);
     }
     
+    //fungsi untuk penggajian supit
     public function penggajian()
 	{
         $this->load->view('header');
@@ -172,6 +169,8 @@ public function view_Supir(){
 		$this->load->view('home/penggajian');
         $this->load->view('footer');
 	}
+    
+    // funngsi report 
     public function report()
 	{
         $this->load->view('header');
@@ -180,30 +179,34 @@ public function view_Supir(){
         $this->load->view('footer');
 	}
 
+    // Invoice
+    public function view_invoice(){
+        $search = $_POST['search']['value'];
+        $limit = $_POST['length'];
+        $start = $_POST['start'];
+        
+        // $tanggal,$bulan,$tahun
+        $order_index = $_POST['order'][0]['column'];
+        $order_field = $_POST['columns'][$order_index]['data'];
+        $order_ascdesc = $_POST['order'][0]['dir'];
+        $sql_total = $this->model_home->count_all_invoice();
+        $sql_data = $this->model_home->filter_invoice($search, $limit, $start, $order_field, $order_ascdesc);
+        $sql_filter = $this->model_home->count_filter_invoice($search);
+        $callback = array(
+            'draw' => $_POST['draw'],
+            'recordsTotal' => $sql_total,
+            'recordsFiltered' => $sql_filter,
+            'data' => $sql_data
+        );
 
-
-// Invoice
-public function view_invoice(){
-    $search = $_POST['search']['value'];
-    $limit = $_POST['length'];
-    $start = $_POST['start'];
-    
-    // $tanggal,$bulan,$tahun
-    $order_index = $_POST['order'][0]['column'];
-    $order_field = $_POST['columns'][$order_index]['data'];
-    $order_ascdesc = $_POST['order'][0]['dir'];
-    $sql_total = $this->model_home->count_all_invoice();
-    $sql_data = $this->model_home->filter_invoice($search, $limit, $start, $order_field, $order_ascdesc);
-    $sql_filter = $this->model_home->count_filter_invoice($search);
-    $callback = array(
-        'draw' => $_POST['draw'],
-        'recordsTotal' => $sql_total,
-        'recordsFiltered' => $sql_filter,
-        'data' => $sql_data
-    );
-
-    header('Content-Type: application/json');
-    echo json_encode($callback);
-}
-
+        header('Content-Type: application/json');
+        echo json_encode($callback);
+    }
+    public function invoice()
+	{
+        $this->load->view('header');
+        $this->load->view('sidebar');
+		$this->load->view('home/invoice');
+        $this->load->view('footer');
+	}
 }

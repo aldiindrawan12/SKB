@@ -166,13 +166,11 @@ class Print_Berkas extends CI_Controller {
         $data["supir"] = $this->model_home->getsupirbyid($supir_id);
 		$this->load->view("print/penggajian_print",$data);
 	}
-
 	public function memo_tunai($supir_id,$gaji){
 		$data["gaji"] = $gaji;
 		$data["supir"] = $this->model_home->getsupirbyid($supir_id);
 		$this->load->view("print/memo_tunai_print",$data);
 	}
-
 	public function memo_tf($supir_id,$gaji){
 		$data["data"]=[
 			"Bank"=>$this->input->post("Bank"),

@@ -1,21 +1,17 @@
 <div class="container">
+    <div class="d-sm-flex align-items-center justify-content-between mb-5">
+        <h1 class="h3 mb-0 text-gray-800">Formulir Job Order</h1>
+            <a href="<?=base_url("index.php/form/joborder/x")?>" class="btn btn-secondary btn-icon-split" data-toggle='modal' data-target='#popup-customer'>
+            <span class="icon text-white-100">
+                <i class="fas fa-plus"></i> 
+            </span>
+                <span class="text">
+                     Tambah Customer Baru
+                </span>
+            </a>
+    </div> 
 
-
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-5">
-                        <h1 class="h3 mb-0 text-gray-800">Formulir Job Order</h1>
-                            <a href="<?=base_url("index.php/form/joborder/x")?>" class="btn btn-secondary btn-icon-split" data-toggle='modal' data-target='#popup-customer'>
-                        
-                            <span class="icon text-white-100">
-                                <i class="fas fa-plus"></i> 
-                            </span>
-                       
-                                <span class="text">
-                                     Tambah Customer Baru
-                                </span>
-                            </a>
-                    </div> 
-
+    <!-- form Job Order Baru -->
     <form action="<?=base_url("index.php/form/insert_JO")?>" method="POST" class="row">
         <div class="col-md-5">
             <label class="form-label" for="Customer">Customer</label>
@@ -39,26 +35,10 @@
         <div class="col-md-5">
             <label class="form-label" for="Asal">Asal</label>
             <input autocomplete="off" type="text" class="form-control" id="Asal" name="Asal" required>
-            <!-- <select name="Asal" id="Asal" class="form-control selectpicker" data-live-search="true" required>
-                <option class="font-w700" disabled="disabled" selected value="">Asal Pengiriman</option>
-                <option value="Sumatera Selatan">Sumatera Selatan</option>
-                <option value="Jakarta">Jakarta</option>
-                <option value="Aceh">Aceh</option>
-                <option value="Lampung">Lampung</option>
-                <option value="Jawa Barat">Jawa Barat</option>
-            </select> -->
         </div>
         <div class="col-md-5">
             <label class="form-label" for="Tujuan">Tujuan</label>
             <input autocomplete="off" type="text" class="form-control" id="Tujuan" name="Tujuan" required>
-            <!-- <select name="Tujuan" id="Tujuan" class="form-control selectpicker" data-live-search="true" required>
-                <option class="font-w700" disabled="disabled" selected value="">Tujuan Pengiriman</option>
-                <option value="Sumatera Selatan">Sumatera Selatan</option>
-                <option value="Jakarta">Jakarta</option>
-                <option value="Aceh">Aceh</option>
-                <option value="Lampung">Lampung</option>
-                <option value="Jawa Barat">Jawa Barat</option>
-            </select> -->
         </div>
         <div class="col-md-5">
             <label class="form-label" for="Kendaraan">Kendaraan</label>
@@ -95,19 +75,17 @@
             <button type="reset" class="btn btn-danger mb-3">Reset</button>
         </div>
     </form>
+    <!-- end form Job Order Baru -->
 </div>
 
+<!-- pop up add cutomer -->
 <div class="modal fade" id="popup-customer" tabindex="-1" role="dialog" aria-labelledby="modal-block-large" aria-hidden="true">
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary-dark">
                 <h5 class="font-weight-bold">Menambah Customer Baru</h5>
-                
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
-
-
-                    
                 </button>
             </div>
             <div class="font-size-sm m-3 text-justify">
@@ -124,6 +102,7 @@
         </div>
     </div>
 </div>
+<!-- end pop up add cutomer -->
 
 <script>
     function terbilang(){

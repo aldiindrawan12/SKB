@@ -58,11 +58,12 @@
                 <td>Jumlah : Rp.<?= number_format($jo["bonus"]+$jo["upah"],2,',','.')?></td>
             </tr>
             <tr>
-                <td colspan=3>Catatan/Keterangan : <?= $jo["keterangan"]?></td>
+                <td class="font-weight-bold" style="width: 20%;">Catatan/Keterangan</td>
+                <td colspan=3><?= $jo["keterangan"]?></td>
             </tr>
             <?php if($jo["status"]=="Dalam Perjalanan"){?>
             <tr>
-                <td>
+                <td colspan=3>
                     <button class='btn-sm btn-block btn-warning text-dark' data-toggle='modal' data-target='#popup-status-jo' href='' id="<?php echo $jo["Jo_id"] ?>" onclick="datajo(this,<?php echo $jo['supir_id'] ?>,'<?php echo $jo['mobil_no'] ?>')">
                     Konfirmasi Sampai
                     </button>
@@ -70,7 +71,7 @@
             </tr>
             <?php }else{?>
             <tr>
-                <td>
+                <td colspan=3>
                     <button class='btn-sm btn-block btn-success text-light' href='' id="" onclick="cetak_invoice()">
                     Cetak Invoice
                     </button>

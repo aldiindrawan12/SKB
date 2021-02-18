@@ -1,3 +1,4 @@
+<!-- form transaksi bon -->
 <div class="container">
     <form action="<?=base_url("index.php/form/insert_bon")?>" method="POST" class="row">
         <div class="col-md-5">
@@ -27,6 +28,7 @@
         </div>
     </form>
 </div>
+<!-- end form transaksi bon -->
 
 <script>
     function nominal(){
