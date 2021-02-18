@@ -40,5 +40,13 @@ class Model_Form extends CI_model
         return $this->db->insert("skb_customer", $data);
     }
 
+    public function insert_supir($data){
+        return $this->db->insert("skb_supir", $data);
+    }
+
+    public function insert_truck($data){
+        return $this->db->insert("skb_mobil", $data);
+    }
+
 
 }

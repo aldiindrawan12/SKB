@@ -73,6 +73,29 @@ class Form extends CI_Controller {
         redirect(base_url("index.php/form/joborder/").$data["customer_name"]);
     }
 
+    public function insert_supir(){
+        $data=array(
+            "supir_name"=>$this->input->post("Supir"),
+            "supir_kasbon"=>0,
+            "status_jalan"=>"Tidak Jalan"
+        );
+        // echo($data["customer_name"]);
+        $this->model_form->insert_supir($data);
+        redirect(base_url("index.php/home/penggajian"));
+    }
+
+    public function insert_truck(){
+        $data=array(
+            "mobil_no"=>$this->input->post("mobil_no"),
+            "mobil_jenis"=>$this->input->post("mobil_jenis"),
+            "mobil_max_load"=>$this->input->post("mobil_max_load"),
+            "status_jalan"=>"Tidak Jalan",
+        );
+        // echo($data["customer_name"]);
+        $this->model_form->insert_truck($data);
+        redirect(base_url("index.php/home/truck"));
+    }
+
     public function generate_terbilang($uang){
         $uang = abs($uang);
 		$huruf = array("", "Satu", "Dua", "Tiga", "Empat", "Lima", "Enam", "Tujuh", "Delapan", "Sembilan", "Sepuluh", "sebelas");
