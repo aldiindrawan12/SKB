@@ -57,37 +57,13 @@ class Model_Home extends CI_model
         }
      //akhir function-fiunction datatable truck
      //function-fiunction datatable JO
-        public function count_all_JO($tanggal,$bulan,$tahun)
+        public function count_all_JO($tanggal,$bulan,$tahun,$status)
         {
-            $like=$tahun."-".$bulan."-".$tanggal;
-            if($like != "--"){
-                if ($tanggal != "x" && $bulan=="x" && $tahun=="x") {
-                    $this->db->like("tanggal_surat", "-".$tanggal);
-                }
-                if ($tanggal == "x" && $bulan!="x" && $tahun=="x") {
-                    $this->db->like("tanggal_surat", "-".$bulan."-");
-                }
-                if ($tanggal == "x" && $bulan=="x" && $tahun!="x") {
-                    $this->db->like("tanggal_surat", $tahun."-");
-                }
-                if ($tanggal != "x" && $bulan=="x" && $tahun!="x") {
-                    $this->db->like("tanggal_surat", $tahun."-__-".$tanggal);
-                }
-                if ($tanggal == "x" && $bulan!="x" && $tahun!="x") {
-                    $this->db->like("tanggal_surat", $tahun."-".$bulan."-");
-                }
-                if ($tanggal != "x" && $bulan!="x" && $tahun=="x") {
-                    $this->db->like("tanggal_surat", "-".$bulan."-".$tanggal);
-                }
-                if ($tanggal != "x" && $bulan!="x" && $tahun!="x") {
-                    $this->db->like("tanggal_surat", $tahun."-".$bulan."-".$tanggal);
-                }
-            }
             $this->db->join("skb_customer", "skb_customer.customer_id = skb_job_order.customer_id", 'left');
             return $this->db->count_all_results("skb_job_order");
         }
 
-        public function filter_JO($search, $limit, $start, $order_field, $order_ascdesc,$tanggal,$bulan,$tahun)
+        public function filter_JO($search, $limit, $start, $order_field, $order_ascdesc,$tanggal,$bulan,$tahun,$status)
         {
             $like=$tahun."-".$bulan."-".$tanggal;
             if($like != "--"){
@@ -114,6 +90,9 @@ class Model_Home extends CI_model
                 }
             }
             $this->db->like('JO_id', $search);
+            if($status!="x"){
+                $this->db->where("status",$status);
+            }
             // $this->db->or_like('customer_name', $search);
             $this->db->order_by($order_field, $order_ascdesc);
             $this->db->limit($limit, $start);
@@ -121,7 +100,7 @@ class Model_Home extends CI_model
             return $this->db->get('skb_job_order')->result_array();
         }
 
-        public function count_filter_JO($search,$tanggal,$bulan,$tahun)
+        public function count_filter_JO($search,$tanggal,$bulan,$tahun,$status)
         {   
             $like=$tahun."-".$bulan."-".$tanggal;
             if($like != "--"){
@@ -148,6 +127,9 @@ class Model_Home extends CI_model
                 }
             }
             $this->db->like('JO_id', $search);
+            if($status!="x"){
+                $this->db->where("status",$status);
+            }
             // $this->db->or_like('customer_name', $search);
             $this->db->join("skb_customer", "skb_customer.customer_id = skb_job_order.customer_id", 'left');
             return $this->db->get('skb_job_order')->num_rows();

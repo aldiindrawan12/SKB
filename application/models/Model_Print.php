@@ -2,7 +2,7 @@
 // error_reporting(0);
 class Model_Print extends CI_model
 {
-    public function getjobyperiode($tanggal,$bulan,$tahun)
+    public function getjobyperiode($tanggal,$bulan,$tahun,$status)
     {
         $like=$tahun."-".$bulan."-".$tanggal;
         if($like != "--"){
@@ -27,6 +27,9 @@ class Model_Print extends CI_model
             if ($tanggal != "x" && $bulan!="x" && $tahun!="x") {
                 $this->db->like("tanggal_surat", $tahun."-".$bulan."-".$tanggal);
             }
+        }
+        if($status!="x"){
+            $this->db->where("skb_job_order.status",(str_replace("%20"," ",$status)));
         }
         $this->db->join("skb_customer", "skb_customer.customer_id = skb_job_order.customer_id", 'left');
         $this->db->join("skb_supir", "skb_supir.supir_id = skb_job_order.supir_id", 'left');

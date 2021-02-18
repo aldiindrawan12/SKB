@@ -13,7 +13,7 @@
             <input autocomplete="off" type="text" class="form-control" id="bon-saat-ini-tampilan" name="" disabled>
             <input autocomplete="off" type="text" class="form-control" id="bon-saat-ini" name="" required hidden>
             <label class="form-label" for="Jenis">Jenis Transaksi</label>
-            <select name="Jenis" id="Jenis" class="form-control custom-select" required>
+            <select name="Jenis" id="Jenis" class="form-control custom-select" required onchange="nominal()">
                 <option class="font-w700" disabled="disabled" selected value="">Jenis Transaksi</option>
                 <option value="Pengajuan">Pengajuan</option>
                 <option value="Pembayaran">Pembayaran</option>

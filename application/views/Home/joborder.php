@@ -18,6 +18,13 @@
     </div>
     <!-- tabel JO -->
     <div class="card-body">
+        <div class="float-right mt-2 mb-2">
+            <select name="status-JO" id="status-JO" class="form-control">
+                <option value="x">Semua Status</option>
+                <option value="Dalam Perjalanan">Dalam Perjalanan</option>
+                <option value="Sampai Tujuan">Sampai Tujuan</option>
+            </select>
+        </div>
         <div class="table-responsive thead-dark">
             <table class="table table-bordered  " id="Table-Job-Order" width="100%" cellspacing="0">
                 <thead>

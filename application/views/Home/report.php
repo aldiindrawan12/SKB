@@ -4,9 +4,9 @@
             <h6 class="m-0 font-weight-bold text-primary">Data Job Order(JO)</h6>
         </div>
         <!-- select tanggal,bulan,tahun -->
-        <div class="row">
+        <div class="row text-center">
             <!-- select tanggal -->
-            <div class="col-md-2 ml-3">
+            <div class="col-md-2">
                 <select name="Tanggal" id="Tanggal" class="form-control">
                     <option class="font-w700" selected value="x">Semua Tanggal</option>
                     <?php for($i=1;$i<32;$i++){?>
@@ -16,7 +16,7 @@
             </div>
             <!-- end select tanggal -->
             <!-- select bulan -->
-            <div class="col-md-2 ml-3">
+            <div class="col-md-2">
                 <select name="Bulan" id="Bulan" class="form-control">
                     <option class="font-w700" selected value="x">Semua Bulan</option>
                     <option class="font-w700" value="01">Januari</option>
@@ -35,7 +35,7 @@
             </div>
             <!-- end select bulan -->
             <!-- select tahun -->
-            <div class="col-md-2 ml-3">
+            <div class="col-md-2">
                 <select name="Tahun" id="Tahun" class="form-control">
                     <option class="font-w700" selected value="x">Semua Tahun</option>
                     <?php for($i=15;$i<30;$i++){?>
@@ -44,16 +44,23 @@
                 </select>
             </div>
             <!-- end select tahun -->
-            <div class="col-md-2 ml-3">
-                <a href="<?=base_url("index.php/print_berkas/cetaklaporanpdf/x/x/x")?>" class="btn btn-primary btn-icon-split" id="link_cetaklaporanpdf">
+            <div class="col-md-2">
+                <select name="status-JO" id="status-JO" class="form-control">
+                    <option value="x">Semua Status</option>
+                    <option value="Dalam Perjalanan">Dalam Perjalanan</option>
+                    <option value="Sampai Tujuan">Sampai Tujuan</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <a href="<?=base_url("index.php/print_berkas/cetaklaporanpdf/x/x/x/x")?>" class="btn btn-primary btn-icon-split" id="link_cetaklaporanpdf">
                     <span class="icon text-white-100">  
                         <i class="fas fa-print"></i>
                     </span>
                     <span class="text">Cetak PDF</span>
                 </a>
             </div>
-            <div class="col-md-2 ml-3">
-                <a href="<?=base_url("index.php/print_berkas/cetaklaporanexcel/x/x/x")?>" class="btn btn-primary btn-icon-split" id="link_cetaklaporanexcel">
+            <div class="col-md-2">
+                <a href="<?=base_url("index.php/print_berkas/cetaklaporanexcel/x/x/x/x")?>" class="btn btn-primary btn-icon-split" id="link_cetaklaporanexcel">
                     <span class="icon text-white-100">  
                         <i class="fas fa-print"></i>
                     </span>
