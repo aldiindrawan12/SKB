@@ -24,7 +24,7 @@
                         <th class="text-center" width="13%" scope="col">Nama Supir</th>
                         <th class="text-center" width="10%" scope="col">Kasbon</th>
                         <th width="7%" scope="col">Status</th>
-                        <th width="5%" scope="col">Detail</th>
+                        <th width="10%" scope="col">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -60,4 +60,31 @@
     </div>
 </div>
 <!-- end pop up add supir -->
+
+<!-- pop up update supir -->
+<div class="modal fade" id="popup-update-supir" tabindex="-1" role="dialog" aria-labelledby="modal-block-large" aria-hidden="true">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary-dark">
+                <h5 class="font-weight-bold">Update data Supir</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="font-size-sm m-3 text-justify">
+                <form action="<?= base_url("index.php/form/update_supir")?>" method="POST">
+                    <input type="text" name=supir_id id=supir_id hidden>
+                    <div class="form-group">
+                        <label for="supir_name" class="form-label">Nama Supir</label>
+                        <input autocomplete="off" type="text" class="form-control" id="supir_name" name="supir_name" required>
+                    </div>
+                    <div class="form-group">
+                    <button type="submit" class="btn btn-success mb-3 float-right">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end pop up update supir -->
 </div>

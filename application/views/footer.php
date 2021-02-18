@@ -85,8 +85,33 @@
                     {
                         "data": "mobil_max_load",
                         className: 'text-center'
+                    },
+                    {
+                        "data": "mobil_no",
+                        className: 'text-center font-weight-bold',
+                        "orderable": false,
+                        render: function(data, type, row) {
+                            let html ="<a class='btn btn-light btn-delete-truck' href='javascript:void(0)' data-pk='"+data+"'><i class='fas fa-trash-alt'></i></a>";
+                            return html;
+                        }
                     }
-                ]
+                ],
+                drawCallback: function() {
+                    $('.btn-delete-truck').click(function() {
+                        let pk = $(this).data('pk');
+                        $.ajax({
+                            type: "GET",
+                            url: "<?php echo base_url('index.php/form/deletetruck') ?>",
+                            dataType: "text",
+                            data: {
+                                id: pk
+                            },
+                            success: function(data) {
+                                location.reload();
+                            }
+                        });
+                    });
+                }
             });
         });
     </script>
@@ -321,7 +346,7 @@
             });
         });
     </script>
-    <!-- end Customer -->
+    <!-- end Customer -->   
 
     <!-- Supir -->
     <script> //script datatables Supir
@@ -380,11 +405,44 @@
                         className: 'text-center font-weight-bold',
                         "orderable": false,
                         render: function(data, type, row) {
-                            let html = "<a class='btn btn-light' href='<?= base_url('index.php/detail/detail_penggajian/"+data+"')?>'><i class='fas fa-eye'></i></a>";
+                            let html = "<a class='btn btn-light' href='<?= base_url('index.php/detail/detail_penggajian/"+data+"')?>'><i class='fas fa-eye'></i></a> || "+
+                            "<a class='btn btn-light btn-update-supir' data-toggle='modal' data-target='#popup-update-supir' href='javascript:void(0)' data-pk="+data+"><i class='fas fa-pen-square'></i></a> || "+
+                            "<a class='btn btn-light btn-delete-supir' href='javascript:void(0)' data-pk="+data+"><i class='fas fa-trash-alt'></i></a>";
                             return html;
                         }
                     }
-                ]
+                ],
+                drawCallback: function() {
+                    $('.btn-update-supir').click(function() {
+                        let pk = $(this).data('pk');
+                        $("#supir_id").val(pk);
+                        $.ajax({
+                            type: "GET",
+                            url: "<?php echo base_url('index.php/form/getsupirname') ?>",
+                            dataType: "text",
+                            data: {
+                                id: pk
+                            },
+                            success: function(data) {
+                                $("#supir_name").val(data);
+                            }
+                        });
+                    });
+                    $('.btn-delete-supir').click(function() {
+                        let pk = $(this).data('pk');
+                        $.ajax({
+                            type: "GET",
+                            url: "<?php echo base_url('index.php/form/deletesupir') ?>",
+                            dataType: "text",
+                            data: {
+                                id: pk
+                            },
+                            success: function(data) {
+                                location.reload();
+                            }
+                        });
+                    });
+                }
             });
         });
     </script>

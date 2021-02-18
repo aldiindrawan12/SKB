@@ -96,6 +96,31 @@ class Form extends CI_Controller {
         redirect(base_url("index.php/home/truck"));
     }
 
+    public function update_supir(){
+        $supir_name = $this->input->post("supir_name");
+        $supir_id = $this->input->post("supir_id");
+        $this->model_form->update_supir($supir_id,$supir_name);
+        redirect(base_url("index.php/home/penggajian"));
+    }
+
+    public function deletesupir(){
+        $supir_id = $this->input->get("id");
+        $this->model_form->deletesupir($supir_id);
+        echo $supir_id;
+    }
+
+    public function deletetruck(){
+        $mobil_no = $this->input->get("id");
+        $this->model_form->deletetruck($mobil_no);
+        echo $mobil_no;
+    }
+
+    public function getsupirname(){
+        $supir_id = $this->input->get("id");
+        $supir = $this->model_form->getsupirname($supir_id);
+        echo $supir["supir_name"];
+    }
+
     public function generate_terbilang($uang){
         $uang = abs($uang);
 		$huruf = array("", "Satu", "Dua", "Tiga", "Empat", "Lima", "Enam", "Tujuh", "Delapan", "Sembilan", "Sepuluh", "sebelas");

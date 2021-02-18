@@ -44,6 +44,26 @@ class Model_Form extends CI_model
         return $this->db->insert("skb_supir", $data);
     }
 
+    public function deletesupir($supir_id){
+        $this->db->where("supir_id",$supir_id);
+        return $this->db->delete("skb_supir");
+    }
+
+    public function deletetruck($mobil_no){
+        $this->db->where("mobil_no",$mobil_no);
+        return $this->db->delete("skb_mobil");
+    }
+
+    public function getsupirname($supir_id){
+        return $this->db->get_where("skb_supir",array("supir_id"=>$supir_id))->row_array();
+    }
+
+    public function update_supir($supir_id,$supir_name){
+        $this->db->set("supir_name",$supir_name);
+        $this->db->where("supir_id",$supir_id);
+        $this->db->update("skb_supir");
+    }
+
     public function insert_truck($data){
         return $this->db->insert("skb_mobil", $data);
     }
