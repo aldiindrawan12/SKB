@@ -82,117 +82,6 @@
 </div>
 <!-- end tampilan detail jo -->
 
-<!-- tampilan print invoice -->
-<div class="container" id="print-invoice" style="display:none">
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-center">Invoice</h6>
-        </div>
-        <div class="card-body">
-            <table class="w-50">
-                <tbody>
-                    <tr>
-                        <td width="35%">Customer</td>
-                        <td width="5%">:</td>
-                        <td><?= $customer["customer_name"]?></td>
-                    </tr>
-                    <tr>
-                        <td width="35%">Invoice No</td>
-                        <td width="5%">:</td>
-                        <td><?= $invoice["invoice_kode"]?></td>
-                    </tr>
-                    <tr>
-                        <td width="35%">Tanggal</td>
-                        <td width="5%">:</td>
-                        <td><?= $invoice["tanggal_invoice"]?></td>
-                    </tr>
-                    <tr>
-                        <td width="35%">Batas Pembayaran</td>
-                        <td width="5%">:</td>
-                        <td><?= $invoice["batas_pembayaran"]?></td>
-                    </tr>
-                    <tr>
-                        <td width="35%">Muatan</td>
-                        <td width="5%">:</td>
-                        <td><?= $invoice["muatan"]?></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered table-striped" id="Table-Jo" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th class="text-center" width="10%" scope="col">Tgl JO</th>
-                            <th class="text-center" width="13%" scope="col">Tgl Bngkr</th>
-                            <th class="text-center" width="10%" scope="col">Mobil</th>
-                            <th class="text-center" width="10%" scope="col">Dari</th>
-                            <th class="text-center" width="10%" scope="col">Ke</th>
-                            <th class="text-center" width="8%" scope="col">Tonase</th>
-                            <th class="text-center" width="10%" scope="col">Harga/Kg</th>
-                            <th class="text-center" width="10%" scope="col">Jumlah</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><?= $invoice["tanggal_surat"]?></td>
-                            <td><?= $invoice["tanggal_bongkar"]?></td>
-                            <td><?= $invoice["mobil_no"]?></td>
-                            <td><?= $invoice["asal"]?></td>
-                            <td><?= $invoice["tujuan"]?></td>
-                            <td><?= $invoice["tonase"]?> Ton</td>
-                            <td><?= $invoice["harga/kg"]?></td>
-                            <td>Rp.<?= number_format($invoice["tonase"]*$invoice["harga/kg"]*1000,2,',','.')?></td>
-                        </tr>
-                        <tr>
-                            <td colspan=7>Total</td>
-                            <td>Rp.<?= number_format($invoice["tonase"]*$invoice["harga/kg"]*1000,2,',','.')?></td>
-                        </tr>
-                        <tr>
-                            <td colspan=7>PPN 10%</td>
-                            <td>Rp.<?= number_format(($invoice["tonase"]*$invoice["harga/kg"]*1000)*0.1,2,',','.')?></td>
-                        </tr>
-                        <tr>
-                            <td colspan=7>Jumlah</td>
-                            <td>Rp.<?= number_format(($invoice["tonase"]*$invoice["harga/kg"]*1000)+(($invoice["tonase"]*$invoice["harga/kg"]*1000)*0.1),2,',','.')?></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>Harap Pembayaran di Transfer Ke</td>
-                        </tr>
-                        <tr>
-                            <td width="25%">Bank</td>
-                            <td width="5%">:</td>
-                            <td>OCBC NISP</td>
-                        </tr>
-                        <tr>
-                            <td width="25%">A/N</td>
-                            <td width="5%">:</td>
-                            <td>PT.Sumber Karya Berkah</td>
-                        </tr>
-                        <tr>
-                            <td width="25%">No.Rek</td>
-                            <td width="5%">:</td>
-                            <td>3308.0000.5911</td>
-                        </tr>
-                        <tr class="text-center">
-                            <td>Hormat Kami</td>
-                        </tr>
-                        <tr class="text-center">
-                            <td style="height:200px">(..........................................)</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- end tampilan print invoice -->
-
 <!-- pop up update status jo -->
 <div class="modal fade" id="popup-status-jo" tabindex="-1" role="dialog" aria-labelledby="modal-block-large" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
@@ -262,11 +151,6 @@
     }
 
     function cetak_invoice(){
-        var x = document.getElementById("print-invoice");
-        var restore = document.body.innerHTML;
-        var print = x.innerHTML;
-        document.body.innerHTML = print;
-        window.print();
-        document.body.innerHTML = restore;
+        window.location.replace("<?= base_url("index.php/print_berkas/invoice/".$jo["Jo_id"])?>");    
     }
 </script>

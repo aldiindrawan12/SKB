@@ -9,13 +9,9 @@
 
     <title>Sumber Karya Berkah</title>
 
-    <!-- Custom fonts for this template-->
-    <link href="<?=base_url("assets/vendor/fontawesome-free/css/all.min.css")?>" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="<?php echo base_url('assets/vendor/datatables/dataTables.bootstrap4.css') ?>">
-    <!-- Custom styles for this template-->
     <link href="<?=base_url("assets/css/sb-admin-2.min.css")?>" rel="stylesheet">
 </head>
-<body>
+<body class="text-dark">
     <div class="container w-50">
         <div class="body-card text-center">
             <span class="h3">Kwitansi Transaksi BON</span>

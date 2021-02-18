@@ -1,5 +1,5 @@
 <!-- tampilan detail penggajian supir -->
-<div class="container" id="print-penggajian">
+<div class="container">
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-center">Data Upah Supir</h6>
@@ -92,6 +92,7 @@
 
 <!-- form rekening supir -->
 <div class="container mt-5 row">
+    <form action="<?= base_url("index.php/print_berkas/memo_tf/".$supir["supir_id"]."/".($upah-$supir["supir_kasbon"]))?>" method="POST" class="row">
         <div class="form-group col-md-6">
             <label for="Bank" class="form-label">Bank</label>
             <input autocomplete="off" type="text" class="form-control" id="Bank" name="Bank" required>
@@ -105,167 +106,19 @@
             <textarea class="form-control" name="Keterangan" id="Keterangan" rows="3"></textarea>
         </div>
         <div class="form-group">
-            <button class="btn btn-primary mb-3" onclick="print_memo_tf(),update_upah()" type="reset">Cetak Memo Transfer</button>
+            <button class="btn btn-primary ml-3 mb-3" onclick="update_upah()" type="submit">Cetak Memo Transfer</button>
         </div>
+    </form>
 </div>
 <!-- end form rekening supir -->
 
-<!-- memo transfer -->
-<div class="container" id="print-memo-tf" style="display:none">
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-center">Memo Transfer</h6>
-        </div>
-        <div class="card-body row">
-            <div class="col-md-5">
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>Tanggal</td>
-                            <td>:</td>
-                            <td><?= date("Y-m-d")?></td>
-                        </tr>
-                        <tr>
-                            <td>Bank</td>
-                            <td>:</td>
-                            <td id="isi_bank">ISI BANK</td>
-                        </tr>
-                        <tr>
-                            <td>Rekening</td>
-                            <td>:</td>
-                            <td id="isi_rek">ISI REK</td>
-                        </tr>
-                        <tr>
-                            <td>A.N.</td>
-                            <td>:</td>
-                            <td id="isi_an">NAMA REKENING</td>
-                        </tr>
-                        <tr>
-                            <td>Nominal</td>
-                            <td>:</td>
-                            <td>Rp. <span id="upah_print"><?= number_format($upah-$supir["supir_kasbon"],2,",",".")?></span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="col-md-5">
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>Keterangan : </td>
-                        </tr>
-                        <tr>
-                            <td id="isi_ket"></td>
-                        </tr>
-                        <tr>
-                            <td style="height:100px">(<?= $supir["supir_name"]?>)</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <table class="w-100 mt-5">
-                <tbody>
-                    <tr class="text-center">
-                        <td width="30%">Mengetahui,</td>
-                        <td width="30%">Menyetujui,</td>
-                        <td width="30%" >Kasir</td>
-                    </tr>
-                    <tr class="text-center" style="height:200px">
-                        <td width="30%">(.................)</td>
-                        <td width="30%">(.................)</td>
-                        <td width="30%" >(.................)</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-<!-- end memo transfer -->
-
-<!-- memo tunai -->
-<div class="container w-50" id="print-memo-tunai" style="display:none">
-    <div class="body-card text-center">
-        <span class="h3">Memo Tunai</span>
-        <hr>
-    </div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="" id="" width="100%" cellspacing="0">
-                <tbody>
-                    <tr>
-                        <td colspan=3>Bandar Lampung,<?= date("Y-m-d")?></td>
-                    </tr>
-                    <tr>
-                        <td width="30%">Telah Terima Dari</td>
-                        <td width="5%">:</td>
-                        <td>Sumber Berkah Jaya</td>
-                    </tr>
-                    <tr>
-                        <td width="30%">Sebesar</td>
-                        <td width="5%">:</td>
-                        <td>Rp.<?= number_format($upah-$supir["supir_kasbon"],2,',','.')?></td>
-                    </tr>
-                    <tr>
-                        <td width="30%">Untuk</td>
-                        <td width="5%">:</td>
-                        <td>Pembayaran Gaji/Upah tunai</td>
-                    </tr>
-                    <tr>
-                        <td colspan=3><hr></td>
-                    </tr>
-                </tbody>
-            </table>
-            <table width="100%">
-                <tbody>
-                    <tr class="text-center">
-                        <td width="25%">Mengetahui,</td>
-                        <td width="25%">Menyetujui,</td>
-                        <td width="25%">Kasir,</td>
-                        <td width="25%" >Supir</td>
-                    </tr>
-                    <tr class="text-center" style="height:200px">
-                        <td width="25%">(...............)</td>
-                        <td width="25%">(...............)</td>
-                        <td width="25%">(...............)</td>
-                        <td width="25%">(<?= $supir["supir_name"]?>)</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-<!-- end memo tunai -->
-
 <script>
     function print_gaji(){
-        var restore = document.body.innerHTML;
-        var print = document.getElementById('print-penggajian').innerHTML;
-        // alert(print);
-        document.body.innerHTML = print;
-        window.print();
-        document.body.innerHTML = restore;
+        window.location.replace("<?= base_url("index.php/print_berkas/data_gaji/".$supir["supir_id"])?>");    
     }
 
     function print_memo_tunai(){
-        var restore = document.body.innerHTML;
-        var print = document.getElementById('print-memo-tunai').innerHTML;
-        // alert(print);
-        document.body.innerHTML = print;
-        window.print();
-        document.body.innerHTML = restore;
-    }
-
-    function print_memo_tf(){
-        $('#isi_bank').text($('#Bank').val());
-        $('#isi_rek').text($('#Norek').val());
-        $('#isi_an').text($('#AN').val());
-        $('#isi_ket').text($('#Keterangan').val());
-        var restore = document.body.innerHTML;
-        var print = document.getElementById('print-memo-tf').innerHTML;
-        // alert(print);
-        document.body.innerHTML = print;
-        window.print();
-        document.body.innerHTML = restore;
+        window.location.replace("<?= base_url("index.php/print_berkas/memo_tunai/".$supir["supir_id"]."/".($upah-$supir["supir_kasbon"]))?>");    
     }
 
     function update_upah(){
@@ -273,7 +126,6 @@
         <?php for($i=0;$i<count($data_jo_id);$i++){?>
             data_jo_id.push(<?= $data_jo_id[$i]?>)
         <?php }?>
-        // alert('<?= $supir["supir_id"]."==".$upah?>'+'=='+'<?= $supir["supir_kasbon"]?>');
         $.ajax({
             type: "GET",
             url: "<?php echo base_url('index.php/detail/update_upah') ?>",
@@ -285,8 +137,6 @@
                 jo_id:data_jo_id
             },
             success: function(data) {
-                // $('#Terbilang').val(data);
-                alert(data);
             }
         });
     }

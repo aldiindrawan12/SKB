@@ -225,7 +225,11 @@
                             }
                     },
                     {
-                        "data": "bon_nominal"
+                        "data": "bon_nominal",
+                        render: function(data, type, row) {
+                            let html = 'Rp.'+rupiah(data);
+                            return html;
+                        }
                     },
                     {
                         "data": "bon_tanggal"
@@ -344,7 +348,11 @@
                         
                     },
                     {
-                        "data": "supir_kasbon"
+                        "data": "supir_kasbon",
+                        render: function(data, type, row) {
+                            let html = 'Rp.'+rupiah(data);
+                            return html;
+                        }
                     },
                     {
                         "data": "status_jalan",
@@ -372,7 +380,6 @@
                     }
                 ]
             });
-
         });
     </script>
     <!-- End Supir -->
@@ -419,7 +426,11 @@
                         className: 'text-center'
                     },
                     {
-                        "data": "grand_total"
+                        "data": "grand_total",
+                        render: function(data, type, row) {
+                            let html = 'Rp.'+rupiah(data);
+                            return html;
+                        }
                     },
                     {
                         "data": "Customer_id",
@@ -436,7 +447,24 @@
     </script>
     <!-- End Invoice -->
 
-
+    <!-- scrip angka rupiah -->
+        <script>
+            function rupiah(uang){
+            var bilangan = uang;
+            var	number_string = bilangan.toString(),
+                sisa 	= number_string.length % 3,
+                rupiah 	= number_string.substr(0, sisa),
+                ribuan 	= number_string.substr(sisa).match(/\d{3}/g);
+                    
+            if (ribuan) {
+                separator = sisa ? '.' : '';
+                rupiah += separator + ribuan.join('.');
+            }
+            // alert(rupiah);
+            return rupiah;
+        }
+    </script>
+    <!-- end script angka rupiah -->
 </body>
 
 </html>

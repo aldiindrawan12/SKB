@@ -13,6 +13,7 @@ class Print_Berkas extends CI_Controller {
 		parent::__construct();
 		$this->load->model('model_home');//load model
         $this->load->model('model_print');//load model
+		$this->load->model('model_detail');//load model
     }
     public function cetaklaporanpdf($tanggal,$bulan,$tahun){
         $data["jo"] = $this->model_print->getjobyperiode($tanggal,$bulan,$tahun);
@@ -154,5 +155,33 @@ class Print_Berkas extends CI_Controller {
 		$write = PHPExcel_IOFactory::createWriter($excel, 'Excel2007');
 		$write->save('php://output');
     }
-    
+    public function invoice($Jo_id){
+		$data["invoice"] = $this->model_detail->getinvoicebyjo($Jo_id);
+        $data["customer"] = $this->model_home->getcustomerbyid($data["invoice"]["customer_id"]);
+		$data["Jo_id"] = $Jo_id;
+		$this->load->view("print/invoice_print",$data);
+	}
+	public function data_gaji($supir_id){
+		$data["jo"] = $this->model_detail->getjobbysupir($supir_id);
+        $data["supir"] = $this->model_home->getsupirbyid($supir_id);
+		$this->load->view("print/penggajian_print",$data);
+	}
+
+	public function memo_tunai($supir_id,$gaji){
+		$data["gaji"] = $gaji;
+		$data["supir"] = $this->model_home->getsupirbyid($supir_id);
+		$this->load->view("print/memo_tunai_print",$data);
+	}
+
+	public function memo_tf($supir_id,$gaji){
+		$data["data"]=[
+			"Bank"=>$this->input->post("Bank"),
+			"Norek"=>$this->input->post("Norek"),
+			"AN"=>$this->input->post("AN"),
+			"Keterangan"=>$this->input->post("Keterangan")
+		];
+		$data["gaji"] = $gaji;
+		$data["supir"] = $this->model_home->getsupirbyid($supir_id);
+		$this->load->view("print/memo_tf_print",$data);
+	}
 }

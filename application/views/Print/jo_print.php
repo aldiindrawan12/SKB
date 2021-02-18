@@ -15,7 +15,7 @@
     <!-- Custom styles for this template-->
     <link href="<?=base_url("assets/css/sb-admin-2.min.css")?>" rel="stylesheet">
 </head>
-<body>
+<body class="text-dark">
     <div class="container w-50">
         <div class="body-card text-center">
             <span class="h3">Bukti Titipan Uang Jalan</span>
@@ -92,7 +92,7 @@
     </div>
 </body>
 <script>
-    window.print();
-    window.location.replace("<?= base_url()?>");
+    // window.print();
+    // window.location.replace("<?= base_url()?>");
 </script>
 </html>
