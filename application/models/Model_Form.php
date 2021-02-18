@@ -6,6 +6,10 @@ class Model_Form extends CI_model
         return $this->db->get_where("skb_customer",array("customer_name"=>str_replace("%20"," ",$customer_name)))->row_array();
     }
 
+    public function getbonbysupir($supir_id){
+        return $this->db->get_where("skb_supir",array("supir_id"=>$supir_id))->row_array();
+    }
+
     public function insert_JO($data){
         $this->db->set("status_jalan","Jalan");
         $this->db->where("supir_id",$data["supir_id"]);
@@ -35,4 +39,6 @@ class Model_Form extends CI_model
     public function insert_customer($data){
         return $this->db->insert("skb_customer", $data);
     }
+
+
 }

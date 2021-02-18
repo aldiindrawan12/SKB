@@ -101,4 +101,11 @@ class Form extends CI_Controller {
     public function generate_terbilang_fix($uang){
         echo $this->generate_terbilang(str_replace(".","",$uang))." Rupiah";
     }
+
+    function getbonsupir()
+    {
+        $supir_id = $this->input->get('id');
+        $data = $this->model_form->getbonbysupir($supir_id);
+        echo $data["supir_kasbon"];
+    }
 }

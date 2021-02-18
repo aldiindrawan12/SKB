@@ -84,6 +84,6 @@
 </body>
 <script>
     window.print();
-    window.location.replace("<?= base_url("index.php/detail/detail_penggajian/1")?>");
+    window.location.replace("<?= base_url("index.php/detail/detail_penggajian/").$supir["supir_id"]?>");
 </script>
 </html>

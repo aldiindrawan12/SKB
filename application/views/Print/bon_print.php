@@ -55,6 +55,11 @@
                                 <td><?= $data["bon_keterangan"]?></td>
                             </tr>
                             <tr>
+                                <td width="30%">Sisa Bon Terhutang</td>
+                                <td width="5%">:</td>
+                                <td>Rp.<?= number_format($supir["supir_kasbon"],2,',','.')?></td>
+                            </tr>
+                            <tr>
                                 <td colspan=3><hr></td>
                             </tr>
                         </tbody>
@@ -67,9 +72,15 @@
                                 <td width="30%" >Yang Menerima</td>
                             </tr>
                             <tr class="text-center" style="height:200px">
-                                <td width="30%">('''kasir''')</td>
-                                <td width="30%">(bag.operasional)</td>
-                                <td width="30%" >('''supir''')</td>
+                                <?php if($data["bon_jenis"]=="Pengajuan"){ ?>
+                                    <td width="30%">('''kasir''')</td>
+                                    <td width="30%">(bag.operasional)</td>
+                                    <td width="30%" ><?= $supir["supir_name"]?></td>
+                                <?php }else{ ?>
+                                    <td width="30%" ><?= $supir["supir_name"]?></td>
+                                   <td width="30%">(bag.operasional)</td>
+                                    <td width="30%">('''kasir''')</td>
+                                <?php } ?>
                             </tr>
                         </tbody>
                     </table>

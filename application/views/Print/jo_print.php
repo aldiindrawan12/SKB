@@ -92,7 +92,7 @@
     </div>
 </body>
 <script>
-    // window.print();
-    // window.location.replace("<?= base_url()?>");
+    window.print();
+    window.location.replace("<?= base_url()?>");
 </script>
 </html>
