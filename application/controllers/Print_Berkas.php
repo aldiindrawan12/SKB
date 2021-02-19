@@ -161,9 +161,16 @@ class Print_Berkas extends CI_Controller {
 		$data["Jo_id"] = $Jo_id;
 		$this->load->view("print/invoice_print",$data);
 	}
-	public function data_gaji($supir_id){
+	public function data_gaji($supir_id,$upah){
 		$data["jo"] = $this->model_detail->getjobbysupir($supir_id);
         $data["supir"] = $this->model_home->getsupirbyid($supir_id);
+		//update upah
+		$data_jo_id = [];
+		for($i=0;$i<count($data["jo"]);$i++){
+            $data_jo_id[] = $data["jo"][$i]["Jo_id"];
+        }
+		$data["data_jo_id"] = $data_jo_id;
+		$data["upah"] = $upah;
 		$this->load->view("print/penggajian_print",$data);
 	}
 	public function memo_tunai($supir_id,$gaji){

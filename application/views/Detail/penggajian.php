@@ -33,7 +33,7 @@
                             <th class="text-center" width="10%" scope="col">Ke</th>
                             <th class="text-center" width="10%" scope="col">Uang Jalan</th>
                             <th class="text-center" width="8%" scope="col">Tonase</th>
-                            <th class="text-center" width="10%" scope="col">Upah</th>
+                            <th class="text-center" width="10%" scope="col">Upah+Bonus</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -42,7 +42,7 @@
                     $data_jo_id = [];
                     foreach($jo as $value){ 
                         $uang_jalan += $value["uang_jalan"];
-                        $upah += $value["upah"];
+                        $upah += ($value["upah"]+$value["bonus"]);
                         $data_jo_id[] = $value["Jo_id"];
                         ?>
                         <tr>
@@ -54,7 +54,7 @@
                             <td><?= $value["tujuan"]?></td>
                             <td>Rp.<?= number_format($value["uang_jalan"],2,',','.') ?></td>
                             <td><?= $value["tonase"]?> Ton</td>
-                            <td>Rp.<?= number_format($value["upah"],2,',','.')?></td>
+                            <td>Rp.<?= number_format($value["upah"]+$value["bonus"],2,',','.')?></td>
                         </tr>
                     <?php } ?>
                         <tr>
@@ -82,16 +82,16 @@
 
 <div class="conatiner ml-4">
     <!-- button print daftar gaji -->
-    <button onclick="print_gaji()" class="btn btn-primary">Cetak Bukti Upah</button>
+    <!-- <button onclick="print_gaji()" class="btn btn-primary">Cetak Bukti Upah</button> -->
     <!-- end button print daftar gaji -->
 
     <!-- button print memo tunai -->
-    <button onclick="print_memo_tunai(),update_upah()" class="btn btn-primary">Cetak Memo Tunai</button>
+    <button onclick="print_memo_tunai()" class="btn btn-primary">Cetak Memo Tunai</button>
     <!-- end button print memo tunai -->
 </div>
-
+<hr>
 <!-- form rekening supir -->
-<div class="container mt-5 row">
+<div class="container mt-3">
     <form action="<?= base_url("index.php/print_berkas/memo_tf/".$supir["supir_id"]."/".($upah-$supir["supir_kasbon"]))?>" method="POST" class="row">
         <div class="form-group col-md-6">
             <label for="Bank" class="form-label">Bank</label>
@@ -106,7 +106,7 @@
             <textarea class="form-control" name="Keterangan" id="Keterangan" rows="3"></textarea>
         </div>
         <div class="form-group">
-            <button class="btn btn-primary ml-3 mb-3" onclick="update_upah()" type="submit">Cetak Memo Transfer</button>
+            <button class="btn btn-primary ml-3 mb-3" type="submit">Cetak Memo Transfer</button>
         </div>
     </form>
 </div>
@@ -119,25 +119,5 @@
 
     function print_memo_tunai(){
         window.location.replace("<?= base_url("index.php/print_berkas/memo_tunai/".$supir["supir_id"]."/".($upah-$supir["supir_kasbon"]))?>");    
-    }
-
-    function update_upah(){
-        var data_jo_id = [];
-        <?php for($i=0;$i<count($data_jo_id);$i++){?>
-            data_jo_id.push(<?= $data_jo_id[$i]?>)
-        <?php }?>
-        $.ajax({
-            type: "GET",
-            url: "<?php echo base_url('index.php/detail/update_upah') ?>",
-            dataType: "text",
-            data: {
-                upah:<?= $upah?>,
-                supir_id:<?= $supir["supir_id"]?>,
-                supir_kasbon:<?= $supir["supir_kasbon"]?>,
-                jo_id:data_jo_id
-            },
-            success: function(data) {
-            }
-        });
     }
 </script>

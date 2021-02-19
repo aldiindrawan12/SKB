@@ -66,6 +66,6 @@
 </body>
 <script>
     window.print();
-    window.location.replace("<?= base_url("index.php/detail/detail_penggajian/".$supir["supir_id"])?>");
+    window.location.replace("<?= base_url("index.php/print_berkas/data_gaji/".$supir["supir_id"]."/".$gaji)?>");    
 </script>
 </html>

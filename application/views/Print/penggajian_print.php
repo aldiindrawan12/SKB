@@ -11,10 +11,10 @@
 
     <link href="<?=base_url("assets/css/sb-admin-2.min.css")?>" rel="stylesheet">
 </head>
-<body class="text-dark small">
+<body class="text-dark small" onload="redirect()">
     <div class="container">
         <div class="mb-4">
-            <div class="card-header py-3">
+            <div class="y-3">
                 <h6 class="m-0 font-weight-bold text-center">Data Upah Supir</h6>
             </div>
             <div class="card-body">
@@ -46,7 +46,7 @@
                                 <th class="text-center" width="10%" scope="col">Ke</th>
                                 <th class="text-center" width="10%" scope="col">Uang Jalan</th>
                                 <th class="text-center" width="8%" scope="col">Tonase</th>
-                                <th class="text-center" width="10%" scope="col">Upah</th>
+                                <th class="text-center" width="10%" scope="col">Upah+Bonus</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -55,7 +55,7 @@
                         $data_jo_id = [];
                         foreach($jo as $value){ 
                             $uang_jalan += $value["uang_jalan"];
-                            $upah += $value["upah"];
+                            $upah += ($value["upah"]+$value["bonus"]);
                             $data_jo_id[] = $value["Jo_id"];
                             ?>
                             <tr>
@@ -67,7 +67,7 @@
                                 <td><?= $value["tujuan"]?></td>
                                 <td>Rp.<?= number_format($value["uang_jalan"],2,',','.') ?></td>
                                 <td><?= $value["tonase"]?> Ton</td>
-                                <td>Rp.<?= number_format($value["upah"],2,',','.')?></td>
+                                <td>Rp.<?= number_format($value["upah"]+$value["bonus"],2,',','.')?></td>
                             </tr>
                         <?php } ?>
                             <tr>
@@ -90,9 +90,30 @@
             </div>
         </div>
     </div>
+    <script src="<?=base_url("assets/vendor/jquery/jquery.min.js")?>"></script>
+    <script>
+            window.print();
+            var data_jo_id = [];
+            <?php for($i=0;$i<count($data_jo_id);$i++){?>
+                data_jo_id.push(<?= $data_jo_id[$i]?>)
+            <?php }?>
+            $.ajax({
+                type: "GET",
+                url: "<?php echo base_url('index.php/detail/update_upah') ?>",
+                dataType: "text",
+                data: {
+                    upah:<?= $upah?>,
+                    supir_id:<?= $supir["supir_id"]?>,
+                    supir_kasbon:<?= $supir["supir_kasbon"]?>,
+                    jo_id:data_jo_id
+                },
+                success: function(data) {
+                    // alert(data_jo_id);
+                }
+            });
+            function redirect(){
+                window.location.replace("<?= base_url("index.php/home/penggajian")?>");
+            }
+    </script>
 </body>
-<script>
-    window.print();
-    window.location.replace("<?= base_url("index.php/detail/detail_penggajian/".$supir["supir_id"])?>");
-</script>
 </html>
