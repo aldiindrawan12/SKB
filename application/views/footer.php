@@ -334,11 +334,11 @@
                         "data": "customer_name"
                     },
                     {
-                        "data": "Customer_id",
+                        "data": "customer_id",
                         className: 'text-center',
                         "orderable": false,
                         render: function(data, type, row) {
-                            let html = "<a class='btn btn-light' href='<?= base_url('index.php/detail/detail_jo/"+data+"')?>'><i class='fas fa-eye'></i></a>";
+                            let html = "<a class='btn btn-light' href='<?= base_url('index.php/detail/detail_customer/"+data+"')?>'><i class='fas fa-eye'></i></a>";
                             return html;
                         }
                     }
@@ -510,6 +510,202 @@
         });
     </script>
     <!-- End Invoice -->
+
+    <!-- JO Sampai-->
+    <script> //script datatables job order
+        $(document).ready(function() {
+            var table = null;
+            table = $('#Table-Job-Order-Sampai').DataTable({
+                "processing": true,
+                "serverSide": true,
+                "ordering": true,
+                "order": [
+                    [0, 'asc']
+                ],
+                "ajax": {
+                    "url": "<?php echo base_url('index.php/detail/view_JO_Sampai/') ?>",
+                    "type": "POST",
+                    'data': function(data) {
+                        // data.tanggal = $('#Tanggal').val();
+                        // data.bulan = $('#Bulan').val();
+                        // data.tahun = $('#Tahun').val();
+                        data.customer_id = $('#customer-id').val();
+                    }
+                },
+                "deferRender": true,
+                "aLengthMenu": [
+                    [5, 10, 30, 50, 100],
+                    [5, 10, 30, 50, 100]
+                ],
+                "columns": [
+                    {
+                        "data": "Jo_id",
+                        className: 'text-center'
+                    },
+                    {
+                        "data": "customer_name"
+                    },
+                    {
+                        "data": "muatan"
+                    },
+                    {
+                        "data": "asal"
+                    },
+                    {
+                        "data": "tujuan"
+                    },
+                    {
+                        "data": "tanggal_surat"
+                    },
+                    {
+                        "data": "status",
+                        className: 'text-center',
+                        "orderable": false,
+                            render: function(data, type, row) {
+                                if (data == "Sampai Tujuan") {
+                                    let html = "<span class='btn-sm btn-block btn-success'><i class='fa fa-fw fa-check mr-2'></i>" + data + "</span>";
+                                    return html;
+                                } else {
+                                    let html = "<span class='btn-sm btn-block btn-warning'><i class='fa fa-fw fa-exclamation-circle mr-2'></i>" + data + "</span>";
+                                    return html;
+                                }
+                            }
+                    },
+                    {
+                        "data": "Jo_id",
+                        "orderable": false,
+                        render: function(data, type, row) {
+                            let html = "<a class='btn btn-light' href='<?= base_url('index.php/detail/detail_jo/"+data+"')?>'><i class='fas fa-eye'></i></a>";
+                            return html;
+                        }
+                    }
+                ]
+            });
+            // $("#Tanggal").change(function() {
+            //     // alert($('#Tanggal').val());   
+            //     table.ajax.reload();
+            //     $('#link_cetaklaporanpdf').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanpdf/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
+            //     $('#link_cetaklaporanexcel').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanexcel/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
+            // });
+            // $("#Bulan").change(function() {
+            //     // alert($('#Bulan').val());   
+            //     table.ajax.reload();
+            //     $('#link_cetaklaporanpdf').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanpdf/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
+            //     $('#link_cetaklaporanexcel').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanexcel/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
+            // });
+            // $("#Tahun").change(function() {
+            //     // alert($('#Tahun').val());   
+            //     table.ajax.reload();
+            //     $('#link_cetaklaporanpdf').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanpdf/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
+            //     $('#link_cetaklaporanexcel').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanexcel/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
+            // });
+            // $("#status-JO").change(function() {
+            //     // alert($("#status-JO").val())
+            //     table.ajax.reload();
+            //     $('#link_cetaklaporanpdf').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanpdf/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
+            //     $('#link_cetaklaporanexcel').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanexcel/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
+            // });
+        });
+    </script>
+    <!-- end JO Sampai-->
+
+    <!-- JO Perjalanan-->
+    <script> //script datatables job order
+        $(document).ready(function() {
+            var table = null;
+            table = $('#Table-Job-Order-Perjalanan').DataTable({
+                "processing": true,
+                "serverSide": true,
+                "ordering": true,
+                "order": [
+                    [0, 'asc']
+                ],
+                "ajax": {
+                    "url": "<?php echo base_url('index.php/detail/view_JO_Perjalanan/') ?>",
+                    "type": "POST",
+                    'data': function(data) {
+                        // data.tanggal = $('#Tanggal').val();
+                        // data.bulan = $('#Bulan').val();
+                        // data.tahun = $('#Tahun').val();
+                        data.customer_id = $('#customer-id').val();
+                    }
+                },
+                "deferRender": true,
+                "aLengthMenu": [
+                    [5, 10, 30, 50, 100],
+                    [5, 10, 30, 50, 100]
+                ],
+                "columns": [
+                    {
+                        "data": "Jo_id",
+                        className: 'text-center'
+                    },
+                    {
+                        "data": "customer_name"
+                    },
+                    {
+                        "data": "muatan"
+                    },
+                    {
+                        "data": "asal"
+                    },
+                    {
+                        "data": "tujuan"
+                    },
+                    {
+                        "data": "tanggal_surat"
+                    },
+                    {
+                        "data": "status",
+                        className: 'text-center',
+                        "orderable": false,
+                            render: function(data, type, row) {
+                                if (data == "Sampai Tujuan") {
+                                    let html = "<span class='btn-sm btn-block btn-success'><i class='fa fa-fw fa-check mr-2'></i>" + data + "</span>";
+                                    return html;
+                                } else {
+                                    let html = "<span class='btn-sm btn-block btn-warning'><i class='fa fa-fw fa-exclamation-circle mr-2'></i>" + data + "</span>";
+                                    return html;
+                                }
+                            }
+                    },
+                    {
+                        "data": "Jo_id",
+                        "orderable": false,
+                        render: function(data, type, row) {
+                            let html = "<a class='btn btn-light' href='<?= base_url('index.php/detail/detail_jo/"+data+"')?>'><i class='fas fa-eye'></i></a>";
+                            return html;
+                        }
+                    }
+                ]
+            });
+            // $("#Tanggal").change(function() {
+            //     // alert($('#Tanggal').val());   
+            //     table.ajax.reload();
+            //     $('#link_cetaklaporanpdf').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanpdf/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
+            //     $('#link_cetaklaporanexcel').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanexcel/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
+            // });
+            // $("#Bulan").change(function() {
+            //     // alert($('#Bulan').val());   
+            //     table.ajax.reload();
+            //     $('#link_cetaklaporanpdf').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanpdf/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
+            //     $('#link_cetaklaporanexcel').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanexcel/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
+            // });
+            // $("#Tahun").change(function() {
+            //     // alert($('#Tahun').val());   
+            //     table.ajax.reload();
+            //     $('#link_cetaklaporanpdf').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanpdf/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
+            //     $('#link_cetaklaporanexcel').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanexcel/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
+            // });
+            // $("#status-JO").change(function() {
+            //     // alert($("#status-JO").val())
+            //     table.ajax.reload();
+            //     $('#link_cetaklaporanpdf').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanpdf/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
+            //     $('#link_cetaklaporanexcel').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanexcel/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
+            // });
+        });
+    </script>
+    <!-- end JO Perjalanan-->
 
     <!-- scrip angka rupiah -->
     <script>
