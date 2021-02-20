@@ -247,4 +247,29 @@ class Model_Home extends CI_model
         }
     
 
+    //  Function Akun
+    public function count_all_akun()
+    {
+        return $this->db->count_all_results("skb_akun");
     }
+
+    public function filter_akun($search, $limit, $start, $order_field, $order_ascdesc)
+    {
+        $this->db->like('akun_id', $search);
+        $this->db->or_like('akun_name', $search);
+        $this->db->or_like('akun_role', $search);
+        $this->db->order_by($order_field, $order_ascdesc);
+        $this->db->limit($limit, $start);
+        return $this->db->get('skb_akun')->result_array();
+    }
+
+    public function count_filter_akun($search)
+    {
+        $this->db->like('akun_id', $search);
+        $this->db->or_like('akun_name', $search);
+        $this->db->or_like('akun_role', $search);
+        return $this->db->get('skb_customer')->num_rows();
+    }
+
+
+}

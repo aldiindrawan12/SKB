@@ -18,8 +18,6 @@
             <hr class="sidebar-divider ">
 
 
-
-
             <!-- Heading -->
             <div class="sidebar-heading">
                 Perintah Kerja  
@@ -117,9 +115,9 @@
 
               <!-- Nav Item -->
               <li class="nav-item">
-                <a class="nav-link" href="<?=base_url("index.php/home/report")?>">
-                    <i class="fas fa-mail-bulk"></i>
-                    <span>Account </span>
+                <a class="nav-link" href="<?=base_url("index.php/home/akun")?>">
+                    <i class="fas fa-database"></i>
+                    <span>Data Akun </span>
                 </a>
             </li>
 

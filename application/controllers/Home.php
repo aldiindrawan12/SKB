@@ -67,6 +67,17 @@ class Home extends CI_Controller {
             echo json_encode($callback);
         }
 
+
+    //customer
+    public function customer()
+	{
+        $this->load->view('header');
+        $this->load->view('sidebar');
+		$this->load->view('home/customer');
+        $this->load->view('footer');
+	}
+
+
     // Supir
     public function view_Supir(){
         $search = $_POST['search']['value'];
@@ -92,14 +103,6 @@ class Home extends CI_Controller {
     }
     
 
-    //customer
-    public function customer()
-	{
-        $this->load->view('header');
-        $this->load->view('sidebar');
-		$this->load->view('home/customer');
-        $this->load->view('footer');
-	}
 
     // bon
     public function bon()
@@ -210,4 +213,40 @@ class Home extends CI_Controller {
 		$this->load->view('home/invoice');
         $this->load->view('footer');
 	}
+
+
+        // Akun
+        public function view_Akun(){
+            $search = $_POST['search']['value'];
+            $limit = $_POST['length'];
+            $start = $_POST['start'];
+            
+            // $tanggal,$bulan,$tahun
+            $order_index = $_POST['order'][0]['column'];
+            $order_field = $_POST['columns'][$order_index]['data'];
+            $order_ascdesc = $_POST['order'][0]['dir'];
+            $sql_total = $this->model_home->count_all_akun();
+            $sql_data = $this->model_home->filter_akun($search, $limit, $start, $order_field, $order_ascdesc);
+            $sql_filter = $this->model_home->count_filter_akun($search);
+            $callback = array(
+                'draw' => $_POST['draw'],
+                'recordsTotal' => $sql_total,
+                'recordsFiltered' => $sql_filter,
+                'data' => $sql_data
+            );
+
+            header('Content-Type: application/json');
+            echo json_encode($callback);
+        }
+
+
+        //Akun
+        public function akun()
+        {
+        $this->load->view('header');
+        $this->load->view('sidebar');
+        $this->load->view('home/akun');
+        $this->load->view('footer');
+        }
+
 }
