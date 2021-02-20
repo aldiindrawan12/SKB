@@ -17,6 +17,13 @@
             <!-- Divider -->
             <hr class="sidebar-divider ">
 
+
+
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Perintah Kerja  
+            </div>
             <!-- Nav Item -->
             <li class="nav-item ">
                 <a class="nav-link" href="<?=base_url()?>">
@@ -33,14 +40,20 @@
             </li>
 
             
+                    <!-- Divider -->
+                    <hr class="sidebar-divider">
 
+                <!-- Heading -->
+                <div class="sidebar-heading">
+                    Penggajian
+                </div>
             
 
             <!-- Nav Item -->
             <li class="nav-item">
                 <a class="nav-link" href="<?=base_url("index.php/home/bon")?>">
                     <i class="fas fa-funnel-dollar"></i>
-                    <span>Transaksi BON</span>
+                    <span>Transaksi BON Driver</span>
                 </a>
             </li>
 
@@ -64,7 +77,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="<?=base_url("index.php/home/penggajian")?>">
                     <i class="fas fa-money-check-alt"></i>
-                    <span>Penggajian Supir</span>
+                    <span>Driver</span>
                 </a>
             </li>
 
@@ -95,13 +108,30 @@
             </li>
 
             <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Sistem dan Konfigurasi
+            </div>
+
+              <!-- Nav Item -->
+              <li class="nav-item">
+                <a class="nav-link" href="<?=base_url("index.php/home/report")?>">
+                    <i class="fas fa-mail-bulk"></i>
+                    <span>Account </span>
+                </a>
+            </li>
+
+
+            <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block my-4">
 
             <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-        </ul>
+                <div class="text-center d-none d-md-inline">
+                    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+                </div>
+            </ul>
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
