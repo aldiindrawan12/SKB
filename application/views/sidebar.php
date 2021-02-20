@@ -32,11 +32,31 @@
                 </a>
             </li>
 
+            
+
+            
+
             <!-- Nav Item -->
             <li class="nav-item">
-                <a class="nav-link" href="<?=base_url("index.php/home/customer")?>">
-                    <i class="fas fa-users"></i>
-                    <span>Customer</span>
+                <a class="nav-link" href="<?=base_url("index.php/home/bon")?>">
+                    <i class="fas fa-funnel-dollar"></i>
+                    <span>Transaksi BON</span>
+                </a>
+            </li>
+
+             <!-- Divider -->
+             <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Master Data
+            </div>
+
+            <!-- Nav Item -->
+            <li class="nav-item">
+                <a class="nav-link" href="<?=base_url("index.php/home/truck")?>">
+                    <i class="fas fa-truck"></i>
+                    <span>Data Kendaraan</span>
                 </a>
             </li>
 
@@ -50,25 +70,27 @@
 
             <!-- Nav Item -->
             <li class="nav-item">
-                <a class="nav-link" href="<?=base_url("index.php/home/bon")?>">
-                    <i class="fas fa-funnel-dollar"></i>
-                    <span>Transaksi BON</span>
+                <a class="nav-link" href="<?=base_url("index.php/home/customer")?>">
+                    <i class="fas fa-users"></i>
+                    <span>Customer</span>
                 </a>
             </li>
 
-            <!-- Nav Item -->
-            <li class="nav-item">
-                <a class="nav-link" href="<?=base_url("index.php/home/truck")?>">
-                    <i class="fas fa-truck"></i>
-                    <span>Data Kendaraan</span>
-                </a>
-            </li>
+            
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Laporan
+            </div>
 
             <!-- Nav Item -->
             <li class="nav-item">
                 <a class="nav-link" href="<?=base_url("index.php/home/report")?>">
                     <i class="fas fa-mail-bulk"></i>
-                    <span>Laporan</span>
+                    <span>Laporan Bukti Uang Jalan </span>
                 </a>
             </li>
 
