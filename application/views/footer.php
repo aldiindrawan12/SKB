@@ -2,7 +2,7 @@
         <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; PT.Sumber Karya Berkah</span>
+                    <span>Copyright &copy; 2021 PT.Sumber Karya Berkah</span>
                 </div>
             </div>
         </footer>
