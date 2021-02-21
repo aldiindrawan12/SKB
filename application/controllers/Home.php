@@ -216,7 +216,17 @@ class Home extends CI_Controller {
 
 
         // Akun
-        public function view_Akun(){
+
+//Akun
+public function akun()
+{
+$this->load->view('header');
+$this->load->view('sidebar');
+$this->load->view('home/akun');
+$this->load->view('footer');
+}
+
+        public function view_akun(){
             $search = $_POST['search']['value'];
             $limit = $_POST['length'];
             $start = $_POST['start'];
@@ -240,13 +250,6 @@ class Home extends CI_Controller {
         }
 
 
-        //Akun
-        public function akun()
-        {
-        $this->load->view('header');
-        $this->load->view('sidebar');
-        $this->load->view('home/akun');
-        $this->load->view('footer');
-        }
+        
 
 }

@@ -448,6 +448,8 @@
     </script>
     <!-- End Supir -->
 
+    
+
     <!-- invoice -->
     <script> //script datatables Invoice
         $(document).ready(function() {
@@ -725,6 +727,55 @@
         }
     </script>
     <!-- end script angka rupiah -->
+
+     <!-- Akun -->
+     <script> //script datatables customer
+        $(document).ready(function() {
+            var table = null;
+            table = $('#Table-Akun').DataTable({
+                "processing": true,
+                "serverSide": true,
+                "ordering": true,
+                "order": [
+                    [0, 'asc']
+                ],
+                "ajax": {
+                    "url": "<?php echo base_url('index.php/home/view_akun/') ?>",
+                    "type": "POST",
+                    
+                },
+                "deferRender": true,
+                "aLengthMenu": [
+                    [5, 10, 30, 50, 100],
+                    [5, 10, 30, 50, 100]
+                ],
+                "columns": [
+                    {
+                        "data": "akun_id",
+                        className: 'text-center'
+                    },
+                    {
+                        "data": "akun_name"
+                    },
+                    {
+                        "data": "akun_role",
+                        className: 'text-center',
+                        "orderable": true,
+                        render: function(data, type, row) {
+                            if (data == "Super User") {
+                                    let html = "<span class='btn-sm btn-block btn-dark'></i>" + data + "</span>";
+                                    return html;
+                                } else {
+                                    let html = "<span class='btn-sm btn-block btn-light'>" + data + "</span>";
+                                    return html;
+                                }
+                        }
+                    }
+                ]
+            });
+        });
+    </script>
+    <!-- end Akun --> 
 </body>
 
 </html>

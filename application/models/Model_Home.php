@@ -268,7 +268,7 @@ class Model_Home extends CI_model
         $this->db->like('akun_id', $search);
         $this->db->or_like('akun_name', $search);
         $this->db->or_like('akun_role', $search);
-        return $this->db->get('skb_customer')->num_rows();
+        return $this->db->get('skb_akun')->num_rows();
     }
 
 
