@@ -1,12 +1,10 @@
-<div class="container ">
+<div class="container small">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Seluruh Data Job Order</h1>
             <a href="<?=base_url("index.php/form/joborder/x")?>" class="btn btn-primary btn-icon-split">
-
             <span class="icon text-white-100">
                 <i class="fas fa-plus"></i> 
             </span>
-    
                 <span class="text">
                      Buat Job Order
                 </span>
@@ -35,7 +33,7 @@
                         <th class="text-center" scope="col">Asal</th>
                         <th class="text-center" scope="col">Tujuan</th>
                         <th class="text-center" scope="col">Tanggal</th>
-                        <th width ="17%" scope="col">Status</th>
+                        <th width ="20%" scope="col">Status</th>
                         <th scope="col">Detail</th>
                     </tr>
                 </thead>

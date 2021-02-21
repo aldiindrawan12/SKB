@@ -152,6 +152,6 @@
     }
 
     function cetak_invoice(){
-        window.location.replace("<?= base_url("index.php/print_berkas/invoice/".$jo["Jo_id"])?>");    
+        window.location.replace("<?= base_url("index.php/print_berkas/invoice/".$jo["Jo_id"]."/JO")?>");    
     }
 </script>

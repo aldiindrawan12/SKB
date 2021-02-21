@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container small">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Seluruh Data Invoice</h1>
     </div> 
@@ -8,15 +8,23 @@
     </div>
     <!-- tabel invoice -->
     <div class="card-body">
+        <div class="float-right mt-2 mb-2">
+            <select name="status-invoice" id="status-invoice" class="form-control">
+                <option value="x">Semua Status</option>
+                <option value="Belum Lunas">Belum Lunas</option>
+                <option value="Lunas">Lunas</option>
+            </select>
+        </div>
         <div class="table-responsive">
             <table class="table table-bordered" id="Table-Invoice" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th class="text-center" width="13%" scope="col">No Invoice</th>
-                        <th class="text-center" width="10%" scope="col">ID JO</th>
-                        <th class="text-center" width="20%" scope="col">ID Customer</th>
+                        <!-- <th class="text-center" width="10%" scope="col">ID JO</th> -->
+                        <th class="text-center" width="20%" scope="col">Customer</th>
                         <th class="text-center" width="12%" scope="col">Tgl Invoice</th>
                         <th class="text-center" width="18%" scope="col">Batas Pembayaran</th>
+                        <th class="text-center" scope="col">Status Pembayaran</th>
                         <th class="text-center" scope="col">Grand Total</th>
                         <th class="text-center" scope="col">Detail</th>
                     </tr>

@@ -212,21 +212,24 @@ class Model_Home extends CI_model
 
 
     // Function Invoice
-        public function count_all_invoice()
+        public function count_all_invoice($status)
         {
             $this->db->join("skb_customer", "skb_customer.customer_id = skb_invoice.customer_id", 'left');
      
             return $this->db->count_all_results("skb_invoice");
         }
     
-        public function filter_invoice($search, $limit, $start, $order_field, $order_ascdesc)
+        public function filter_invoice($search, $limit, $start, $order_field, $order_ascdesc,$status)
         {
+            if($status!="x"){
+                $this->db->where("status_bayar",$status);
+            }
             $this->db->like('invoice_kode', $search);
-            $this->db->or_like('jo_id', $search);
-            $this->db->or_like('customer_name', $search);
-            $this->db->or_like('tanggal_invoice', $search);
-            $this->db->or_like('batas_pembayaran', $search);
-            $this->db->or_like('grand_total', $search);
+            // $this->db->or_like('jo_id', $search);
+            // $this->db->or_like('customer_name', $search);
+            // $this->db->or_like('tanggal_invoice', $search);
+            // $this->db->or_like('batas_pembayaran', $search);
+            // $this->db->or_like('grand_total', $search);
             $this->db->order_by($order_field, $order_ascdesc);
             $this->db->limit($limit, $start);
 
@@ -234,14 +237,17 @@ class Model_Home extends CI_model
             return $this->db->get('skb_invoice')->result_array();
         }
     
-        public function count_filter_invoice($search)
+        public function count_filter_invoice($search,$status)
         {
+            if($status!="x"){
+                $this->db->where("status_bayar",$status);
+            }
             $this->db->like('invoice_kode', $search);
-            $this->db->or_like('jo_id', $search);
-            $this->db->or_like('customer_name', $search);
-            $this->db->or_like('tanggal_invoice', $search);
-            $this->db->or_like('batas_pembayaran', $search);
-            $this->db->or_like('grand_total', $search);
+            // $this->db->or_like('jo_id', $search);
+            // $this->db->or_like('customer_name', $search);
+            // $this->db->or_like('tanggal_invoice', $search);
+            // $this->db->or_like('batas_pembayaran', $search);
+            // $this->db->or_like('grand_total', $search);
             $this->db->join("skb_customer", "skb_customer.customer_id = skb_invoice.customer_id", 'left');
             return $this->db->get('skb_invoice')->num_rows();
         }
