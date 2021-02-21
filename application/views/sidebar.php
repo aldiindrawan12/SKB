@@ -7,7 +7,7 @@
         <ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center my-4" href="<?=base_url()?>">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center my-2" href="<?=base_url()?>">
                 <div class="sidebar-brand-icon fa-flip-horizontal">
                     <i class="fa fa-truck"></i>
                 </div>
@@ -23,7 +23,7 @@
                 Perintah Kerja  
             </div>
             <!-- Nav Item -->
-            <li class="nav-item ">
+            <li class="nav-item mr-2">
                 <a class="nav-link" href="<?=base_url()?>">
                     <i class="fas fa-envelope-open-text "></i>
                     <span>Job Order</span></a>
@@ -38,8 +38,8 @@
             </li>
 
             
-                    <!-- Divider -->
-                    <hr class="sidebar-divider">
+                <!-- Divider -->
+                <hr class="sidebar-divider">
 
                 <!-- Heading -->
                 <div class="sidebar-heading">
@@ -123,10 +123,10 @@
 
 
             <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block my-4">
+            <hr class="sidebar-divider d-none d-md-block my-1">
 
             <!-- Sidebar Toggler (Sidebar) -->
-                <div class="text-center d-none d-md-inline">
+                <div class="text-center d-none d-md-inline my-1">
                     <button class="rounded-circle border-0" id="sidebarToggle"></button>
                 </div>
             </ul>
