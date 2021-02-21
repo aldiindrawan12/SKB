@@ -23,10 +23,10 @@
                 Perintah Kerja  
             </div>
             <!-- Nav Item -->
-            <li class="nav-item mr-2">
-                <a class="nav-link" href="<?=base_url()?>">
+            <li  class="nav-item mr-2 ">
+                <a id="coba" class="nav-link" href="<?=base_url()?>">
                     <i class="fas fa-envelope-open-text "></i>
-                    <span>Job Order</span></a>
+                    <span id="coba">Job Order</span></a>
             </li>
 
             <!-- Nav Item -->
@@ -36,6 +36,7 @@
                     <span>Invoice</span>
                 </a>
             </li>
+
 
             
                 <!-- Divider -->
@@ -81,7 +82,7 @@
 
             <!-- Nav Item -->
             <li class="nav-item">
-                <a class="nav-link" href="<?=base_url("index.php/home/customer")?>">
+                <a class="nav-link"  href="<?=base_url("index.php/home/customer")?>">
                     <i class="fas fa-users"></i>
                     <span>Customer</span>
                 </a>
@@ -172,5 +173,24 @@
 
                 </nav>
                 <!-- End of Topbar -->
+
+
+
 </body>
 
+<!-- coba js active sidebar-->
+<script>
+// Add active class to the current button (highlight it)
+var header = document.getElementById("accordionSidebar");
+var nav = header.getElementsByClassName("nav-item");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+  var current = document.getElementsByClassName("active");
+  if (current.length > 0) { 
+    current[0].className = current[0].className.replace(" active", "");
+  }
+  this.className += " active";
+  });
+}
+</script>
+<!-- batas coba js active -->

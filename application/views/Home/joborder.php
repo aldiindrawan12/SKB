@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container ">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Seluruh Data Job Order</h1>
             <a href="<?=base_url("index.php/form/joborder/x")?>" class="btn btn-primary btn-icon-split">
