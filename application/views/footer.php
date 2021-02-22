@@ -448,8 +448,6 @@
     </script>
     <!-- End Supir -->
 
-    
-
     <!-- invoice -->
     <script> //script datatables Invoice
         $(document).ready(function() {
@@ -464,7 +462,9 @@
                 "ajax": {
                     "url": "<?php echo base_url('index.php/home/view_Invoice') ?>",
                     "type": "POST",
-                    
+                    'data': function(data) {
+                        data.status_bayar = $('#status-invoice').val();
+                    }
                 },
                 "deferRender": true,
                 "aLengthMenu": [
@@ -474,10 +474,6 @@
                 "columns": [
                     {
                         "data": "invoice_kode",
-                        className: 'text-center'
-                    },
-                    {
-                        "data": "jo_id",
                         className: 'text-center'
                     },
                     {
@@ -492,6 +488,19 @@
                         className: 'text-center'
                     },
                     {
+                        "data": "status_bayar",
+                        className: 'text-center',
+                        render: function(data, type, row) {
+                            if (data == "Belum Lunas") {
+                                    let html = "<span class='btn-sm btn-block btn-danger'></i>" + data + "</span>";
+                                    return html;
+                                } else {
+                                    let html = "<span class='btn-sm btn-block btn-success'>" + data + "</span>";
+                                    return html;
+                                }
+                        }
+                    },
+                    {
                         "data": "grand_total",
                         render: function(data, type, row) {
                             let html = 'Rp.'+rupiah(data);
@@ -499,15 +508,18 @@
                         }
                     },
                     {
-                        "data": "Customer_id",
+                        "data": "invoice_kode",
                         className: 'text-center',
                         "orderable": false,
                         render: function(data, type, row) {
-                            let html = "<a class='btn btn-light' href='<?= base_url('index.php/detail/detail_jo/"+data+"')?>'><i class='fas fa-eye'></i></a>";
+                            let html = "<a class='btn btn-light' href='<?= base_url('index.php/detail/detail_invoice/"+data+"')?>'><i class='fas fa-eye'></i></a>";
                             return html;
                         }
                     }
                 ]
+            });
+            $("#status-invoice").change(function() {
+                table.ajax.reload();
             });
         });
     </script>

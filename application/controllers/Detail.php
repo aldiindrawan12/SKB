@@ -23,6 +23,19 @@ class Detail extends CI_Controller {
         $this->load->view('footer');
 	}
 
+    //fungsi untuk Detail invoice
+	public function detail_invoice($invoice_id)
+	{
+        $data["invoice"] = $this->model_detail->getinvoicebyid($invoice_id);
+        $data["customer"] = $this->model_home->getcustomerbyid($data["invoice"]["customer_id"]);
+        // $data["mobil"] = $this->model_home->getmobilbyid($data["jo"]["mobil_no"]);
+        // $data["supir"] = $this->model_home->getsupirbyid($data["jo"]["supir_id"]);
+        $this->load->view('header');
+        $this->load->view('sidebar');
+		$this->load->view('detail/invoice',$data);
+        $this->load->view('footer');
+	}
+
     public function updatestatusjo($supir,$mobil){
         $data_jo = $this->model_home->getjobyid($this->input->post("jo_id"));
         $keterangan = $data_jo["keterangan"].",".$this->input->post("Keterangan");
@@ -37,16 +50,28 @@ class Detail extends CI_Controller {
             "Jo_id"=>$this->input->post("jo_id")
         );
 
+        $total = $data["tonase"]*$data["harga/kg"]*1000;
+        $ppn = $total * 0.1;
+        $grand_total = $total + $ppn;
         $data_invoice = array(
             "jo_id"=>$this->input->post("jo_id"),
             "customer_id"=>$data_jo["customer_id"],
             "tanggal_invoice"=>date("Y-m-d"),
             "batas_pembayaran"=>date("Y-m-d",strtotime('+'.$TOD.' days', strtotime(date("Y-m-d")))),
-            "grand_total"=>$data["tonase"]*$data["harga/kg"]*1000
+            "total"=>$total,
+            "ppn"=>$ppn,
+            "grand_total"=>$grand_total,
+            "status_bayar"=>"Belum Lunas"
         );
 
         $this->model_detail->updatestatusjo($data,$supir,$mobil,$data_invoice);
         redirect(base_url("index.php/detail/detail_jo/").$this->input->post("jo_id"));
+    }
+
+    public function updateinvoice(){
+        $invoice_kode = $this->input->post("invoice-kode");
+        $this->model_detail->updateinvoice($invoice_kode);
+        redirect(base_url("index.php/detail/detail_invoice/").$invoice_kode);
     }
 
     //fungsi untuk Detail customer

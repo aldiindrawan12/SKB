@@ -1,23 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Sumber Karya Berkah</title>
-
-    <link href="<?=base_url("assets/css/sb-admin-2.min.css")?>" rel="stylesheet">
-</head>
-<body class="text-dark small">
-<div class="mb-4">
+    <div class="container small">
         <div class="py-3">
             <h6 class="m-0 font-weight-bold text-center">Invoice</h6>
         </div>
         <div class="card-body">
-            <table class="w-50">
+            <a class="btn btn-primary" onclick="cetak_invoice()"><span class="small">Cetak Invoice</span></a>
+            <?php if($invoice["status_bayar"] == "Belum Lunas"){?>
+                <a class="btn btn-warning" data-toggle="modal" data-target="#popup-konfirmasi-status" href="" id="<?= $invoice["invoice_kode"]?>" onclick="update_status(this)"><span class="small">Tandai Lunas</span></a>
+            <?php }?>
+            <table class="w-50 mt-4">
                 <tbody>
                     <tr>
                         <td width="35%">Customer</td>
@@ -38,6 +28,17 @@
                         <td width="35%">Batas Pembayaran</td>
                         <td width="5%">:</td>
                         <td><?= $invoice["batas_pembayaran"]?></td>
+                    </tr>
+                    <tr>
+                        <td width="35%">Status Pembayaran</td>
+                        <td width="5%">:</td>
+                        <td >
+                            <?php if($invoice["status_bayar"] == "Belum Lunas"){?>
+                                <span class="text-danger"><?= $invoice["status_bayar"]?></span>
+                            <?php }else{?>
+                                <span class="text-success"><?= $invoice["status_bayar"]?></span>
+                            <?php }?>
+                        </td>
                     </tr>
                     <tr>
                         <td width="35%">Muatan</td>
@@ -87,45 +88,40 @@
                         </tr>
                     </tbody>
                 </table>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>Harap Pembayaran di Transfer Ke</td>
-                        </tr>
-                        <tr>
-                            <td width="25%">Bank</td>
-                            <td width="5%">:</td>
-                            <td>OCBC NISP</td>
-                        </tr>
-                        <tr>
-                            <td width="25%">A/N</td>
-                            <td width="5%">:</td>
-                            <td>PT.Sumber Karya Berkah</td>
-                        </tr>
-                        <tr>
-                            <td width="25%">No.Rek</td>
-                            <td width="5%">:</td>
-                            <td>3308.0000.5911</td>
-                        </tr>
-                        <tr class="text-center">
-                            <td>Hormat Kami</td>
-                        </tr>
-                        <tr class="text-center">
-                            <td style="height:200px">(..........................................)</td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
         </div>
     </div>
-</body>
+    <!-- pop up update status invoice -->
+<div class="modal fade" id="popup-konfirmasi-status" tabindex="-1" role="dialog" aria-labelledby="modal-block-large" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary-dark">
+                <h5 class="block-title">KONFIRMASI Lunas</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">X</span>
+                </button>
+            </div>
+            <div class="font-size-sm m-3 text-justify">
+                <p>Apakah invoice dengan kode invoice #<span id="view-invoice-kode"></span> Sudah Melakukan Pembayaran Lunas ?</p>
+                <form id="form-status-jo"  method="POST" action="<?= base_url("index.php/detail/updateinvoice")?>">
+                    <input type="text" name="invoice-kode" id="invoice-kode" hidden>
+                        <button type="submit" class="btn btn-success">Ya,Lunas</button>
+                        <button class="btn btn-danger" data-dismiss="modal">Batal</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end pop up update status invoice -->
+
 <script>
-    var asal = '<?= $asal?>';
-    window.print();
-    if(asal == "JO"){
-        window.location.replace("<?= base_url("index.php/detail/detail_jo/".$Jo_id)?>");
-    }else if(asal == "invoice"){
-        window.location.replace("<?= base_url("index.php/detail/detail_invoice/".$invoice_kode)?>");
+    function cetak_invoice(){
+        window.location.replace("<?= base_url("index.php/print_berkas/invoice/".$invoice["Jo_id"]."/invoice")?>");    
+    }
+    function update_status(a){
+        var invoice_kode = a.id;
+        $("#view-invoice-kode").text(invoice_kode);
+        $("#invoice-kode").val(invoice_kode);
     }
 </script>
-</html>

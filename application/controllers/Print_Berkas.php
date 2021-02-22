@@ -155,10 +155,12 @@ class Print_Berkas extends CI_Controller {
 		$write = PHPExcel_IOFactory::createWriter($excel, 'Excel2007');
 		$write->save('php://output');
     }
-    public function invoice($Jo_id){
+    public function invoice($Jo_id,$asal){
 		$data["invoice"] = $this->model_detail->getinvoicebyjo($Jo_id);
         $data["customer"] = $this->model_home->getcustomerbyid($data["invoice"]["customer_id"]);
 		$data["Jo_id"] = $Jo_id;
+		$data["invoice_kode"] = $data["invoice"]["invoice_kode"];
+		$data["asal"] = $asal;
 		$this->load->view("print/invoice_print",$data);
 	}
 	public function data_gaji($supir_id,$upah){

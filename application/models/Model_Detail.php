@@ -29,6 +29,12 @@ class Model_Detail extends CI_model
         return $this->db->get_where("skb_bon",array("bon_id"=>$bon_id))->row_array();
     }
 
+    
+    public function getinvoicebyid($invoice_id){
+        $this->db->join("skb_job_order","skb_job_order.Jo_id=skb_invoice.jo_id","left");
+        return $this->db->get_where("skb_invoice",array("invoice_kode"=>$invoice_id))->row_array();
+    }
+
     public function getjobbysupir($supir_id){
         $this->db->where("status_upah","Belum Dibayar");
         $this->db->where("upah!=","0");
@@ -65,6 +71,12 @@ class Model_Detail extends CI_model
             $this->db->update("skb_job_order");
         }
         //end update status upah pada jo id
+    }
+    
+    public function updateinvoice($invoice_kode){
+        $this->db->set("status_bayar","Lunas");
+        $this->db->where("invoice_kode",$invoice_kode);
+        $this->db->update("skb_invoice");
     }
 
     //function-fiunction datatable Jo Sampai

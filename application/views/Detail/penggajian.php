@@ -1,5 +1,5 @@
 <!-- tampilan detail penggajian supir -->
-<div class="container">
+<div class="container small">
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-center">Data Upah Supir</h6>
@@ -91,7 +91,7 @@
 </div>
 <hr>
 <!-- form rekening supir -->
-<div class="container mt-3">
+<div class="container mt-3 small">
     <form action="<?= base_url("index.php/print_berkas/memo_tf/".$supir["supir_id"]."/".($upah-$supir["supir_kasbon"]))?>" method="POST" class="row">
         <div class="form-group col-md-6">
             <label for="Bank" class="form-label">Bank</label>

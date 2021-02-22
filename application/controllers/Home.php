@@ -188,14 +188,13 @@ class Home extends CI_Controller {
         $search = $_POST['search']['value'];
         $limit = $_POST['length'];
         $start = $_POST['start'];
-        
-        // $tanggal,$bulan,$tahun
+        $status = $this->input->post('status_bayar');
         $order_index = $_POST['order'][0]['column'];
         $order_field = $_POST['columns'][$order_index]['data'];
         $order_ascdesc = $_POST['order'][0]['dir'];
-        $sql_total = $this->model_home->count_all_invoice();
-        $sql_data = $this->model_home->filter_invoice($search, $limit, $start, $order_field, $order_ascdesc);
-        $sql_filter = $this->model_home->count_filter_invoice($search);
+        $sql_total = $this->model_home->count_all_invoice($status);
+        $sql_data = $this->model_home->filter_invoice($search, $limit, $start, $order_field, $order_ascdesc,$status);
+        $sql_filter = $this->model_home->count_filter_invoice($search,$status);
         $callback = array(
             'draw' => $_POST['draw'],
             'recordsTotal' => $sql_total,
