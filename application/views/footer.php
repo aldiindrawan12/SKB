@@ -166,7 +166,6 @@
                     {
                         "data": "status",
                         className: 'text-center',
-                        "orderable": false,
                             render: function(data, type, row) {
                                 if (data == "Sampai Tujuan") {
                                     let html = "<span class='btn-sm btn-block btn-success'><i class='fa fa-fw fa-check mr-2'></i>" + data + "</span>";
