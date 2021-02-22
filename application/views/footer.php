@@ -491,11 +491,11 @@
                         "data": "status_bayar",
                         className: 'text-center',
                         render: function(data, type, row) {
-                            if (data == "Belum Lunas") {
-                                    let html = "<span class='btn-sm btn-block btn-danger'></i>" + data + "</span>";
+                            if (data == "Lunas") {
+                                    let html = "<span class='btn-sm btn-block btn-success'><i class='fa fa-fw fa-check mr-2'></i>" + data + "</span>";
                                     return html;
                                 } else {
-                                    let html = "<span class='btn-sm btn-block btn-success'>" + data + "</span>";
+                                    let html = "<span class='btn-sm btn-block btn-warning'><i class='fa fa fa-fw fa-exclamation-circle mr-2'></i>" + data + "</span>";
                                     return html;
                                 }
                         }
@@ -574,7 +574,7 @@
                     {
                         "data": "status",
                         className: 'text-center',
-                        "orderable": false,
+                        "orderable": true,
                             render: function(data, type, row) {
                                 if (data == "Sampai Tujuan") {
                                     let html = "<span class='btn-sm btn-block btn-success'><i class='fa fa-fw fa-check mr-2'></i>" + data + "</span>";
