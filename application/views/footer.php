@@ -25,14 +25,14 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Yakin Ingin LogOut?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Yakin Ingin Keluar?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">X</span>
                     </button>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="#">LogOut</a>
+                    <a class="btn btn-danger" href="#">Log Out</a>
                 </div>
             </div>
         </div>
