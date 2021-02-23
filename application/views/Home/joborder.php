@@ -1,6 +1,6 @@
-<div class="container small">
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Seluruh Data Job Order</h1>
+<div class="container small ">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4 ">
+        <h1 class="h3 mb-0 text-gray-800 mt-3 mb-3">Seluruh Data Job Order</h1>
             <a href="<?=base_url("index.php/form/joborder/x")?>" class="btn btn-primary btn-icon-split">
             <span class="icon text-white-100">
                 <i class="fas fa-plus"></i> 
@@ -16,9 +16,9 @@
     </div>
     <!-- tabel JO -->
     <div class="card-body">
-        <div class="float-right mt-2 mb-2">
+        <div class="float-right mt-2 mb-2 ">
             <select name="status-JO" id="status-JO" class="form-control">
-                <option value="x">Semua Status</option>
+                <option class="" value="x">Semua Status</option>
                 <option value="Dalam Perjalanan">Dalam Perjalanan</option>
                 <option value="Sampai Tujuan">Sampai Tujuan</option>
             </select>
@@ -33,7 +33,7 @@
                         <th width ="16%" class="text-center" scope="col">Asal</th>
                         <th width ="16%" class="text-center" scope="col">Tujuan</th>
                         <th width ="7%" class="text-center" scope="col">Tanggal</th>
-                        <th width ="16%" scope="col">Status</th>
+                        <th width ="19%" scope="col">Status</th>
                         <th width ="5%" scope="col">Detail</th>
                     </tr>
                 </thead>

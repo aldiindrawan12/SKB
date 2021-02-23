@@ -1,6 +1,6 @@
 <div class="container">
     <div class="d-sm-flex align-items-center justify-content-between mb-5">
-        <h1 class="h3 mb-0 text-gray-800">Formulir Job Order</h1>
+        <h1 class="h3 mb-0 text-gray-800 mt-3 mb-3">Formulir Job Order</h1>
             <a href="<?=base_url("index.php/form/joborder/x")?>" class="btn btn-secondary btn-icon-split" data-toggle='modal' data-target='#popup-customer'>
             <span class="icon text-white-100">
                 <i class="fas fa-plus"></i> 
@@ -90,7 +90,7 @@
                 </div>
 
                 <div class="col-md-4 col-md-offset-4 mt-5" >
-                <button type="submit" class="btn btn-success ml-3 mt-5 float-md-right">Simpan Dan Cetak JO</button>
+                <button type="submit" class="btn btn-success ml-3 mt-5 float-md-right">Simpan dan Cetak</button>
                 
                 <button type="reset" class="btn btn-outline-danger mb-3 mt-5  float-md-right">Reset</button>
                     
