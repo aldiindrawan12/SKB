@@ -92,7 +92,7 @@
                 <div class="col-md-4 col-md-offset-4 mt-5" >
                 <button type="submit" class="btn btn-success ml-3 mt-5 float-md-right">Simpan Dan Cetak JO</button>
                 
-                <button type="reset" class="btn btn-danger mb-3 mt-5  float-md-right">Reset</button>
+                <button type="reset" class="btn btn-outline-danger mb-3 mt-5  float-md-right">Reset</button>
                     
                    
                     
@@ -109,11 +109,11 @@
 </div>
 
 <!-- pop up add cutomer -->
-<div class="modal fade" id="popup-customer" tabindex="-1" role="dialog" aria-labelledby="modal-block-large" aria-hidden="true">
+<div class="modal fade mt-5 px-5 py-5" id="popup-customer" tabindex="-1" role="dialog" aria-labelledby="modal-block-large" aria-hidden="true">
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary-dark">
-                <h5 class="font-weight-bold">Menambah Customer Baru</h5>
+                <h5 class="font-weight-bold mt-2">Menambah Customer Baru</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
