@@ -34,6 +34,7 @@ class Model_Home extends CI_model
     {
         return $this->db->get_where("skb_job_order",array("Jo_id"=>$jo_id))->row_array();
     }
+
      //function-fiunction datatable truck
         public function count_all_truck()
         {
@@ -56,6 +57,7 @@ class Model_Home extends CI_model
             return $this->db->get('skb_mobil')->num_rows();
         }
      //akhir function-fiunction datatable truck
+
      //function-fiunction datatable JO
         public function count_all_JO($tanggal,$bulan,$tahun,$status)
         {
@@ -164,52 +166,52 @@ class Model_Home extends CI_model
 
 
     //  Function Customer
-    public function count_all_customer()
-    {
-        return $this->db->count_all_results("skb_customer");
-    }
+        public function count_all_customer()
+        {
+            return $this->db->count_all_results("skb_customer");
+        }
 
-    public function filter_customer($search, $limit, $start, $order_field, $order_ascdesc)
-    {
-        $this->db->like('customer_id', $search);
-        $this->db->or_like('customer_name', $search);
-        $this->db->order_by($order_field, $order_ascdesc);
-        $this->db->limit($limit, $start);
-        return $this->db->get('skb_customer')->result_array();
-    }
+        public function filter_customer($search, $limit, $start, $order_field, $order_ascdesc)
+        {
+            $this->db->like('customer_id', $search);
+            $this->db->or_like('customer_name', $search);
+            $this->db->order_by($order_field, $order_ascdesc);
+            $this->db->limit($limit, $start);
+            return $this->db->get('skb_customer')->result_array();
+        }
 
-    public function count_filter_customer($search)
-    {
-        $this->db->like('customer_id', $search);
-        $this->db->or_like('customer_name', $search);
-        return $this->db->get('skb_customer')->num_rows();
-    }
+        public function count_filter_customer($search)
+        {
+            $this->db->like('customer_id', $search);
+            $this->db->or_like('customer_name', $search);
+            return $this->db->get('skb_customer')->num_rows();
+        }
+    //  end Function Customer
 
     //  Function Supir
-    public function count_all_supir()
-    {
-        return $this->db->count_all_results("skb_supir");
-    }
+        public function count_all_supir()
+        {
+            return $this->db->count_all_results("skb_supir");
+        }
 
-    public function filter_supir($search, $limit, $start, $order_field, $order_ascdesc)
-    {
-        $this->db->like('supir_id', $search);
-        $this->db->or_like('supir_name', $search);
-        $this->db->or_like('status_jalan', $search);
-        $this->db->order_by($order_field, $order_ascdesc);
-        $this->db->limit($limit, $start);
-        return $this->db->get('skb_supir')->result_array();
-    }
+        public function filter_supir($search, $limit, $start, $order_field, $order_ascdesc)
+        {
+            $this->db->like('supir_id', $search);
+            $this->db->or_like('supir_name', $search);
+            $this->db->or_like('status_jalan', $search);
+            $this->db->order_by($order_field, $order_ascdesc);
+            $this->db->limit($limit, $start);
+            return $this->db->get('skb_supir')->result_array();
+        }
 
-    public function count_filter_supir($search)
-    {
-        $this->db->like('supir_id', $search);
-        $this->db->or_like('supir_name', $search);
-        $this->db->or_like('status_jalan', $search);
-        return $this->db->get('skb_supir')->num_rows();
-    }
-
-
+        public function count_filter_supir($search)
+        {
+            $this->db->like('supir_id', $search);
+            $this->db->or_like('supir_name', $search);
+            $this->db->or_like('status_jalan', $search);
+            return $this->db->get('skb_supir')->num_rows();
+        }
+    //  end Function Supir
 
     // Function Invoice
         public function count_all_invoice($status)
@@ -251,31 +253,100 @@ class Model_Home extends CI_model
             $this->db->join("skb_customer", "skb_customer.customer_id = skb_invoice.customer_id", 'left');
             return $this->db->get('skb_invoice')->num_rows();
         }
+    // end Function Invoice
     
+    // Function Invoice Belum Lunas
+        public function count_all_invoice_belum_lunas($customer_id)
+        {
+            $this->db->join("skb_customer", "skb_customer.customer_id = skb_invoice.customer_id", 'left');
+     
+            return $this->db->count_all_results("skb_invoice");
+        }
+    
+        public function filter_invoice_belum_lunas($search, $limit, $start, $order_field, $order_ascdesc,$customer_id)
+        {
+            if($customer_id!="x"){
+                $this->db->where("skb_invoice.customer_id",$customer_id);
+            }
+            $this->db->where("status_bayar","Belum Lunas");
+            $this->db->like('invoice_kode', $search);
+            $this->db->order_by($order_field, $order_ascdesc);
+            $this->db->limit($limit, $start);
 
+            $this->db->join("skb_customer", "skb_customer.customer_id = skb_invoice.customer_id", 'left');
+            return $this->db->get('skb_invoice')->result_array();
+        }
+    
+        public function count_filter_invoice_belum_lunas($search,$customer_id)
+        {
+            if($customer_id!="x"){
+                $this->db->where("skb_invoice.customer_id",$customer_id);
+            }
+            $this->db->where("status_bayar","Belum Lunas");
+            $this->db->like('invoice_kode', $search);
+            $this->db->join("skb_customer", "skb_customer.customer_id = skb_invoice.customer_id", 'left');
+            return $this->db->get('skb_invoice')->num_rows();
+        }
+    // end Function Invoice Belum Lunas
+
+    // Function InvoiceLunas
+        public function count_all_invoice_lunas($customer_id)
+        {
+            $this->db->join("skb_customer", "skb_customer.customer_id = skb_invoice.customer_id", 'left');
+     
+            return $this->db->count_all_results("skb_invoice");
+        }
+    
+        public function filter_invoice_lunas($search, $limit, $start, $order_field, $order_ascdesc,$customer_id)
+        {
+            if($customer_id!="x"){
+                $this->db->where("skb_invoice.customer_id",$customer_id);
+            }
+            $this->db->where("status_bayar","Lunas");
+            $this->db->like('invoice_kode', $search);
+            $this->db->order_by($order_field, $order_ascdesc);
+            $this->db->limit($limit, $start);
+
+            $this->db->join("skb_customer", "skb_customer.customer_id = skb_invoice.customer_id", 'left');
+            return $this->db->get('skb_invoice')->result_array();
+        }
+    
+        public function count_filter_invoice_lunas($search,$customer_id)
+        {
+            if($customer_id!="x"){
+                $this->db->where("skb_invoice.customer_id",$customer_id);
+            }
+            $this->db->where("status_bayar","Lunas");
+            $this->db->like('invoice_kode', $search);
+            $this->db->join("skb_customer", "skb_customer.customer_id = skb_invoice.customer_id", 'left');
+            return $this->db->get('skb_invoice')->num_rows();
+        }
+    // end Function InvoiceLunas
+    
     //  Function Akun
-    public function count_all_akun()
-    {
-        return $this->db->count_all_results("skb_akun");
-    }
+        public function count_all_akun()
+        {
+            return $this->db->count_all_results("skb_akun");
+        }
 
-    public function filter_akun($search, $limit, $start, $order_field, $order_ascdesc)
-    {
-        $this->db->like('akun_id', $search);
-        $this->db->or_like('akun_name', $search);
-        $this->db->or_like('akun_role', $search);
-        $this->db->order_by($order_field, $order_ascdesc);
-        $this->db->limit($limit, $start);
-        return $this->db->get('skb_akun')->result_array();
-    }
+        public function filter_akun($search, $limit, $start, $order_field, $order_ascdesc)
+        {
+            $this->db->like('akun_id', $search);
+            $this->db->or_like('akun_name', $search);
+            $this->db->or_like('akun_role', $search);
+            $this->db->order_by($order_field, $order_ascdesc);
+            $this->db->limit($limit, $start);
+            return $this->db->get('skb_akun')->result_array();
+        }
 
-    public function count_filter_akun($search)
-    {
-        $this->db->like('akun_id', $search);
-        $this->db->or_like('akun_name', $search);
-        $this->db->or_like('akun_role', $search);
-        return $this->db->get('skb_akun')->num_rows();
-    }
+        public function count_filter_akun($search)
+        {
+            $this->db->like('akun_id', $search);
+            $this->db->or_like('akun_name', $search);
+            $this->db->or_like('akun_role', $search);
+            return $this->db->get('skb_akun')->num_rows();
+        }
+    //  end Function Akun
 
 
 }

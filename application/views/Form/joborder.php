@@ -10,8 +10,6 @@
                 </span>
             </a>
     </div> 
-
-
         <!-- Card Formulir JO -->
         <div class="card shadow mb-4">
             <div class="card-header ">
@@ -81,7 +79,7 @@
                     </div>
                     <div class="col-md-12 col-md-offset-4 mt-5">
                         <button type="submit" class="btn btn-success ml-3 mt-5 float-md-right">Simpan dan Cetak</button>
-                        <button type="reset" class="btn btn-outline-danger mb-3 mt-5  float-md-right">Reset</button>
+                        <button type="reset" class="btn btn-outline-danger mb-3 mt-5  float-md-right" onclick="reset_form()">Reset</button>
                     </div>
                 </form>
             <!-- end form Job Order Baru -->
@@ -118,6 +116,9 @@
 <script>
     function terbilang(){
         var uang = $('#Uang').val();
+        if(uang == ""){
+            uang = "x";
+        }
         $( '#Uang' ).mask('000.000.000', {reverse: true});
         $.ajax({
             type: "GET",
@@ -127,5 +128,9 @@
                 $('#Terbilang').val(data);
             }
         });
+    }
+    function reset_form(){
+        alert("asds");
+        $("#Customer").selectedIndex = 0;
     }
 </script>

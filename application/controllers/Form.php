@@ -147,7 +147,11 @@ class Form extends CI_Controller {
     }
 
     public function generate_terbilang_fix($uang){
-        echo $this->generate_terbilang(str_replace(".","",$uang))." Rupiah";
+        if($uang != "x"){
+            echo $this->generate_terbilang(str_replace(".","",$uang))." Rupiah";
+        }else{
+            echo "";
+        }
     }
 
     function getbonsupir()

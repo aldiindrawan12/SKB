@@ -527,11 +527,11 @@
     </script>
     <!-- End Invoice -->
 
-    <!-- JO Sampai-->
-    <script> //script datatables job order
+    <!-- invoice Belum Lunas-->
+    <script>
         $(document).ready(function() {
             var table = null;
-            table = $('#Table-Job-Order-Sampai').DataTable({
+            table = $('#Table-Invoice-Belum-Lunas').DataTable({
                 "processing": true,
                 "serverSide": true,
                 "ordering": true,
@@ -539,13 +539,10 @@
                     [0, 'asc']
                 ],
                 "ajax": {
-                    "url": "<?php echo base_url('index.php/detail/view_JO_Sampai/') ?>",
+                    "url": "<?php echo base_url('index.php/home/view_invoice_belum_lunas') ?>",
                     "type": "POST",
                     'data': function(data) {
-                        // data.tanggal = $('#Tanggal').val();
-                        // data.bulan = $('#Bulan').val();
-                        // data.tahun = $('#Tahun').val();
-                        data.customer_id = $('#customer-id').val();
+                        data.customer_id = <?= $customer["customer_id"]?>;
                     }
                 },
                 "deferRender": true,
@@ -555,81 +552,60 @@
                 ],
                 "columns": [
                     {
-                        "data": "Jo_id",
+                        "data": "invoice_kode",
                         className: 'text-center'
                     },
                     {
                         "data": "customer_name"
                     },
                     {
-                        "data": "muatan"
+                        "data": "tanggal_invoice",
+                        className: 'text-center'
                     },
                     {
-                        "data": "asal"
+                        "data": "batas_pembayaran",
+                        className: 'text-center'
                     },
                     {
-                        "data": "tujuan"
-                    },
-                    {
-                        "data": "tanggal_surat"
-                    },
-                    {
-                        "data": "status",
+                        "data": "status_bayar",
                         className: 'text-center',
-                        "orderable": true,
-                            render: function(data, type, row) {
-                                if (data == "Sampai Tujuan") {
+                        render: function(data, type, row) {
+                            if (data == "Lunas") {
                                     let html = "<span class='btn-sm btn-block btn-success'><i class='fa fa-fw fa-check mr-2'></i>" + data + "</span>";
                                     return html;
                                 } else {
-                                    let html = "<span class='btn-sm btn-block btn-warning'><i class='fa fa-fw fa-exclamation-circle mr-2'></i>" + data + "</span>";
+                                    let html = "<span class='btn-sm btn-block btn-warning'><i class='fa fa fa-fw fa-exclamation-circle mr-2'></i>" + data + "</span>";
                                     return html;
                                 }
-                            }
+                        }
                     },
                     {
-                        "data": "Jo_id",
+                        "data": "grand_total",
+                        render: function(data, type, row) {
+                            let html = 'Rp.'+rupiah(data);
+                            return html;
+                        }
+                    },
+                    {
+                        "data": "invoice_kode",
+                        className: 'text-center',
                         "orderable": false,
                         render: function(data, type, row) {
-                            let html = "<a class='btn btn-light' href='<?= base_url('index.php/detail/detail_jo/"+data+"')?>'><i class='fas fa-eye'></i></a>";
+                            let html = "<a class='btn btn-light' href='<?= base_url('index.php/detail/detail_invoice/"+data+"')?>'><i class='fas fa-eye'></i></a>";
                             return html;
                         }
                     }
                 ]
             });
-            // $("#Tanggal").change(function() {
-            //     // alert($('#Tanggal').val());   
-            //     table.ajax.reload();
-            //     $('#link_cetaklaporanpdf').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanpdf/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
-            //     $('#link_cetaklaporanexcel').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanexcel/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
-            // });
-            // $("#Bulan").change(function() {
-            //     // alert($('#Bulan').val());   
-            //     table.ajax.reload();
-            //     $('#link_cetaklaporanpdf').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanpdf/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
-            //     $('#link_cetaklaporanexcel').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanexcel/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
-            // });
-            // $("#Tahun").change(function() {
-            //     // alert($('#Tahun').val());   
-            //     table.ajax.reload();
-            //     $('#link_cetaklaporanpdf').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanpdf/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
-            //     $('#link_cetaklaporanexcel').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanexcel/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
-            // });
-            // $("#status-JO").change(function() {
-            //     // alert($("#status-JO").val())
-            //     table.ajax.reload();
-            //     $('#link_cetaklaporanpdf').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanpdf/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
-            //     $('#link_cetaklaporanexcel').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanexcel/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
-            // });
         });
     </script>
-    <!-- end JO Sampai-->
+    <!-- End Invoice Belum Lunas-->
 
-    <!-- JO Perjalanan-->
-    <script> //script datatables job order
+    <!-- invoice Lunas-->
+    <script>
         $(document).ready(function() {
             var table = null;
-            table = $('#Table-Job-Order-Perjalanan').DataTable({
+            table = $('#Table-Invoice-Lunas').DataTable({
                 "processing": true,
                 "serverSide": true,
                 "ordering": true,
@@ -637,13 +613,10 @@
                     [0, 'asc']
                 ],
                 "ajax": {
-                    "url": "<?php echo base_url('index.php/detail/view_JO_Perjalanan/') ?>",
+                    "url": "<?php echo base_url('index.php/home/view_invoice_lunas') ?>",
                     "type": "POST",
                     'data': function(data) {
-                        // data.tanggal = $('#Tanggal').val();
-                        // data.bulan = $('#Bulan').val();
-                        // data.tahun = $('#Tahun').val();
-                        data.customer_id = $('#customer-id').val();
+                        data.customer_id = <?= $customer["customer_id"]?>;
                     }
                 },
                 "deferRender": true,
@@ -653,75 +626,54 @@
                 ],
                 "columns": [
                     {
-                        "data": "Jo_id",
+                        "data": "invoice_kode",
                         className: 'text-center'
                     },
                     {
                         "data": "customer_name"
                     },
                     {
-                        "data": "muatan"
+                        "data": "tanggal_invoice",
+                        className: 'text-center'
                     },
                     {
-                        "data": "asal"
+                        "data": "batas_pembayaran",
+                        className: 'text-center'
                     },
                     {
-                        "data": "tujuan"
-                    },
-                    {
-                        "data": "tanggal_surat"
-                    },
-                    {
-                        "data": "status",
+                        "data": "status_bayar",
                         className: 'text-center',
-                        "orderable": false,
-                            render: function(data, type, row) {
-                                if (data == "Sampai Tujuan") {
+                        render: function(data, type, row) {
+                            if (data == "Lunas") {
                                     let html = "<span class='btn-sm btn-block btn-success'><i class='fa fa-fw fa-check mr-2'></i>" + data + "</span>";
                                     return html;
                                 } else {
-                                    let html = "<span class='btn-sm btn-block btn-warning'><i class='fa fa-fw fa-exclamation-circle mr-2'></i>" + data + "</span>";
+                                    let html = "<span class='btn-sm btn-block btn-warning'><i class='fa fa fa-fw fa-exclamation-circle mr-2'></i>" + data + "</span>";
                                     return html;
                                 }
-                            }
+                        }
                     },
                     {
-                        "data": "Jo_id",
+                        "data": "grand_total",
+                        render: function(data, type, row) {
+                            let html = 'Rp.'+rupiah(data);
+                            return html;
+                        }
+                    },
+                    {
+                        "data": "invoice_kode",
+                        className: 'text-center',
                         "orderable": false,
                         render: function(data, type, row) {
-                            let html = "<a class='btn btn-light' href='<?= base_url('index.php/detail/detail_jo/"+data+"')?>'><i class='fas fa-eye'></i></a>";
+                            let html = "<a class='btn btn-light' href='<?= base_url('index.php/detail/detail_invoice/"+data+"')?>'><i class='fas fa-eye'></i></a>";
                             return html;
                         }
                     }
                 ]
             });
-            // $("#Tanggal").change(function() {
-            //     // alert($('#Tanggal').val());   
-            //     table.ajax.reload();
-            //     $('#link_cetaklaporanpdf').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanpdf/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
-            //     $('#link_cetaklaporanexcel').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanexcel/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
-            // });
-            // $("#Bulan").change(function() {
-            //     // alert($('#Bulan').val());   
-            //     table.ajax.reload();
-            //     $('#link_cetaklaporanpdf').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanpdf/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
-            //     $('#link_cetaklaporanexcel').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanexcel/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
-            // });
-            // $("#Tahun").change(function() {
-            //     // alert($('#Tahun').val());   
-            //     table.ajax.reload();
-            //     $('#link_cetaklaporanpdf').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanpdf/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
-            //     $('#link_cetaklaporanexcel').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanexcel/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
-            // });
-            // $("#status-JO").change(function() {
-            //     // alert($("#status-JO").val())
-            //     table.ajax.reload();
-            //     $('#link_cetaklaporanpdf').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanpdf/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
-            //     $('#link_cetaklaporanexcel').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanexcel/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
-            // });
         });
     </script>
-    <!-- end JO Perjalanan-->
+    <!-- End Invoice Lunas-->
 
     <!-- scrip angka rupiah -->
     <script>
