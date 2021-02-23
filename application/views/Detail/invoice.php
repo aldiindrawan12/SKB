@@ -99,17 +99,8 @@
             </div>
             <!-- end detail invoice -->
 
-
-
-    </div>
-</div>
-
-
-
-
-
-
-
+                </div>
+            </div>
 
 
              <!-- pop up update status invoice -->
