@@ -36,6 +36,18 @@ class Model_Form extends CI_model
         return $this->db->insert("skb_bon", $data);
     }
 
+    public function insert_akun($data){
+        return $this->db->insert("skb_akun", $data);
+    }
+
+    public function insert_user($data){
+        return $this->db->insert("user", $data);
+    }
+
+    public function getakunbyname($akun_name){
+        return $this->db->get_where("skb_akun",array("akun_name"=>$akun_name))->row_array();
+    }
+
     public function insert_customer($data){
         return $this->db->insert("skb_customer", $data);
     }
@@ -45,13 +57,15 @@ class Model_Form extends CI_model
     }
 
     public function deletesupir($supir_id){
+        $this->db->set("status_hapus","YES");
         $this->db->where("supir_id",$supir_id);
-        return $this->db->delete("skb_supir");
+        return $this->db->update("skb_supir");
     }
 
     public function deletetruck($mobil_no){
+        $this->db->set("status_hapus","YES");
         $this->db->where("mobil_no",$mobil_no);
-        return $this->db->delete("skb_mobil");
+        return $this->db->update("skb_mobil");
     }
 
     public function getsupirname($supir_id){

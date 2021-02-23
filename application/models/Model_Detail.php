@@ -24,25 +24,25 @@ class Model_Detail extends CI_model
         $this->db->insert("skb_invoice",$data_invoice);
     }
 
-    public function getbonbyid($bon_id){
+    public function getbonbyid($bon_id){ //bon by ID
         $this->db->join("skb_supir","skb_supir.supir_id=skb_bon.supir_id","left");
         return $this->db->get_where("skb_bon",array("bon_id"=>$bon_id))->row_array();
     }
 
     
-    public function getinvoicebyid($invoice_id){
+    public function getinvoicebyid($invoice_id){ //invoice by ID
         $this->db->join("skb_job_order","skb_job_order.Jo_id=skb_invoice.jo_id","left");
         return $this->db->get_where("skb_invoice",array("invoice_kode"=>$invoice_id))->row_array();
     }
 
-    public function getjobbysupir($supir_id){
+    public function getjobbysupir($supir_id){ //JO by supir
         $this->db->where("status_upah","Belum Dibayar");
         $this->db->where("upah!=","0");
         $this->db->join("skb_supir","skb_supir.supir_id=skb_job_order.supir_id","left");
         return $this->db->get_where("skb_job_order",array("skb_job_order.supir_id"=>$supir_id))->result_array();
     }
 
-    public function getinvoicebyjo($jo_id){
+    public function getinvoicebyjo($jo_id){ //invoice by JO
         $this->db->join("skb_job_order","skb_job_order.Jo_id=skb_invoice.jo_id","left");
         return $this->db->get_where("skb_invoice",array("skb_invoice.jo_id"=>$jo_id))->row_array();
     }

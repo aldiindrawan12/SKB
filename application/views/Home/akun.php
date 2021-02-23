@@ -1,6 +1,14 @@
 <div class="container small">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Seluruh Data Akun</h1>
+        <a class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#popup-tambah-akun">
+            <span class="icon text-white-100">
+                <i class="fas fa-plus"></i> 
+            </span>
+            <span class="text">
+                 Buat Akun
+            </span>
+        </a>
     </div> 
     <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -24,5 +32,52 @@
     </div>
     <!-- end tabel data cutomer -->
 </div>
-
+<!-- pop up tambah akun -->
+<div class="modal fade" id="popup-tambah-akun" role="dialog" aria-labelledby="modal-block-large" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary-dark">
+                <h5 class="block-title">Tambah Akun</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">X</span>
+                </button>
+            </div>
+            <div class="font-size-sm m-3 text-justify">
+                <p>Isi Data Dengan Lengkap</p>
+                <form  action="<?= base_url("index.php/form/insert_akun")?>" method="POST">
+                    <div class="mb-3 row">
+                        <label for="nama" class="col-sm-5 col-form-label">Nama Akun</label>
+                        <div class="col-sm-6">
+                            <input autocomplete="off" class="form-control" type="text" name="nama" id="nama" required>    
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="username" class="col-sm-5 col-form-label">Username</label>
+                        <div class="col-sm-6">
+                            <input autocomplete="off" class="form-control" type="text" name="username" id="username" required>    
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="password" class="col-sm-5 col-form-label">Password</label>
+                        <div class="col-sm-6">
+                            <input autocomplete="off" class="form-control" type="text" name="password" id="password" required>    
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-5 col-form-label" for="role">Role Akun</label>
+                        <select name="role" id="role" class="form-control custom-select col-sm-6" required>
+                            <option class="font-w700" disabled="disabled" selected value="">Jenis Role</option>
+                            <option value="Super User">Super User</option>
+                            <option value="Operator">Operator</option>
+                        </select>
+                    </div>
+                    <div style="float:right;margin-bottom:3%">
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end pop up tambah akun -->
 </div>

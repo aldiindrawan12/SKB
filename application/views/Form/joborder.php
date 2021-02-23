@@ -130,8 +130,6 @@
         });
     }
     function reset_form(){
-        alert($("#Customer").val());
-        $("#Customer option[value='4']").text("asdasd");
-        alert($("#Customer option[value='4']").text());
+        location.reload();
     }
 </script>

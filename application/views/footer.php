@@ -63,6 +63,9 @@
         $(document).ready(function() {
             var table = null;
             table = $('#Table-Truck').DataTable({
+                language: {
+                    searchPlaceholder: "Nomor Polisi"
+                },
                 "processing": true,
                 "serverSide": true,
                 "ordering": true,
@@ -125,6 +128,9 @@
         $(document).ready(function() {
             var table = null;
             table = $('#Table-Job-Order').DataTable({
+                language: {
+                    searchPlaceholder: "Nomor JO"
+                },
                 "processing": true,
                 "serverSide": true,
                 "ordering": true,
@@ -222,6 +228,9 @@
         $(document).ready(function() {
             var table = null;
             table = $('#Table-Bon').DataTable({
+                language: {
+                    searchPlaceholder: "Nomor Bon/Nama Supir"
+                },
                 "processing": true,
                 "serverSide": true,
                 "ordering": true,
@@ -293,7 +302,7 @@
                                 $('td[name="id"]').text(data["bon_id"]); //set value
                                 $('td[name="supir"]').text(data["supir_name"]); //set value
                                 $('td[name="jenis"]').text(data["bon_jenis"]); //set value
-                                $('td[name="nominal"]').text(data["bon_nominal"]); //set value
+                                $('td[name="nominal"]').text("Rp."+rupiah(data["bon_nominal"])); //set value
                                 $('td[name="tanggal"]').text(data["bon_tanggal"]); //set value
                                 $('td[name="keterangan"]').text(data["bon_keterangan"]); //set value
                                 // alert(data["supir_id"]+data["supir_name"]+data["bon_id"]+data["bon_jenis"]+data["bon_nominal"]);
@@ -355,6 +364,9 @@
         $(document).ready(function() {
             var table = null;
             table = $('#Table-Supir').DataTable({
+                language: {
+                    searchPlaceholder: "Nama Supir"
+                },
                 "processing": true,
                 "serverSide": true,
                 "ordering": true,
@@ -455,6 +467,9 @@
         $(document).ready(function() {
             var table = null;
             table = $('#Table-Invoice').DataTable({
+                language: {
+                    searchPlaceholder: "Nomor Invoice"
+                },
                 "processing": true,
                 "serverSide": true,
                 "ordering": true,

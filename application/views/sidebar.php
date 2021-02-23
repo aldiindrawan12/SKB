@@ -1,11 +1,9 @@
-<body id="page-top">
+<body id="page-top" onload="asd()">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
-
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar">
-
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center my-2" href="<?=base_url()?>">
                 <div class="sidebar-brand-icon fa-flip-horizontal">
@@ -13,140 +11,110 @@
                 </div>
                 <div class="sidebar-brand-text mx-3 ">TLEMU SKB</div>
             </a>
-
             <!-- Divider -->
             <hr class="sidebar-divider ">
-
-
             <!-- Heading -->
             <div class="sidebar-heading">
                 Perintah Kerja  
             </div>
             <!-- Nav Item -->
-            <li  class="nav-item mr-2 ">
+            <li  class="nav-item mr-2 " id="JO_page">
                 <a id="coba" class="nav-link" href="<?=base_url()?>">
                     <i class="fas fa-envelope-open-text "></i>
                     <span id="coba">Job Order</span></a>
             </li>
-
             <!-- Nav Item -->
-            <li class="nav-item ">
+            <li class="nav-item " id="Invoice_page">
                 <a class="nav-link" href="<?=base_url("index.php/home/invoice")?>">   
                     <i class="fas fa-receipt mr-2"></i>
                     <span>Invoice</span>
                 </a>
             </li>
-
-
-            
-                <!-- Divider -->
-                <hr class="sidebar-divider">
-
-                <!-- Heading -->
-                <div class="sidebar-heading">
-                    Penggajian
-                </div>
-            
-
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Penggajian
+            </div>
             <!-- Nav Item -->
-            <li class="nav-item">
+            <li class="nav-item" id="Bon_page">
                 <a class="nav-link" href="<?=base_url("index.php/home/bon")?>">
                     <i class="fas fa-funnel-dollar"></i>
                     <span>Transaksi BON Driver</span>
                 </a>
             </li>
-
              <!-- Divider -->
              <hr class="sidebar-divider">
-
             <!-- Heading -->
             <div class="sidebar-heading">
                 Master Data
             </div>
-
             <!-- Nav Item -->
-            <li class="nav-item">
+            <li class="nav-item" id="Kendaraan_page">
                 <a class="nav-link" href="<?=base_url("index.php/home/truck")?>">
                     <i class="fas fa-truck"></i>
                     <span>Data Kendaraan</span>
                 </a>
             </li>
-
             <!-- Nav Item -->
-            <li class="nav-item">
+            <li class="nav-item" id="Supir_page">
                 <a class="nav-link" href="<?=base_url("index.php/home/penggajian")?>">
                     <i class="fas fa-money-check-alt"></i>
                     <span>Driver</span>
                 </a>
             </li>
-
             <!-- Nav Item -->
-            <li class="nav-item">
+            <li class="nav-item" id="Customer_page">
                 <a class="nav-link"  href="<?=base_url("index.php/home/customer")?>">
                     <i class="fas fa-users"></i>
                     <span>Customer</span>
                 </a>
             </li>
-
-            
-
             <!-- Divider -->
             <hr class="sidebar-divider">
-
             <!-- Heading -->
             <div class="sidebar-heading">
                 Laporan
             </div>
-
             <!-- Nav Item -->
-            <li class="nav-item">
+            <li class="nav-item" id="Laporan_page">
                 <a class="nav-link" href="<?=base_url("index.php/home/report")?>">
                     <i class="fas fa-mail-bulk"></i>
                     <span>Laporan Bukti Uang Jalan </span>
                 </a>
             </li>
-
             <!-- Divider -->
             <hr class="sidebar-divider">
-
             <!-- Heading -->
             <div class="sidebar-heading">
                 Sistem dan Konfigurasi
             </div>
-
-              <!-- Nav Item -->
-              <li class="nav-item">
+            <!-- Nav Item -->
+            <li class="nav-item" id="Akun_page">
                 <a class="nav-link" href="<?=base_url("index.php/home/akun")?>">
                     <i class="fas fa-database"></i>
                     <span>Data Akun </span>
                 </a>
             </li>
-
-
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block my-1">
-
             <!-- Sidebar Toggler (Sidebar) -->
-                <div class="text-center d-none d-md-inline my-1">
-                    <button class="rounded-circle border-0" id="sidebarToggle"></button>
-                </div>
-            </ul>
+            <div class="text-center d-none d-md-inline my-1">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+        </ul>
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-
             <!-- Main Content -->
             <div id="content">
-
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
-
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Nav Item - User Information -->
@@ -170,27 +138,13 @@
                             </div>
                         </li>
                     </ul>
-
                 </nav>
                 <!-- End of Topbar -->
 
-
-
-</body>
-
-<!-- coba js active sidebar-->
 <script>
-// Add active class to the current button (highlight it)
-var header = document.getElementById("accordionSidebar");
-var nav = header.getElementsByClassName("nav-item");
-for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function() {
-  var current = document.getElementsByClassName("active");
-  if (current.length > 0) { 
-    current[0].className = current[0].className.replace(" active", "");
-  }
-  this.className += " active";
-  });
-}
+    function asd(){
+        var page = '<?= $page?>';
+        // alert(page);
+        $("#"+page).addClass("active");
+    }
 </script>
-<!-- batas coba js active -->

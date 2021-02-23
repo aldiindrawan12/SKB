@@ -2,35 +2,42 @@
 // error_reporting(0);
 class Model_Home extends CI_model
 {
-    public function gettruck()
+    public function gettruck() //all truck
     {
-        return $this->db->get("skb_mobil")->result_array();
+        return $this->db->get_where("skb_mobil",array("status_hapus"=>"NO"))->result_array();
     }
-    public function getmobilbyid($mobil_no)
+
+    public function getmobilbyid($mobil_no) //mobil by ID
     {
         return $this->db->get_where("skb_mobil",array("mobil_no"=>$mobil_no))->row_array();
     }
-    public function getcustomer()
+
+    public function getcustomer() //all customer
     {
         return $this->db->get("skb_customer")->result_array();
     }
-    public function getcustomerbyid($customer_id)
+
+    public function getcustomerbyid($customer_id) //customer by ID
     {
         return $this->db->get_where("skb_customer",array("customer_id"=>$customer_id))->row_array();
     }
-    public function getsupir()
+
+    public function getsupir() //all supir
     {
-        return $this->db->get("skb_supir")->result_array();
+        return $this->db->get_where("skb_supir",array("status_hapus"=>"NO"))->result_array();
     }
-    public function getsupirbyid($supir_id)
+
+    public function getsupirbyid($supir_id) //supir by id
     {
         return $this->db->get_where("skb_supir",array("supir_id"=>$supir_id))->row_array();
     }
-    public function getjo()
+
+    public function getjo() //all JO
     {
         return $this->db->get("skb_job_order")->result_array();
     }
-    public function getjobyid($jo_id)
+
+    public function getjobyid($jo_id) //JO by ID
     {
         return $this->db->get_where("skb_job_order",array("Jo_id"=>$jo_id))->row_array();
     }
@@ -38,13 +45,15 @@ class Model_Home extends CI_model
      //function-fiunction datatable truck
         public function count_all_truck()
         {
+            $this->db->where("status_hapus","NO");
             return $this->db->count_all_results("skb_mobil");
         }
 
         public function filter_truck($search, $limit, $start, $order_field, $order_ascdesc)
         {
             $this->db->like('mobil_no', $search);
-            $this->db->or_like('mobil_jenis', $search);
+            // $this->db->or_like('mobil_jenis', $search);
+            $this->db->where("status_hapus","NO");
             $this->db->order_by($order_field, $order_ascdesc);
             $this->db->limit($limit, $start);
             return $this->db->get('skb_mobil')->result_array();
@@ -53,7 +62,8 @@ class Model_Home extends CI_model
         public function count_filter_truck($search)
         {
             $this->db->like('mobil_no', $search);
-            $this->db->or_like('mobil_jenis', $search);
+            // $this->db->or_like('mobil_jenis', $search);
+            $this->db->where("status_hapus","NO");
             return $this->db->get('skb_mobil')->num_rows();
         }
      //akhir function-fiunction datatable truck
@@ -138,7 +148,7 @@ class Model_Home extends CI_model
         }
      //akhir function-fiunction datatable JO
 
-     //function-fiunction datatable truck
+     //function-fiunction datatable bon
         public function count_all_bon()
         {
             $this->db->join("skb_supir", "skb_supir.supir_id = skb_bon.supir_id", 'left');
@@ -162,7 +172,7 @@ class Model_Home extends CI_model
             $this->db->join("skb_supir", "skb_supir.supir_id = skb_bon.supir_id", 'left');
             return $this->db->get('skb_bon')->num_rows();
         }
-     //akhir function-fiunction datatable truck
+     //akhir function-fiunction datatable bon
 
 
     //  Function Customer
@@ -191,14 +201,16 @@ class Model_Home extends CI_model
     //  Function Supir
         public function count_all_supir()
         {
+            $this->db->where("status_hapus","NO");
             return $this->db->count_all_results("skb_supir");
         }
 
         public function filter_supir($search, $limit, $start, $order_field, $order_ascdesc)
         {
-            $this->db->like('supir_id', $search);
-            $this->db->or_like('supir_name', $search);
-            $this->db->or_like('status_jalan', $search);
+            // $this->db->like('supir_id', $search);
+            $this->db->like('supir_name', $search);
+            $this->db->where("status_hapus","NO");
+            // $this->db->or_like('status_jalan', $search);
             $this->db->order_by($order_field, $order_ascdesc);
             $this->db->limit($limit, $start);
             return $this->db->get('skb_supir')->result_array();
@@ -206,9 +218,10 @@ class Model_Home extends CI_model
 
         public function count_filter_supir($search)
         {
-            $this->db->like('supir_id', $search);
-            $this->db->or_like('supir_name', $search);
-            $this->db->or_like('status_jalan', $search);
+            // $this->db->like('supir_id', $search);
+            $this->db->like('supir_name', $search);
+            $this->db->where("status_hapus","NO");
+            // $this->db->or_like('status_jalan', $search);
             return $this->db->get('skb_supir')->num_rows();
         }
     //  end Function Supir

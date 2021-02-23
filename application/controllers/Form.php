@@ -9,96 +9,119 @@ class Form extends CI_Controller {
         $this->load->model('model_home');//load model
     }
 
-    public function joborder($customer_name){
-        $data["customer"] = $this->model_home->getcustomer();
-        $data["customer_by_name"] = $this->model_form->getcustomerbyname($customer_name);
-        if($data["customer_by_name"] == null){
-            $data["customer_by_name"] = [];
+    // fungsi view form
+        public function joborder($customer_name){
+            $data["customer"] = $this->model_home->getcustomer();
+            $data["customer_by_name"] = $this->model_form->getcustomerbyname($customer_name);
+            if($data["customer_by_name"] == null){
+                $data["customer_by_name"] = [];
+            }
+            $data["mobil"] = $this->model_home->gettruck();
+            $data["supir"] = $this->model_home->getsupir();
+            $data["page"] = "JO_page";
+            $this->load->view('header',$data);
+            $this->load->view('sidebar');
+            $this->load->view('form/joborder');
+            $this->load->view('footer');
         }
-        $data["mobil"] = $this->model_home->gettruck();
-        $data["supir"] = $this->model_home->getsupir();
-        $this->load->view('header');
-        $this->load->view('sidebar');
-		$this->load->view('form/joborder',$data);
-        $this->load->view('footer');
-    }
 
-    public function insert_JO(){
-        $data["data"]=array(
-            "mobil_no"=>$this->input->post("Kendaraan"),
-            "supir_id"=>$this->input->post("Supir"),
-            "muatan"=>$this->input->post("Muatan"),
-            "asal"=>$this->input->post("Asal"),
-            "tujuan"=>$this->input->post("Tujuan"),
-            "uang_jalan"=>str_replace(".","",$this->input->post("Uang")),
-            "terbilang"=>$this->input->post("Terbilang"),
-            "tanggal_surat"=>date("Y-m-d"),
-            "keterangan"=>$this->input->post("Keterangan"),
-            "customer_id"=>$this->input->post("Customer"),
-            "status"=>"Dalam Perjalanan",
-            "status_upah"=>"Belum Dibayar"
-        );
-        $this->model_form->insert_JO($data["data"]);
-        $data["supir"] = $this->model_home->getsupirbyid($data["data"]["supir_id"]);
-        $data["mobil"] = $this->model_home->getmobilbyid($data["data"]["mobil_no"]);
-        $this->load->view("print/jo_print",$data);
-    }
+        public function bon(){
+            $data["supir"] = $this->model_home->getsupir();
+            $data["page"] = "Bo_pagen";
+            $this->load->view('header',$data);
+            $this->load->view('sidebar');
+            $this->load->view('form/form_bon',$data);
+            $this->load->view('footer');
+        }
+    // end fungsi view form
 
-    public function bon(){
-        $data["supir"] = $this->model_home->getsupir();
-        $this->load->view('header');
-        $this->load->view('sidebar');
-		$this->load->view('form/form_bon',$data);
-        $this->load->view('footer');
-    }
+    // fungsi insert
+        public function insert_JO(){
+            $data["data"]=array(
+                "mobil_no"=>$this->input->post("Kendaraan"),
+                "supir_id"=>$this->input->post("Supir"),
+                "muatan"=>$this->input->post("Muatan"),
+                "asal"=>$this->input->post("Asal"),
+                "tujuan"=>$this->input->post("Tujuan"),
+                "uang_jalan"=>str_replace(".","",$this->input->post("Uang")),
+                "terbilang"=>$this->input->post("Terbilang"),
+                "tanggal_surat"=>date("Y-m-d"),
+                "keterangan"=>$this->input->post("Keterangan"),
+                "customer_id"=>$this->input->post("Customer"),
+                "status"=>"Dalam Perjalanan",
+                "status_upah"=>"Belum Dibayar"
+            );
+            $this->model_form->insert_JO($data["data"]);
+            $data["supir"] = $this->model_home->getsupirbyid($data["data"]["supir_id"]);
+            $data["mobil"] = $this->model_home->getmobilbyid($data["data"]["mobil_no"]);
+            $this->load->view("print/jo_print",$data);
+        }
 
-    public function insert_bon(){
-        date_default_timezone_set('Asia/Jakarta');
-        $data["data"]=array(
-            "supir_id"=>$this->input->post("Supir"),
-            "bon_jenis"=>$this->input->post("Jenis"),
-            "bon_nominal"=>str_replace(".","",$this->input->post("Nominal")),
-            "bon_keterangan"=>$this->input->post("Keterangan"),
-            "bon_tanggal"=>date("Y-m-d H:i:s")
-        );
-        // echo print_r($data);
-        $this->model_form->insert_bon($data["data"]);
-        $data["supir"] = $this->model_home->getsupirbyid($data["data"]["supir_id"]);
-        $this->load->view("print/bon_print",$data);
-    }
+        public function insert_bon(){
+            date_default_timezone_set('Asia/Jakarta');
+            $data["data"]=array(
+                "supir_id"=>$this->input->post("Supir_bon"),
+                "bon_jenis"=>$this->input->post("Jenis"),
+                "bon_nominal"=>str_replace(".","",$this->input->post("Nominal")),
+                "bon_keterangan"=>$this->input->post("Keterangan"),
+                "bon_tanggal"=>date("Y-m-d H:i:s")
+            );
+            // echo print_r($data);
+            $this->model_form->insert_bon($data["data"]);
+            $data["supir"] = $this->model_home->getsupirbyid($data["data"]["supir_id"]);
+            $this->load->view("print/bon_print",$data);
+        }
 
-    public function insert_customer(){
-        $data=array(
-            "customer_name"=>$this->input->post("Customer")
-        );
-        // echo($data["customer_name"]);
-        $this->model_form->insert_customer($data);
-        redirect(base_url("index.php/form/joborder/").$data["customer_name"]);
-    }
+        public function insert_akun(){
+            $data_akun=array(
+                "akun_name"=>$this->input->post("nama"),
+                "akun_role"=>$this->input->post("role")
+            );
+            $this->model_form->insert_akun($data_akun);
+            $akun = $this->model_form->getakunbyname($data_akun["akun_name"]);
+            $data_user=array(
+                "akun_id" => $akun["akun_id"],
+                "username"=>$this->input->post("username"),
+                "password"=>$this->input->post("password")
+            );
+            $this->model_form->insert_user($data_user);
+            redirect(base_url("index.php/home/akun"));
+        }
 
-    public function insert_supir(){
-        $data=array(
-            "supir_name"=>$this->input->post("Supir"),
-            "supir_kasbon"=>0,
-            "status_jalan"=>"Tidak Jalan"
-        );
-        // echo($data["customer_name"]);
-        $this->model_form->insert_supir($data);
-        redirect(base_url("index.php/home/penggajian"));
-    }
+        public function insert_customer(){
+            $data=array(
+                "customer_name"=>$this->input->post("Customer")
+            );
+            // echo($data["customer_name"]);
+            $this->model_form->insert_customer($data);
+            redirect(base_url("index.php/form/joborder/").$data["customer_name"]);
+        }
 
-    public function insert_truck(){
-        $data=array(
-            "mobil_no"=>$this->input->post("mobil_no"),
-            "mobil_jenis"=>$this->input->post("mobil_jenis"),
-            "mobil_max_load"=>$this->input->post("mobil_max_load"),
-            "status_jalan"=>"Tidak Jalan",
-        );
-        // echo($data["customer_name"]);
-        $this->model_form->insert_truck($data);
-        redirect(base_url("index.php/home/truck"));
-    }
+        public function insert_supir(){
+            $data=array(
+                "supir_name"=>$this->input->post("Supir"),
+                "supir_kasbon"=>0,
+                "status_jalan"=>"Tidak Jalan"
+            );
+            // echo($data["customer_name"]);
+            $this->model_form->insert_supir($data);
+            redirect(base_url("index.php/home/penggajian"));
+        }
 
+        public function insert_truck(){
+            $data=array(
+                "mobil_no"=>$this->input->post("mobil_no"),
+                "mobil_jenis"=>$this->input->post("mobil_jenis"),
+                "mobil_max_load"=>$this->input->post("mobil_max_load"),
+                "status_jalan"=>"Tidak Jalan",
+            );
+            // echo($data["customer_name"]);
+            $this->model_form->insert_truck($data);
+            redirect(base_url("index.php/home/truck"));
+        }
+    // end fungsi insert
+    
+    // fungsi lain
     public function update_supir(){
         $supir_name = $this->input->post("supir_name");
         $supir_id = $this->input->post("supir_id");
