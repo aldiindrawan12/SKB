@@ -250,10 +250,10 @@
                         "orderable": false,
                             render: function(data, type, row) {
                                 if (data == "Pembayaran") {
-                                    let html = "<span class='btn-sm btn-block btn-success'><i class='fa fa-fw fa-check mr-2'></i>" + data + "</span>";
+                                    let html = "<span class='btn-sm btn-block btn btn-outline-success'><i class='fa fa-fw fa-check mr-2'></i>" + data + "</span>";
                                     return html;
                                 } else {
-                                    let html = "<span class='btn-sm btn-block btn-warning   '><i class='fa fa-fw fa-exclamation-circle mr-2'></i>" + data + "</span>";
+                                    let html = "<span class='btn-sm btn-block btn btn-outline-warning'><i class='fa fa-fw fa-exclamation-circle mr-2'></i>" + data + "</span>";
                                     return html;
                                 }
                             }

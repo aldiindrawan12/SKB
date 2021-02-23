@@ -1,6 +1,6 @@
 <div class="container small">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Seluruh Data Transaksi BON</h1>
+        <h1 class="h3 mb-0 text-gray-800 mt-3 mb-3">Seluruh Data Transaksi BON</h1>
             <a href="<?=base_url("index.php/form/bon")?>" class="btn btn-primary btn-icon-split">
             <span class="icon text-white-100">
                 <i class="fas fa-plus"></i> 
@@ -20,12 +20,12 @@
                 <table class="table table-bordered" id="Table-Bon" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th class="text-center" width="13%" scope="col">ID Transaksi</th>
-                            <th class="text-center" scope="col">Nama Supir</th>
-                            <th class="text-center" width="20%" scope="col">Jenis Transaksi</th>
-                            <th class="text-center" scope="col">Nominal</th>
-                            <th class="text-center" scope="col">Tanggal Transaksi</th>
-                            <th class="text-center" scope="col">Detail</th>
+                            <th width="10%" class="text-center" width="13%" scope="col">ID Transaksi</th>
+                            <th width="16%" class="text-center" scope="col">Nama Supir</th>
+                            <th width="16%" class="text-center" width="20%" scope="col">Jenis Transaksi</th>
+                            <th width="16%" class="text-center" scope="col">Nominal</th>
+                            <th width="16%" class="text-center" scope="col">Tanggal Transaksi</th>
+                            <th width="5%" class="text-center" scope="col">Detail</th>
                         </tr>
                     </thead>
                     <tbody>
