@@ -64,29 +64,29 @@
 
                 
 
-                <div class="col-md-4 col-md-offset-4">
+                <div class="col-md-4 col-md-offset-4 mb-4">
                     <label class="form-label font-weight-bold" for="Asal ">Asal</label>
                     <input autocomplete="off" type="text" class="form-control" id="Asal" name="Asal" required>
                 </div>
-                <div class="col-md-4 col-md-offset-4">
+                <div class="col-md-4 col-md-offset-4 mb-4">
                     <label class="form-label font-weight-bold" for="Tujuan">Tujuan</label>
                     <input autocomplete="off" type="text" class="form-control" id="Tujuan" name="Tujuan" required>
                 </div>
                
 
                 
-                <div class="col-md-4 col-md-offset-4">
+                <div class="col-md-4 col-md-offset-4 mb-4">
                     <label for="Uang" class="form-label font-weight-bold">Uang Jalan</label>
                     <input autocomplete="off" type="text" class="form-control" id="Uang" name="Uang" required onkeyup="terbilang()">
                 </div>
-                <div class="col-md-4 col-md-offset-4">
+                <div class="col-md-4 col-md-offset-4 mb-4">
                     <label for="Terbilang" class="form-label font-weight-bold">Terbilang</label>
                     <input autocomplete="off" type="text" class="form-control" id="Terbilang" name="Terbilang" required readonly>
                 </div>
 
                 <div class="col-md-4 col-md-offset-4">
                     <label for="Keterangan" class="form-label font-weight-bold">Keterangan/Catatan</label>
-                    <textarea class="form-control" name="Keterangan" id="Keterangan" rows="4"></textarea>
+                    <textarea class="form-control" name="Keterangan" id="Keterangan" rows="3"></textarea>
                 </div>
 
                 <div class="col-md-4 col-md-offset-4 mt-5" >
