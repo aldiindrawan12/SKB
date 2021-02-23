@@ -12,6 +12,9 @@ class Form extends CI_Controller {
     public function joborder($customer_name){
         $data["customer"] = $this->model_home->getcustomer();
         $data["customer_by_name"] = $this->model_form->getcustomerbyname($customer_name);
+        if($data["customer_by_name"] == null){
+            $data["customer_by_name"] = [];
+        }
         $data["mobil"] = $this->model_home->gettruck();
         $data["supir"] = $this->model_home->getsupir();
         $this->load->view('header');

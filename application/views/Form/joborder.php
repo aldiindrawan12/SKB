@@ -130,7 +130,8 @@
         });
     }
     function reset_form(){
-        alert("asds");
-        $("#Customer").selectedIndex = 0;
+        alert($("#Customer").val());
+        $("#Customer option[value='4']").text("asdasd");
+        alert($("#Customer option[value='4']").text());
     }
 </script>
