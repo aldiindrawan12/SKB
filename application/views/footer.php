@@ -247,7 +247,7 @@
                     },
                     {
                         "data": "bon_jenis",
-                        "orderable": false,
+                        "orderable": true,
                             render: function(data, type, row) {
                                 if (data == "Pembayaran") {
                                     let html = "<span class='btn-sm btn-block btn btn-outline-success'><i class='fa fa-fw fa-check mr-2'></i>" + data + "</span>";
