@@ -25,7 +25,7 @@
                                 <td colspan=3>Bandar Lampung,<?= $data["bon_tanggal"]?></td>
                             </tr>
                             <tr>
-                                <td colspan=3>#no transaksi</td>
+                                <td colspan=3><strong>#<?= $bon_id?></strong></td>
                             </tr>
                             <tr>
                                 <td colspan=3><hr></td>

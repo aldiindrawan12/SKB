@@ -15,6 +15,16 @@ class Model_Form extends CI_model
         return $this->db->get_where("skb_akun",array("skb_akun.akun_id"=>$akun_id))->row_array();
     }
 
+    public function getjoid(){
+        $this->db->select("Jo_id");
+        return $this->db->get("skb_job_order")->result_array();
+    }
+
+    public function getbonid(){
+        $this->db->select("bon_id");
+        return $this->db->get("skb_bon")->result_array();
+    }
+
     public function insert_JO($data){
         $this->db->set("status_jalan","Jalan");
         $this->db->where("supir_id",$data["supir_id"]);

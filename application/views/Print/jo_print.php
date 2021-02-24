@@ -26,6 +26,11 @@
                     <table class="" id="" width="100%" cellspacing="0">
                         <tbody>
                             <tr>
+                                <td width="30%"><strong>JO ID</strong></td>
+                                <td width="5%">:</td>
+                                <td ><strong>#<?= $jo_id?></strong></td>
+                            </tr>
+                            <tr>
                                 <td width="30%">No Pol</td>
                                 <td width="5%">:</td>
                                 <td><?= $mobil["mobil_no"]." || ".$mobil["mobil_jenis"]?></td>

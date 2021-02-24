@@ -37,6 +37,11 @@ class Form extends CI_Controller {
 
     // fungsi insert
         public function insert_JO(){
+            $jo_id = $this->model_form->getjoid();
+            $isi_jo_id = [];
+            for($i=0;$i<count($jo_id);$i++){
+                $isi_jo_id[] = $jo_id[$i]["Jo_id"];
+            }
             $data["data"]=array(
                 "mobil_no"=>$this->input->post("Kendaraan"),
                 "supir_id"=>$this->input->post("Supir"),
@@ -52,12 +57,19 @@ class Form extends CI_Controller {
                 "status_upah"=>"Belum Dibayar"
             );
             $this->model_form->insert_JO($data["data"]);
+            $data["jo_id"] = max($isi_jo_id)+1;
             $data["supir"] = $this->model_home->getsupirbyid($data["data"]["supir_id"]);
             $data["mobil"] = $this->model_home->getmobilbyid($data["data"]["mobil_no"]);
             $this->load->view("print/jo_print",$data);
         }
 
         public function insert_bon(){
+            $bon_id = $this->model_form->getbonid();
+            $isi_bon_id = [];
+            for($i=0;$i<count($bon_id);$i++){
+                $isi_bon_id[] = $bon_id[$i]["bon_id"];
+            }
+
             date_default_timezone_set('Asia/Jakarta');
             $data["data"]=array(
                 "supir_id"=>$this->input->post("Supir_bon"),
@@ -66,7 +78,7 @@ class Form extends CI_Controller {
                 "bon_keterangan"=>$this->input->post("Keterangan"),
                 "bon_tanggal"=>date("Y-m-d H:i:s")
             );
-            // echo print_r($data);
+            $data["bon_id"] = max($isi_bon_id)+1;
             $this->model_form->insert_bon($data["data"]);
             $data["supir"] = $this->model_home->getsupirbyid($data["data"]["supir_id"]);
             $this->load->view("print/bon_print",$data);
