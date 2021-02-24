@@ -42,8 +42,8 @@
     <script src="<?=base_url("assets/vendor/jquery/jquery.min.js")?>"></script>
     <script src="<?=base_url("assets/vendor/jquery/jquery.mask.min.js")?>"></script>
     <script src="<?=base_url("assets/vendor/bootstrap/js/bootstrap.bundle.min.js")?>"></script>
-    <script src="<?php echo base_url('assets/sweetalert2/sweetalert2.min.js') ?>"></script>
-
+    <script src="<?=base_url('assets/sweetalert2/sweetalert2.min.js') ?>"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <!-- Core plugin JavaScript-->
     <script src="<?=base_url("assets/vendor/jquery-easing/jquery.easing.min.js")?>"></script>
     
@@ -106,19 +106,23 @@
                         let pk = $(this).data('pk');
                         Swal.fire({
                             title: 'Yakin Ingin Hapus Truck Ini?',
+                            showDenyButton: true,
+                            denyButtonText: `Batal`,
                             confirmButtonText: 'Hapus',
                         }).then((result) => {
-                            $.ajax({
-                                type: "GET",
-                                url: "<?php echo base_url('index.php/form/deletetruck') ?>",
-                                dataType: "text",
-                                data: {
-                                    id: pk
-                                },
-                                success: function(data) {
-                                    location.reload();
-                                }
-                            });
+                            if (result.isConfirmed) {
+                                $.ajax({
+                                    type: "GET",
+                                    url: "<?php echo base_url('index.php/form/deletetruck') ?>",
+                                    dataType: "text",
+                                    data: {
+                                        id: pk
+                                    },
+                                    success: function(data) {
+                                        location.reload();
+                                    }
+                                });
+                            }
                         })
                     });
                 }
@@ -450,19 +454,23 @@
                         let pk = $(this).data('pk');
                         Swal.fire({
                             title: 'Yakin Ingin Hapus Supir Ini?',
+                            showDenyButton: true,
+                            denyButtonText: `Batal`,
                             confirmButtonText: 'Hapus',
                         }).then((result) => {
-                            $.ajax({
-                                type: "GET",
-                                url: "<?php echo base_url('index.php/form/deletesupir') ?>",
-                                dataType: "text",
-                                data: {
-                                    id: pk
-                                },
-                                success: function(data) {
-                                    location.reload();
-                                }
-                            });
+                            if (result.isConfirmed) {
+                                $.ajax({
+                                    type: "GET",
+                                    url: "<?php echo base_url('index.php/form/deletesupir') ?>",
+                                    dataType: "text",
+                                    data: {
+                                        id: pk
+                                    },
+                                    success: function(data) {
+                                        location.reload();
+                                    }
+                                });
+                            }
                         })
                     });
                 }
@@ -794,19 +802,23 @@
                         let pk = $(this).data('pk');
                         Swal.fire({
                             title: 'Yakin Ingin Hapus Akun Ini?',
+                            showDenyButton: true,
+                            denyButtonText: `Batal`,
                             confirmButtonText: 'Hapus',
                         }).then((result) => {
-                            $.ajax({
-                                type: "GET",
-                                url: "<?php echo base_url('index.php/form/deleteakun') ?>",
-                                dataType: "text",
-                                data: {
-                                    id: pk
-                                },
-                                success: function(data) {
-                                    location.reload();
-                                }
-                            });
+                            if (result.isConfirmed) {
+                                $.ajax({
+                                    type: "GET",
+                                    url: "<?php echo base_url('index.php/form/deleteakun') ?>",
+                                    dataType: "text",
+                                    data: {
+                                        id: pk
+                                    },
+                                    success: function(data) {
+                                        location.reload();
+                                    }
+                                });
+                            }
                         })
                     });
                 }
