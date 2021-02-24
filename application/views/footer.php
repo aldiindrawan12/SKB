@@ -815,7 +815,7 @@
     </script>
     <!-- end Akun --> 
     
-    <!-- script alert -->
+    <!-- script alert-alert -->
     <script>
         $(document).ready(function() {
             var login = '<?= $this->session->flashdata('status-login'); ?>';
