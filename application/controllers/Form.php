@@ -85,6 +85,7 @@ class Form extends CI_Controller {
                 "password"=>$this->input->post("password")
             );
             $this->model_form->insert_user($data_user);
+			$this->session->set_flashdata('status-add-akun', 'Berhasil');
             redirect(base_url("index.php/home/akun"));
         }
 
@@ -101,10 +102,12 @@ class Form extends CI_Controller {
             $data=array(
                 "supir_name"=>$this->input->post("Supir"),
                 "supir_kasbon"=>0,
-                "status_jalan"=>"Tidak Jalan"
+                "status_jalan"=>"Tidak Jalan",
+                "status_hapus"=>"NO"
             );
             // echo($data["customer_name"]);
             $this->model_form->insert_supir($data);
+			$this->session->set_flashdata('status-add-supir', 'Berhasil');
             redirect(base_url("index.php/home/penggajian"));
         }
 
@@ -114,9 +117,11 @@ class Form extends CI_Controller {
                 "mobil_jenis"=>$this->input->post("mobil_jenis"),
                 "mobil_max_load"=>$this->input->post("mobil_max_load"),
                 "status_jalan"=>"Tidak Jalan",
+                "status_hapus"=>"NO"
             );
             // echo($data["customer_name"]);
             $this->model_form->insert_truck($data);
+			$this->session->set_flashdata('status-add-kendaraan', 'Berhasil');
             redirect(base_url("index.php/home/truck"));
         }
     // end fungsi insert
@@ -126,18 +131,41 @@ class Form extends CI_Controller {
         $supir_name = $this->input->post("supir_name");
         $supir_id = $this->input->post("supir_id");
         $this->model_form->update_supir($supir_id,$supir_name);
+	    $this->session->set_flashdata('status-update-supir', 'Berhasil');
         redirect(base_url("index.php/home/penggajian"));
+    }
+
+    public function update_akun(){
+        $data = array(
+            "akun_id" => $this->input->post("akun_id"),
+            "akun_name" => $this->input->post("akun_name"),
+            "akun_role" => $this->input->post("role_update"),
+            "username" => $this->input->post("username_update"),
+            "password" => $this->input->post("password_update")
+        );
+        $this->model_form->update_akun($data);
+		$this->session->set_flashdata('status-update-akun', 'Berhasil');
+        redirect(base_url("index.php/home/akun"));
     }
 
     public function deletesupir(){
         $supir_id = $this->input->get("id");
         $this->model_form->deletesupir($supir_id);
+		$this->session->set_flashdata('status-delete-supir', 'Berhasil');
         echo $supir_id;
+    }
+
+    public function deleteakun(){
+        $akun_id = $this->input->get("id");
+        $this->model_form->deleteakun($akun_id);
+		$this->session->set_flashdata('status-delete-akun', 'Berhasil');
+        echo $akun_id;
     }
 
     public function deletetruck(){
         $mobil_no = $this->input->get("id");
         $this->model_form->deletetruck($mobil_no);
+	    $this->session->set_flashdata('status-delete-kendaraan', 'Berhasil');
         echo $mobil_no;
     }
 
@@ -185,5 +213,12 @@ class Form extends CI_Controller {
         $supir_id = $this->input->get('id');
         $data = $this->model_form->getbonbysupir($supir_id);
         echo $data["supir_kasbon"];
+    }
+
+    function getakunbyid()
+    {
+        $akun_id = $this->input->get('id');
+        $data = $this->model_form->getakunbyid($akun_id);
+        echo json_encode($data);
     }
 }

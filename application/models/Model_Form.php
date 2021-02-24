@@ -10,6 +10,11 @@ class Model_Form extends CI_model
         return $this->db->get_where("skb_supir",array("supir_id"=>$supir_id))->row_array();
     }
 
+    public function getakunbyid($akun_id){
+        $this->db->join("user", "user.akun_id = skb_akun.akun_id", 'left');
+        return $this->db->get_where("skb_akun",array("skb_akun.akun_id"=>$akun_id))->row_array();
+    }
+
     public function insert_JO($data){
         $this->db->set("status_jalan","Jalan");
         $this->db->where("supir_id",$data["supir_id"]);
@@ -68,6 +73,11 @@ class Model_Form extends CI_model
         return $this->db->update("skb_mobil");
     }
 
+    public function deleteakun($akun_id){
+        $this->db->where("akun_id",$akun_id);
+        return $this->db->delete("skb_akun");
+    }
+
     public function getsupirname($supir_id){
         return $this->db->get_where("skb_supir",array("supir_id"=>$supir_id))->row_array();
     }
@@ -76,6 +86,28 @@ class Model_Form extends CI_model
         $this->db->set("supir_name",$supir_name);
         $this->db->where("supir_id",$supir_id);
         $this->db->update("skb_supir");
+    }
+
+    public function update_akun($data){
+        $user = $this->db->get_where("user",array("akun_id"=>$data["akun_id"]))->row_array();
+        if($user){
+            $this->db->set("username",$data["username"]);
+            $this->db->set("password",$data["password"]);
+            $this->db->where("akun_id",$data["akun_id"]);
+            $this->db->update("user");
+        }else{
+            $data_user = array(
+                "akun_id"=>$data["akun_id"],
+                "username"=>$data["username"],
+                "password"=>$data["password"]
+            );
+            $this->db->insert("user",$data_user);
+        }
+
+        $this->db->set("akun_name",$data["akun_name"]);
+        $this->db->set("akun_role",$data["akun_role"]);
+        $this->db->where("akun_id",$data["akun_id"]);
+        $this->db->update("skb_akun");
     }
 
     public function insert_truck($data){

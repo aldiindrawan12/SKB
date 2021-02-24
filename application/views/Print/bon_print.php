@@ -11,7 +11,7 @@
 
     <link href="<?=base_url("assets/css/sb-admin-2.min.css")?>" rel="stylesheet">
 </head>
-<body class="text-dark">
+<body class="text-dark" >
     <div class="container w-50">
         <div class="body-card text-center">
             <span class="h3">Kwitansi Transaksi BON</span>

@@ -65,11 +65,12 @@ class Model_Detail extends CI_model
         }
 
         //update status upah pada jo id
+        if($Jo_id != null){
         for($i=0;$i<count($Jo_id);$i++){
             $this->db->set("status_upah","Sudah Dibayar");
             $this->db->where("Jo_id",$Jo_id[$i]);
             $this->db->update("skb_job_order");
-        }
+        }}
         //end update status upah pada jo id
     }
     

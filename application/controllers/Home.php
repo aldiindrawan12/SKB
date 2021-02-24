@@ -14,6 +14,7 @@ class Home extends CI_Controller {
         public function index()
         {
             $data["page"] = "JO_page";
+			$this->session->set_flashdata('status-login', 'Berhasil');
             $this->load->view('header',$data);
             $this->load->view('sidebar');
             $this->load->view('home/joborder');

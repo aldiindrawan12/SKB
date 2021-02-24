@@ -116,7 +116,8 @@ class Detail extends CI_Controller {
                 "upah"=>$this->input->get("upah"),
                 "Jo_id"=>$this->input->get("jo_id")
             );
-            echo $this->model_detail->update_upah($data);
+            $this->model_detail->update_upah($data);
+            echo $data["supir_id"];
         }
     //end fungsi untuk Detail penggajian
 

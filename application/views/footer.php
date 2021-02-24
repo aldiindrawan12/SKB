@@ -42,8 +42,7 @@
     <script src="<?=base_url("assets/vendor/jquery/jquery.min.js")?>"></script>
     <script src="<?=base_url("assets/vendor/jquery/jquery.mask.min.js")?>"></script>
     <script src="<?=base_url("assets/vendor/bootstrap/js/bootstrap.bundle.min.js")?>"></script>
-
-    
+    <script src="<?php echo base_url('assets/sweetalert2/sweetalert2.min.js') ?>"></script>
 
     <!-- Core plugin JavaScript-->
     <script src="<?=base_url("assets/vendor/jquery-easing/jquery.easing.min.js")?>"></script>
@@ -105,17 +104,22 @@
                 drawCallback: function() {
                     $('.btn-delete-truck').click(function() {
                         let pk = $(this).data('pk');
-                        $.ajax({
-                            type: "GET",
-                            url: "<?php echo base_url('index.php/form/deletetruck') ?>",
-                            dataType: "text",
-                            data: {
-                                id: pk
-                            },
-                            success: function(data) {
-                                location.reload();
-                            }
-                        });
+                        Swal.fire({
+                            title: 'Yakin Ingin Hapus Truck Ini?',
+                            confirmButtonText: 'Hapus',
+                        }).then((result) => {
+                            $.ajax({
+                                type: "GET",
+                                url: "<?php echo base_url('index.php/form/deletetruck') ?>",
+                                dataType: "text",
+                                data: {
+                                    id: pk
+                                },
+                                success: function(data) {
+                                    location.reload();
+                                }
+                            });
+                        })
                     });
                 }
             });
@@ -444,17 +448,22 @@
                     });
                     $('.btn-delete-supir').click(function() {
                         let pk = $(this).data('pk');
-                        $.ajax({
-                            type: "GET",
-                            url: "<?php echo base_url('index.php/form/deletesupir') ?>",
-                            dataType: "text",
-                            data: {
-                                id: pk
-                            },
-                            success: function(data) {
-                                location.reload();
-                            }
-                        });
+                        Swal.fire({
+                            title: 'Yakin Ingin Hapus Supir Ini?',
+                            confirmButtonText: 'Hapus',
+                        }).then((result) => {
+                            $.ajax({
+                                type: "GET",
+                                url: "<?php echo base_url('index.php/form/deletesupir') ?>",
+                                dataType: "text",
+                                data: {
+                                    id: pk
+                                },
+                                success: function(data) {
+                                    location.reload();
+                                }
+                            });
+                        })
                     });
                 }
             });
@@ -741,7 +750,7 @@
                     {
                         "data": "akun_role",
                         className: 'text-center',
-                        "orderable": true,
+                        "orderable": false,
                         render: function(data, type, row) {
                             if (data == "Super User") {
                                     let html = "<span class='btn-sm btn-block btn-dark'></i>" + data + "</span>";
@@ -751,15 +760,149 @@
                                     return html;
                                 }
                         }
+                    },
+                    {   "data": "akun_id",
+                        className: 'text-center',
+                        "orderable": false,
+                        render: function(data, type, row) {
+                            let html = "<a class='btn btn-light btn-update-akun' data-toggle='modal' data-target='#popup-update-akun' href='javascript:void(0)' data-pk="+data+"><i class='fas fa-pen-square'></i></a> || "+
+                            "<a class='btn btn-light btn-delete-akun' href='javascript:void(0)' data-pk="+data+"><i class='fas fa-trash-alt'></i></a>";
+                            return html;
+                        }
                     }
-                ]
+                ],
+                drawCallback: function() {
+                    $('.btn-update-akun').click(function() {
+                        let pk = $(this).data('pk');
+                        $("#akun_id").val(pk);
+                        $.ajax({
+                            type: "GET",
+                            url: "<?php echo base_url('index.php/form/getakunbyid') ?>",
+                            dataType: "JSON",
+                            data: {
+                                id: pk
+                            },
+                            success: function(data) {
+                                $("#akun_name").val(data["akun_name"]);
+                                $("#username_update").val(data["username"]);
+                                $("#password_update").val(data["password"]);
+                                $("#role_update").val(data["akun_role"]);
+                            }
+                        });
+                    });
+                    $('.btn-delete-akun').click(function() {
+                        let pk = $(this).data('pk');
+                        Swal.fire({
+                            title: 'Yakin Ingin Hapus Akun Ini?',
+                            confirmButtonText: 'Hapus',
+                        }).then((result) => {
+                            $.ajax({
+                                type: "GET",
+                                url: "<?php echo base_url('index.php/form/deleteakun') ?>",
+                                dataType: "text",
+                                data: {
+                                    id: pk
+                                },
+                                success: function(data) {
+                                    location.reload();
+                                }
+                            });
+                        })
+                    });
+                }
             });
         });
     </script>
     <!-- end Akun --> 
-
-
     
+    <!-- script alert -->
+    <script>
+        $(document).ready(function() {
+            var login = '<?= $this->session->flashdata('status-login'); ?>';
+            var akun = '<?= $this->session->flashdata('status-add-akun'); ?>';
+            var update_akun = '<?= $this->session->flashdata('status-update-akun'); ?>';
+            var delete_akun = '<?= $this->session->flashdata('status-delete-akun'); ?>';
+            var supir = '<?= $this->session->flashdata('status-add-supir'); ?>';
+            var update_supir = '<?= $this->session->flashdata('status-update-supir'); ?>';
+            var delete_supir = '<?= $this->session->flashdata('status-delete-supir'); ?>';
+            var kendaraan = '<?= $this->session->flashdata('status-add-kendaraan'); ?>';
+            var delete_kendaraan = '<?= $this->session->flashdata('status-delete-kendaraan'); ?>';
+            if(login == "Berhasil"){
+                Swal.fire({
+                        title: "Berhasil Login",
+                        text: "Selamat Datang",
+                        type: "success",
+                        timer: 1500
+                    });
+            }
+            if(akun == "Berhasil"){
+                Swal.fire({
+                        title: "Berhasil",
+                        text: "Menambah Akun Baru",
+                        type: "success",
+                        timer: 2000
+                    });
+            }
+            if(update_akun == "Berhasil"){
+                Swal.fire({
+                        title: "Berhasil",
+                        text: "Mengubah Data Akun",
+                        type: "success",
+                        timer: 2000
+                    });
+            }
+            if(delete_akun == "Berhasil"){
+                Swal.fire({
+                        title: "Berhasil",
+                        text: "Menghapus Data Akun",
+                        type: "error",
+                        timer: 2000
+                    });
+            }
+            if(supir == "Berhasil"){
+                Swal.fire({
+                        title: "Berhasil",
+                        text: "Menambah Supir Baru",
+                        type: "success",
+                        timer: 2000
+                    });
+            }
+            if(update_supir == "Berhasil"){
+                Swal.fire({
+                        title: "Berhasil",
+                        text: "Mengubah Data Supir",
+                        type: "success",
+                        timer: 2000
+                    });
+            }
+            if(delete_supir == "Berhasil"){
+                Swal.fire({
+                        title: "Berhasil",
+                        text: "Menghapus Data Supir",
+                        type: "error",
+                        timer: 2000
+                    });
+            }
+            if(kendaraan == "Berhasil"){
+                Swal.fire({
+                        title: "Berhasil",
+                        text: "Menambah Data kendaraan",
+                        type: "success",
+                        timer: 2000
+                    });
+            }
+            if(delete_kendaraan == "Berhasil"){
+                Swal.fire({
+                        title: "Berhasil",
+                        text: "Menghapus Data Kendaraan",
+                        type: "error",
+                        timer: 2000
+                    });
+            }
+        });
+    </script>
+    <!-- end script alert -->
+
 </body>
 
 </html>

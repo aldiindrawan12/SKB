@@ -11,7 +11,7 @@
 
     <link href="<?=base_url("assets/css/sb-admin-2.min.css")?>" rel="stylesheet">
 </head>
-<body class="text-dark small" onload="redirect()">
+<body class="text-dark small">
     <div class="container">
         <div class="mb-4">
             <div class="y-3">
@@ -92,7 +92,6 @@
     </div>
     <script src="<?=base_url("assets/vendor/jquery/jquery.min.js")?>"></script>
     <script>
-            window.print();
             var data_jo_id = [];
             <?php for($i=0;$i<count($data_jo_id);$i++){?>
                 data_jo_id.push(<?= $data_jo_id[$i]?>)
@@ -108,12 +107,10 @@
                     jo_id:data_jo_id
                 },
                 success: function(data) {
-                    // alert(data_jo_id);
+                    window.print();
+                    window.location = "<?= base_url("index.php/home/penggajian")?>";
                 }
             });
-            function redirect(){
-                window.location.replace("<?= base_url("index.php/home/penggajian")?>");
-            }
     </script>
 </body>
 </html>

@@ -23,6 +23,7 @@
                         <th class="text-center" width="3%" scope="col">ID</th>
                         <th class="text-center" width="20%" scope="col">Nama</th>
                         <th class="text-center" width="5%" scope="col">Role</th>
+                        <th class="text-center" width="5%" scope="col">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -80,4 +81,46 @@
     </div>
 </div>
 <!-- end pop up tambah akun -->
+<!-- pop up update akun -->
+<div class="modal fade" id="popup-update-akun" tabindex="-1" role="dialog" aria-labelledby="modal-block-large" aria-hidden="true">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary-dark">
+                <h5 class="font-weight-bold">Update Data Akun</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="font-size-sm m-3 text-justify">
+                <form action="<?= base_url("index.php/form/update_akun")?>" method="POST">
+                    <input type="text" name=akun_id id=akun_id hidden>
+                    <div class="form-group">
+                        <label for="akun_name" class="form-label">Nama Akun</label>
+                        <input autocomplete="off" type="text" class="form-control" id="akun_name" name="akun_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="" for="role_update">Role Akun</label>
+                        <select name="role_update" id="role_update" class="form-control custom-select " required>
+                            <option class="font-w700" disabled="disabled" selected value="">Jenis Role</option>
+                            <option value="Super User">Super User</option>
+                            <option value="Operator">Operator</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="username_update" class="form-label">Username</label>
+                        <input autocomplete="off" type="text" class="form-control" id="username_update" name="username_update" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password_update" class="form-label">Password</label>
+                        <input autocomplete="off" type="text" class="form-control" id="password_update" name="password_update" required>
+                    </div>
+                    <div class="form-group">
+                    <button type="submit" class="btn btn-success mb-3 float-right">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end pop up update akun -->
 </div>
