@@ -43,6 +43,7 @@ class Form extends CI_Controller {
                 $isi_jo_id[] = $jo_id[$i]["Jo_id"];
             }
             $data["data"]=array(
+                "Jo_id"=>max($isi_jo_id)+1,
                 "mobil_no"=>$this->input->post("Kendaraan"),
                 "supir_id"=>$this->input->post("Supir"),
                 "muatan"=>$this->input->post("Muatan"),
@@ -72,6 +73,7 @@ class Form extends CI_Controller {
 
             date_default_timezone_set('Asia/Jakarta');
             $data["data"]=array(
+                "bon_id"=>max($isi_bon_id)+1,
                 "supir_id"=>$this->input->post("Supir_bon"),
                 "bon_jenis"=>$this->input->post("Jenis"),
                 "bon_nominal"=>str_replace(".","",$this->input->post("Nominal")),
