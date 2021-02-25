@@ -110,25 +110,25 @@
                     <div class="mb-3 row">
                         <label for="tonase" class="col-sm-5 col-form-label">Tonase akhir (Ton)</label>
                         <div class="col-sm-6">
-                            <input autocomplete="off" class="form-control" type="number" name="tonase" id="tonase" onkeyup="uang()" required>    
+                            <input autocomplete="off" class="form-control" type="text" name="tonase" id="tonase" onkeyup="uang()" required>    
                         </div>
                     </div>
                      <div class="mb-3 row">
                         <label class="col-sm-5 col-form-label" for="harga">Harga/kg</label>
                         <div class="col-sm-6">
-                            <input autocomplete="off" class="form-control" type="number" name="harga" id="harga" onkeyup="uang()" required>
+                            <input autocomplete="off" class="form-control" type="text" name="harga" id="harga" onkeyup="uang()" required>
                         </div>
                     </div>
                      <div class="mb-3 row">
                         <label class="col-sm-5 col-form-label" for="upah">Upah Supir</label>
                         <div class="col-sm-6">
-                            <input autocomplete="off" class="form-control" type="number" name="upah" id="upah" onkeyup="uang()" required>
+                            <input autocomplete="off" class="form-control" type="text" name="upah" id="upah" onkeyup="uang()" required>
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label class="col-sm-5 col-form-label" for="bonus">Bonus Supir</label>
                         <div class="col-sm-6">
-                            <input autocomplete="off" class="form-control" type="number" name="bonus" id="bonus" onkeyup="uang()" required>
+                            <input autocomplete="off" class="form-control" type="text" name="bonus" id="bonus" onkeyup="uang()" required>
                         </div>
                     </div>
                      <div class="mb-3 row">
@@ -140,7 +140,7 @@
                     <div class="mb-3 row">
                         <label class="col-sm-5 col-form-label" for="TOD">Batas Waktu Pembayaran Invoice (hari)</label>
                         <div class="col-sm-6">
-                            <input autocomplete="off" class="form-control" type="number" name="TOD" id="TOD" required>
+                            <input autocomplete="off" class="form-control" type="text" name="TOD" id="TOD" required>
                         </div>
                     </div>
                     <div style="float:right;margin-bottom:3%">
