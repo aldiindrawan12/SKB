@@ -14,6 +14,10 @@ class Detail extends CI_Controller {
     //fungsi untuk Detail JO
         public function detail_jo($Jo_id)
         {
+            if(!$_SESSION["user"]){
+    			$this->session->set_flashdata('status-login', 'False');
+                redirect(base_url());
+            }
             $data["jo"] = $this->model_home->getjobyid($Jo_id);
             $data["invoice"] = $this->model_detail->getinvoicebyjo($Jo_id);
             $data["customer"] = $this->model_home->getcustomerbyid($data["jo"]["customer_id"]);
@@ -30,6 +34,10 @@ class Detail extends CI_Controller {
     //fungsi untuk Detail invoice
         public function detail_invoice($invoice_id)
         {
+            if(!$_SESSION["user"]){
+    			$this->session->set_flashdata('status-login', 'False');
+                redirect(base_url());
+            }
             $data["invoice"] = $this->model_detail->getinvoicebyid($invoice_id);
             $data["customer"] = $this->model_home->getcustomerbyid($data["invoice"]["customer_id"]);
             $data["page"] = "Invoice_page";
@@ -81,6 +89,11 @@ class Detail extends CI_Controller {
     //fungsi untuk Detail customer
         public function detail_customer($customer_id)
         {
+            
+            if(!$_SESSION["user"]){
+    			$this->session->set_flashdata('status-login', 'False');
+                redirect(base_url());
+            }
             $data["customer"] = $this->model_home->getcustomerbyid($customer_id);
             $this->load->view('header');
             $this->load->view('sidebar');
@@ -101,6 +114,10 @@ class Detail extends CI_Controller {
     //fungsi untuk Detail penggajian
         public function detail_penggajian($supir_id)
         {
+            if(!$_SESSION["user"]){
+    			$this->session->set_flashdata('status-login', 'False');
+                redirect(base_url());
+            }
             $data["jo"] = $this->model_detail->getjobbysupir($supir_id);
             $data["supir"] = $this->model_home->getsupirbyid($supir_id);
             $this->load->view('header');

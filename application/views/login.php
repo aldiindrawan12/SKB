@@ -30,11 +30,11 @@
                             <form action="<?= base_url("index.php/login/login")?>" method="POST">
                                 <div class="form-group">
                                     <input type="text" class="form-control" name="username"
-                                        placeholder="Masukkan Username" required>
+                                        placeholder="Masukkan Username" autocomplete='off' required>
                                 </div>
                                 <div class="form-group">
                                     <input type="password" class="form-control" name="password"
-                                        placeholder="Masukkan Password" required>
+                                        placeholder="Masukkan Password" autocomplete='off'required>
                                 </div>
                                 <hr>
                                 <button type="submit" class="btn btn-primary btn-block">Masuk</button>

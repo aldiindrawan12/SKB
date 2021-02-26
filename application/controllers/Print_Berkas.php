@@ -158,6 +158,10 @@ class Print_Berkas extends CI_Controller {
     }
 	// fungsi cetak invoice,gaji,memo
 		public function invoice($Jo_id,$asal){
+            if(!$_SESSION["user"]){
+    			$this->session->set_flashdata('status-login', 'False');
+                redirect(base_url());
+            }
 			$data["invoice"] = $this->model_detail->getinvoicebyjo($Jo_id);
 			$data["customer"] = $this->model_home->getcustomerbyid($data["invoice"]["customer_id"]);
 			$data["Jo_id"] = $Jo_id;
@@ -166,6 +170,10 @@ class Print_Berkas extends CI_Controller {
 			$this->load->view("print/invoice_print",$data);
 		}
 		public function data_gaji($supir_id,$upah){
+            if(!$_SESSION["user"]){
+    			$this->session->set_flashdata('status-login', 'False');
+                redirect(base_url());
+            }
 			$data["jo"] = $this->model_detail->getjobbysupir($supir_id);
 			$data["supir"] = $this->model_home->getsupirbyid($supir_id);
 			//update upah
@@ -178,11 +186,19 @@ class Print_Berkas extends CI_Controller {
 			$this->load->view("print/penggajian_print",$data);
 		}
 		public function memo_tunai($supir_id,$gaji){
+            if(!$_SESSION["user"]){
+    			$this->session->set_flashdata('status-login', 'False');
+                redirect(base_url());
+            }
 			$data["gaji"] = $gaji;
 			$data["supir"] = $this->model_home->getsupirbyid($supir_id);
 			$this->load->view("print/memo_tunai_print",$data);
 		}
 		public function memo_tf($supir_id,$gaji){
+            if(!$_SESSION["user"]){
+    			$this->session->set_flashdata('status-login', 'False');
+                redirect(base_url());
+            }
 			$data["data"]=[
 				"Bank"=>$this->input->post("Bank"),
 				"Norek"=>$this->input->post("Norek"),
