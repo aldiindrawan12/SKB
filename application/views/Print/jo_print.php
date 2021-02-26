@@ -98,6 +98,6 @@
 </body>
 <script>
     window.print();
-    window.location.replace("<?= base_url()?>");
+    window.location.replace("<?= base_url('index.php/home')?>");
 </script>
 </html>

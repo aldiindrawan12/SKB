@@ -26,7 +26,7 @@
             </div>
             <!-- Nav Item -->
             <li  class="nav-item mr-2 " id="JO_page">
-                <a id="coba" class="nav-link" href="<?=base_url()?>">
+                <a id="coba" class="nav-link" href="<?=base_url("index.php/home")?>">
                     <i class="fas fa-envelope-open-text "></i>
                     <span id="coba">Job Order</span></a>
             </li>
