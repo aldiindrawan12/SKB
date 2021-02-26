@@ -80,7 +80,7 @@
 <!-- end tampilan detail penggajian supir -->
 
 
-<div class="conatiner ml-4">
+<div class="container">
     <!-- button print daftar gaji -->
     <!-- <button onclick="print_gaji()" class="btn btn-primary">Cetak Bukti Upah</button> -->
     <!-- end button print daftar gaji -->
@@ -106,7 +106,7 @@
             <textarea class="form-control" name="Keterangan" id="Keterangan" rows="3"></textarea>
         </div>
         <div class="form-group">
-            <button class="btn btn-primary ml-3 mb-3" type="submit">Cetak Memo Transfer</button>
+            <button class="btn btn-info ml-3 mb-3" type="submit">Cetak Memo Transfer</button>
         </div>
     </form>
 </div>
