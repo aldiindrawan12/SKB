@@ -32,7 +32,7 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-danger" href="#">Log Out</a>
+                    <a class="btn btn-danger" href="<?= base_url("index.php/login/logout")?>">Log Out</a>
                 </div>
             </div>
         </div>

@@ -5,7 +5,14 @@
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center my-2" href="<?=base_url()?>">
+            <<?php
+                if($_SESSION["user"]){
+                    $link = base_url("index.php/home");
+                }else{
+                    $link = redirect(base_url());
+                }
+            ?>
+            <a class="sidebar-brand d-flex align-items-center justify-content-center my-2" href="<?= $link?>">
                 <div class="sidebar-brand-icon fa-flip-horizontal">
                     <i class="fa fa-truck"></i>
                 </div>
@@ -121,7 +128,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Nama Pegawai/Operator</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $_SESSION["user"]?></span>
                                 <i class="fas fa-user-friends"></i>
                             </a>
                             <!-- Dropdown - User Information -->

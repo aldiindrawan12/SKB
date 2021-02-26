@@ -13,8 +13,11 @@ class Home extends CI_Controller {
     //fungsi untuk JO
         public function index()
         {
+            if(!$_SESSION["user"]){
+    			$this->session->set_flashdata('status-login', 'False');
+                redirect(base_url());
+            }
             $data["page"] = "JO_page";
-			$this->session->set_flashdata('status-login', 'Berhasil');
             $this->load->view('header',$data);
             $this->load->view('sidebar');
             $this->load->view('home/joborder');
