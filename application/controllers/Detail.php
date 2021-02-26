@@ -38,7 +38,7 @@ class Detail extends CI_Controller {
 
     public function updatestatusjo($supir,$mobil){
         $data_jo = $this->model_home->getjobyid($this->input->post("jo_id"));
-        $keterangan = $data_jo["keterangan"].",".$this->input->post("Keterangan");
+        $keterangan = "<strong>Catatan JO: </strong>".$data_jo["keterangan"]."<br><strong>Catatan Konfirmasi: </strong>".$this->input->post("Keterangan");
         $TOD = $this->input->post("TOD");
         $data = array(
             "tonase"=>$this->input->post("tonase"),
