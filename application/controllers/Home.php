@@ -23,6 +23,7 @@ class Home extends CI_Controller {
             $this->load->view('home/joborder');
             $this->load->view('footer');
         }
+
         public function view_JO(){
             $search = $_POST['search']['value'];
             $limit = $_POST['length'];
@@ -75,6 +76,10 @@ class Home extends CI_Controller {
         }
         public function customer()
         {
+            if(!$_SESSION["user"]){
+    			$this->session->set_flashdata('status-login', 'False');
+                redirect(base_url());
+            }
             $data["page"] = "Customer_page";
             $this->load->view('header',$data);
             $this->load->view('sidebar');
@@ -108,6 +113,10 @@ class Home extends CI_Controller {
         }
         public function penggajian()
         {
+            if(!$_SESSION["user"]){
+    			$this->session->set_flashdata('status-login', 'False');
+                redirect(base_url());
+            }
             $data["page"] = "Supir_page";
             $this->load->view('header',$data);
             $this->load->view('sidebar');
@@ -120,6 +129,10 @@ class Home extends CI_Controller {
     // bon
         public function bon()
         {
+            if(!$_SESSION["user"]){
+    			$this->session->set_flashdata('status-login', 'False');
+                redirect(base_url());
+            }
             $data["page"] = "Bon_page";
             $this->load->view('header',$data);
             $this->load->view('sidebar');
@@ -152,6 +165,10 @@ class Home extends CI_Controller {
     //fungsi untuk truk
         public function truck()
         {
+            if(!$_SESSION["user"]){
+    			$this->session->set_flashdata('status-login', 'False');
+                redirect(base_url());
+            }
             $data["truck"] = $this->model_home->gettruck();
             $data["page"] = "Kendaraan_page";
             $this->load->view('header',$data);
@@ -185,6 +202,10 @@ class Home extends CI_Controller {
     // funngsi report 
         public function report()
         {
+            if(!$_SESSION["user"]){
+    			$this->session->set_flashdata('status-login', 'False');
+                redirect(base_url());
+            }
             $data["page"] = "Laporan_page";
             $this->load->view('header',$data);
             $this->load->view('sidebar');
@@ -262,6 +283,10 @@ class Home extends CI_Controller {
 
         public function invoice()
         {
+            if(!$_SESSION["user"]){
+    			$this->session->set_flashdata('status-login', 'False');
+                redirect(base_url());
+            }
             $data["page"] = "Invoice_page";
             $this->load->view('header',$data);
             $this->load->view('sidebar');
@@ -273,6 +298,10 @@ class Home extends CI_Controller {
     //Akun
         public function akun()
         {
+            if(!$_SESSION["user"]){
+    			$this->session->set_flashdata('status-login', 'False');
+                redirect(base_url());
+            }
             $data["page"] = "Akun_page";
             $this->load->view('header',$data);
             $this->load->view('sidebar');

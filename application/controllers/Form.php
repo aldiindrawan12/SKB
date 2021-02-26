@@ -11,6 +11,10 @@ class Form extends CI_Controller {
 
     // fungsi view form
         public function joborder($customer_name){
+            if(!$_SESSION["user"]){
+    			$this->session->set_flashdata('status-login', 'False');
+                redirect(base_url());
+            }
             $data["customer"] = $this->model_home->getcustomer();
             $data["customer_by_name"] = $this->model_form->getcustomerbyname($customer_name);
             if($data["customer_by_name"] == null){
@@ -26,6 +30,10 @@ class Form extends CI_Controller {
         }
 
         public function bon(){
+            if(!$_SESSION["user"]){
+    			$this->session->set_flashdata('status-login', 'False');
+                redirect(base_url());
+            }
             $data["supir"] = $this->model_home->getsupir();
             $data["page"] = "Bo_pagen";
             $this->load->view('header',$data);
