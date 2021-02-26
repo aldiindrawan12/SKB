@@ -2,8 +2,8 @@
 <div class="container">
     <form action="<?=base_url("index.php/form/insert_bon")?>" method="POST" class="row">
         <div class="col-md-5">
-            <label class="form-label" for="Supir">Supir</label>
-            <select name="Supir" id="Supir" class="form-control selectpicker" data-live-search="true" required onchange="bon_user()">
+            <label class="form-label" for="Supir_bon">Supir</label>
+            <select name="Supir_bon" id="Supir_bon" class="form-control selectpicker" data-live-search="true" required onchange="bon_user()">
                 <option class="font-w700" disabled="disabled" selected value="">Supir Pengiriman</option>
                 <?php foreach($supir as $value){ ?>
                     <option value="<?=$value["supir_id"]?>"><?=$value["supir_name"]?></option>
@@ -55,11 +55,12 @@
             url: "<?php echo base_url('index.php/form/getbonsupir') ?>",
             dataType: "text",
             data:{
-                id:$("#Supir").val()
+                id:$("#Supir_bon").val()
             },
             success: function(data) {
                 $("#bon-saat-ini-tampilan").attr('placeholder','Rp.'+rupiah(data));
                 $("#bon-saat-ini").val(data);
+                nominal();
             }
         });
     }

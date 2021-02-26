@@ -32,7 +32,7 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-danger" href="#">Log Out</a>
+                    <a class="btn btn-danger" href="<?= base_url("index.php/login/logout")?>">Log Out</a>
                 </div>
             </div>
         </div>
@@ -41,10 +41,9 @@
     <!-- Bootstrap core JavaScript-->
     <script src="<?=base_url("assets/vendor/jquery/jquery.min.js")?>"></script>
     <script src="<?=base_url("assets/vendor/jquery/jquery.mask.min.js")?>"></script>
-    <script src="<?=base_url("assets/vendor/bootstrap/js/bootstrap.bundle.min.js")?>"></script>
-
-    
-
+    <script src="<?=base_url("assets/vendor/bootstrap/js/bootstrap.bundle.min.js")?>"></script>    
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <!-- <script src="<?=base_url('assets/sweetalert2/sweetalert2.min.js') ?>"></script> -->
     <!-- Core plugin JavaScript-->
     <script src="<?=base_url("assets/vendor/jquery-easing/jquery.easing.min.js")?>"></script>
     
@@ -63,6 +62,9 @@
         $(document).ready(function() {
             var table = null;
             table = $('#Table-Truck').DataTable({
+                language: {
+                    searchPlaceholder: "Nomor Polisi"
+                },
                 "processing": true,
                 "serverSide": true,
                 "ordering": true,
@@ -102,17 +104,26 @@
                 drawCallback: function() {
                     $('.btn-delete-truck').click(function() {
                         let pk = $(this).data('pk');
-                        $.ajax({
-                            type: "GET",
-                            url: "<?php echo base_url('index.php/form/deletetruck') ?>",
-                            dataType: "text",
-                            data: {
-                                id: pk
-                            },
-                            success: function(data) {
-                                location.reload();
+                        Swal.fire({
+                            title: 'Yakin Ingin Hapus Truck Ini?',
+                            showDenyButton: true,
+                            denyButtonText: `Batal`,
+                            confirmButtonText: 'Hapus',
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                $.ajax({
+                                    type: "GET",
+                                    url: "<?php echo base_url('index.php/form/deletetruck') ?>",
+                                    dataType: "text",
+                                    data: {
+                                        id: pk
+                                    },
+                                    success: function(data) {
+                                        location.reload();
+                                    }
+                                });
                             }
-                        });
+                        })
                     });
                 }
             });
@@ -125,6 +136,9 @@
         $(document).ready(function() {
             var table = null;
             table = $('#Table-Job-Order').DataTable({
+                language: {
+                    searchPlaceholder: "Nomor JO"
+                },
                 "processing": true,
                 "serverSide": true,
                 "ordering": true,
@@ -222,6 +236,9 @@
         $(document).ready(function() {
             var table = null;
             table = $('#Table-Bon').DataTable({
+                language: {
+                    searchPlaceholder: "Nomor Bon/Nama Supir"
+                },
                 "processing": true,
                 "serverSide": true,
                 "ordering": true,
@@ -293,7 +310,7 @@
                                 $('td[name="id"]').text(data["bon_id"]); //set value
                                 $('td[name="supir"]').text(data["supir_name"]); //set value
                                 $('td[name="jenis"]').text(data["bon_jenis"]); //set value
-                                $('td[name="nominal"]').text(data["bon_nominal"]); //set value
+                                $('td[name="nominal"]').text("Rp."+rupiah(data["bon_nominal"])); //set value
                                 $('td[name="tanggal"]').text(data["bon_tanggal"]); //set value
                                 $('td[name="keterangan"]').text(data["bon_keterangan"]); //set value
                                 // alert(data["supir_id"]+data["supir_name"]+data["bon_id"]+data["bon_jenis"]+data["bon_nominal"]);
@@ -355,6 +372,9 @@
         $(document).ready(function() {
             var table = null;
             table = $('#Table-Supir').DataTable({
+                language: {
+                    searchPlaceholder: "Nama Supir"
+                },
                 "processing": true,
                 "serverSide": true,
                 "ordering": true,
@@ -432,17 +452,26 @@
                     });
                     $('.btn-delete-supir').click(function() {
                         let pk = $(this).data('pk');
-                        $.ajax({
-                            type: "GET",
-                            url: "<?php echo base_url('index.php/form/deletesupir') ?>",
-                            dataType: "text",
-                            data: {
-                                id: pk
-                            },
-                            success: function(data) {
-                                location.reload();
+                        Swal.fire({
+                            title: 'Yakin Ingin Hapus Supir Ini?',
+                            showDenyButton: true,
+                            denyButtonText: `Batal`,
+                            confirmButtonText: 'Hapus',
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                $.ajax({
+                                    type: "GET",
+                                    url: "<?php echo base_url('index.php/form/deletesupir') ?>",
+                                    dataType: "text",
+                                    data: {
+                                        id: pk
+                                    },
+                                    success: function(data) {
+                                        location.reload();
+                                    }
+                                });
                             }
-                        });
+                        })
                     });
                 }
             });
@@ -455,6 +484,9 @@
         $(document).ready(function() {
             var table = null;
             table = $('#Table-Invoice').DataTable({
+                language: {
+                    searchPlaceholder: "Nomor Invoice"
+                },
                 "processing": true,
                 "serverSide": true,
                 "ordering": true,
@@ -527,11 +559,11 @@
     </script>
     <!-- End Invoice -->
 
-    <!-- JO Sampai-->
-    <script> //script datatables job order
+    <!-- invoice Belum Lunas-->
+    <script>
         $(document).ready(function() {
             var table = null;
-            table = $('#Table-Job-Order-Sampai').DataTable({
+            table = $('#Table-Invoice-Belum-Lunas').DataTable({
                 "processing": true,
                 "serverSide": true,
                 "ordering": true,
@@ -539,13 +571,10 @@
                     [0, 'asc']
                 ],
                 "ajax": {
-                    "url": "<?php echo base_url('index.php/detail/view_JO_Sampai/') ?>",
+                    "url": "<?php echo base_url('index.php/home/view_invoice_belum_lunas') ?>",
                     "type": "POST",
                     'data': function(data) {
-                        // data.tanggal = $('#Tanggal').val();
-                        // data.bulan = $('#Bulan').val();
-                        // data.tahun = $('#Tahun').val();
-                        data.customer_id = $('#customer-id').val();
+                        data.customer_id = <?= $customer["customer_id"]?>;
                     }
                 },
                 "deferRender": true,
@@ -555,81 +584,60 @@
                 ],
                 "columns": [
                     {
-                        "data": "Jo_id",
+                        "data": "invoice_kode",
                         className: 'text-center'
                     },
                     {
                         "data": "customer_name"
                     },
                     {
-                        "data": "muatan"
+                        "data": "tanggal_invoice",
+                        className: 'text-center'
                     },
                     {
-                        "data": "asal"
+                        "data": "batas_pembayaran",
+                        className: 'text-center'
                     },
                     {
-                        "data": "tujuan"
-                    },
-                    {
-                        "data": "tanggal_surat"
-                    },
-                    {
-                        "data": "status",
+                        "data": "status_bayar",
                         className: 'text-center',
-                        "orderable": true,
-                            render: function(data, type, row) {
-                                if (data == "Sampai Tujuan") {
+                        render: function(data, type, row) {
+                            if (data == "Lunas") {
                                     let html = "<span class='btn-sm btn-block btn-success'><i class='fa fa-fw fa-check mr-2'></i>" + data + "</span>";
                                     return html;
                                 } else {
-                                    let html = "<span class='btn-sm btn-block btn-warning'><i class='fa fa-fw fa-exclamation-circle mr-2'></i>" + data + "</span>";
+                                    let html = "<span class='btn-sm btn-block btn-warning'><i class='fa fa fa-fw fa-exclamation-circle mr-2'></i>" + data + "</span>";
                                     return html;
                                 }
-                            }
+                        }
                     },
                     {
-                        "data": "Jo_id",
+                        "data": "grand_total",
+                        render: function(data, type, row) {
+                            let html = 'Rp.'+rupiah(data);
+                            return html;
+                        }
+                    },
+                    {
+                        "data": "invoice_kode",
+                        className: 'text-center',
                         "orderable": false,
                         render: function(data, type, row) {
-                            let html = "<a class='btn btn-light' href='<?= base_url('index.php/detail/detail_jo/"+data+"')?>'><i class='fas fa-eye'></i></a>";
+                            let html = "<a class='btn btn-light' href='<?= base_url('index.php/detail/detail_invoice/"+data+"')?>'><i class='fas fa-eye'></i></a>";
                             return html;
                         }
                     }
                 ]
             });
-            // $("#Tanggal").change(function() {
-            //     // alert($('#Tanggal').val());   
-            //     table.ajax.reload();
-            //     $('#link_cetaklaporanpdf').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanpdf/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
-            //     $('#link_cetaklaporanexcel').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanexcel/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
-            // });
-            // $("#Bulan").change(function() {
-            //     // alert($('#Bulan').val());   
-            //     table.ajax.reload();
-            //     $('#link_cetaklaporanpdf').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanpdf/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
-            //     $('#link_cetaklaporanexcel').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanexcel/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
-            // });
-            // $("#Tahun").change(function() {
-            //     // alert($('#Tahun').val());   
-            //     table.ajax.reload();
-            //     $('#link_cetaklaporanpdf').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanpdf/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
-            //     $('#link_cetaklaporanexcel').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanexcel/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
-            // });
-            // $("#status-JO").change(function() {
-            //     // alert($("#status-JO").val())
-            //     table.ajax.reload();
-            //     $('#link_cetaklaporanpdf').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanpdf/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
-            //     $('#link_cetaklaporanexcel').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanexcel/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
-            // });
         });
     </script>
-    <!-- end JO Sampai-->
+    <!-- End Invoice Belum Lunas-->
 
-    <!-- JO Perjalanan-->
-    <script> //script datatables job order
+    <!-- invoice Lunas-->
+    <script>
         $(document).ready(function() {
             var table = null;
-            table = $('#Table-Job-Order-Perjalanan').DataTable({
+            table = $('#Table-Invoice-Lunas').DataTable({
                 "processing": true,
                 "serverSide": true,
                 "ordering": true,
@@ -637,13 +645,10 @@
                     [0, 'asc']
                 ],
                 "ajax": {
-                    "url": "<?php echo base_url('index.php/detail/view_JO_Perjalanan/') ?>",
+                    "url": "<?php echo base_url('index.php/home/view_invoice_lunas') ?>",
                     "type": "POST",
                     'data': function(data) {
-                        // data.tanggal = $('#Tanggal').val();
-                        // data.bulan = $('#Bulan').val();
-                        // data.tahun = $('#Tahun').val();
-                        data.customer_id = $('#customer-id').val();
+                        data.customer_id = <?= $customer["customer_id"]?>;
                     }
                 },
                 "deferRender": true,
@@ -653,75 +658,54 @@
                 ],
                 "columns": [
                     {
-                        "data": "Jo_id",
+                        "data": "invoice_kode",
                         className: 'text-center'
                     },
                     {
                         "data": "customer_name"
                     },
                     {
-                        "data": "muatan"
+                        "data": "tanggal_invoice",
+                        className: 'text-center'
                     },
                     {
-                        "data": "asal"
+                        "data": "batas_pembayaran",
+                        className: 'text-center'
                     },
                     {
-                        "data": "tujuan"
-                    },
-                    {
-                        "data": "tanggal_surat"
-                    },
-                    {
-                        "data": "status",
+                        "data": "status_bayar",
                         className: 'text-center',
-                        "orderable": false,
-                            render: function(data, type, row) {
-                                if (data == "Sampai Tujuan") {
+                        render: function(data, type, row) {
+                            if (data == "Lunas") {
                                     let html = "<span class='btn-sm btn-block btn-success'><i class='fa fa-fw fa-check mr-2'></i>" + data + "</span>";
                                     return html;
                                 } else {
-                                    let html = "<span class='btn-sm btn-block btn-warning'><i class='fa fa-fw fa-exclamation-circle mr-2'></i>" + data + "</span>";
+                                    let html = "<span class='btn-sm btn-block btn-warning'><i class='fa fa fa-fw fa-exclamation-circle mr-2'></i>" + data + "</span>";
                                     return html;
                                 }
-                            }
+                        }
                     },
                     {
-                        "data": "Jo_id",
+                        "data": "grand_total",
+                        render: function(data, type, row) {
+                            let html = 'Rp.'+rupiah(data);
+                            return html;
+                        }
+                    },
+                    {
+                        "data": "invoice_kode",
+                        className: 'text-center',
                         "orderable": false,
                         render: function(data, type, row) {
-                            let html = "<a class='btn btn-light' href='<?= base_url('index.php/detail/detail_jo/"+data+"')?>'><i class='fas fa-eye'></i></a>";
+                            let html = "<a class='btn btn-light' href='<?= base_url('index.php/detail/detail_invoice/"+data+"')?>'><i class='fas fa-eye'></i></a>";
                             return html;
                         }
                     }
                 ]
             });
-            // $("#Tanggal").change(function() {
-            //     // alert($('#Tanggal').val());   
-            //     table.ajax.reload();
-            //     $('#link_cetaklaporanpdf').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanpdf/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
-            //     $('#link_cetaklaporanexcel').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanexcel/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
-            // });
-            // $("#Bulan").change(function() {
-            //     // alert($('#Bulan').val());   
-            //     table.ajax.reload();
-            //     $('#link_cetaklaporanpdf').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanpdf/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
-            //     $('#link_cetaklaporanexcel').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanexcel/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
-            // });
-            // $("#Tahun").change(function() {
-            //     // alert($('#Tahun').val());   
-            //     table.ajax.reload();
-            //     $('#link_cetaklaporanpdf').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanpdf/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
-            //     $('#link_cetaklaporanexcel').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanexcel/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
-            // });
-            // $("#status-JO").change(function() {
-            //     // alert($("#status-JO").val())
-            //     table.ajax.reload();
-            //     $('#link_cetaklaporanpdf').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanpdf/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
-            //     $('#link_cetaklaporanexcel').attr('href','<?=base_url("index.php/print_berkas/cetaklaporanexcel/")?>'+$('#Tanggal').val()+'/'+$('#Bulan').val()+'/'+$('#Tahun').val()+'/'+$('#status-JO').val());
-            // });
         });
     </script>
-    <!-- end JO Perjalanan-->
+    <!-- End Invoice Lunas-->
 
     <!-- scrip angka rupiah -->
     <script>
@@ -774,7 +758,7 @@
                     {
                         "data": "akun_role",
                         className: 'text-center',
-                        "orderable": true,
+                        "orderable": false,
                         render: function(data, type, row) {
                             if (data == "Super User") {
                                     let html = "<span class='btn-sm btn-block btn-dark'></i>" + data + "</span>";
@@ -784,15 +768,153 @@
                                     return html;
                                 }
                         }
+                    },
+                    {   "data": "akun_id",
+                        className: 'text-center',
+                        "orderable": false,
+                        render: function(data, type, row) {
+                            let html = "<a class='btn btn-light btn-update-akun' data-toggle='modal' data-target='#popup-update-akun' href='javascript:void(0)' data-pk="+data+"><i class='fas fa-pen-square'></i></a> || "+
+                            "<a class='btn btn-light btn-delete-akun' href='javascript:void(0)' data-pk="+data+"><i class='fas fa-trash-alt'></i></a>";
+                            return html;
+                        }
                     }
-                ]
+                ],
+                drawCallback: function() {
+                    $('.btn-update-akun').click(function() {
+                        let pk = $(this).data('pk');
+                        $("#akun_id").val(pk);
+                        $.ajax({
+                            type: "GET",
+                            url: "<?php echo base_url('index.php/form/getakunbyid') ?>",
+                            dataType: "JSON",
+                            data: {
+                                id: pk
+                            },
+                            success: function(data) {
+                                $("#akun_name").val(data["akun_name"]);
+                                $("#username_update").val(data["username"]);
+                                $("#password_update").val(data["password"]);
+                                $("#role_update").val(data["akun_role"]);
+                            }
+                        });
+                    });
+                    $('.btn-delete-akun').click(function() {
+                        let pk = $(this).data('pk');
+                        Swal.fire({
+                            title: 'Yakin Ingin Hapus Akun Ini?',
+                            showDenyButton: true,
+                            denyButtonText: `Batal`,
+                            confirmButtonText: 'Hapus',
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                $.ajax({
+                                    type: "GET",
+                                    url: "<?php echo base_url('index.php/form/deleteakun') ?>",
+                                    dataType: "text",
+                                    data: {
+                                        id: pk
+                                    },
+                                    success: function(data) {
+                                        location.reload();
+                                    }
+                                });
+                            }
+                        })
+                    });
+                }
             });
         });
     </script>
     <!-- end Akun --> 
-
-
     
+    <!-- script alert-alert -->
+    <script>
+        $(document).ready(function() {
+            var login = '<?= $this->session->flashdata('status-login'); ?>';
+            var akun = '<?= $this->session->flashdata('status-add-akun'); ?>';
+            var update_akun = '<?= $this->session->flashdata('status-update-akun'); ?>';
+            var delete_akun = '<?= $this->session->flashdata('status-delete-akun'); ?>';
+            var supir = '<?= $this->session->flashdata('status-add-supir'); ?>';
+            var update_supir = '<?= $this->session->flashdata('status-update-supir'); ?>';
+            var delete_supir = '<?= $this->session->flashdata('status-delete-supir'); ?>';
+            var kendaraan = '<?= $this->session->flashdata('status-add-kendaraan'); ?>';
+            var delete_kendaraan = '<?= $this->session->flashdata('status-delete-kendaraan'); ?>';
+            if(login == "Berhasil"){
+                Swal.fire({
+                        title: "Berhasil Login",
+                        text: "Selamat Datang",
+                        type: "success",
+                        timer: 1500
+                    });
+            }
+            if(akun == "Berhasil"){
+                Swal.fire({
+                        title: "Berhasil",
+                        text: "Menambah Akun Baru",
+                        type: "success",
+                        timer: 2000
+                    });
+            }
+            if(update_akun == "Berhasil"){
+                Swal.fire({
+                        title: "Berhasil",
+                        text: "Mengubah Data Akun",
+                        type: "success",
+                        timer: 2000
+                    });
+            }
+            if(delete_akun == "Berhasil"){
+                Swal.fire({
+                        title: "Berhasil",
+                        text: "Menghapus Data Akun",
+                        type: "error",
+                        timer: 2000
+                    });
+            }
+            if(supir == "Berhasil"){
+                Swal.fire({
+                        title: "Berhasil",
+                        text: "Menambah Supir Baru",
+                        type: "success",
+                        timer: 2000
+                    });
+            }
+            if(update_supir == "Berhasil"){
+                Swal.fire({
+                        title: "Berhasil",
+                        text: "Mengubah Data Supir",
+                        type: "success",
+                        timer: 2000
+                    });
+            }
+            if(delete_supir == "Berhasil"){
+                Swal.fire({
+                        title: "Berhasil",
+                        text: "Menghapus Data Supir",
+                        type: "error",
+                        timer: 2000
+                    });
+            }
+            if(kendaraan == "Berhasil"){
+                Swal.fire({
+                        title: "Berhasil",
+                        text: "Menambah Data kendaraan",
+                        type: "success",
+                        timer: 2000
+                    });
+            }
+            if(delete_kendaraan == "Berhasil"){
+                Swal.fire({
+                        title: "Berhasil",
+                        text: "Menghapus Data Kendaraan",
+                        type: "error",
+                        timer: 2000
+                    });
+            }
+        });
+    </script>
+    <!-- end script alert -->
+
 </body>
 
 </html>

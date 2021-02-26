@@ -1,14 +1,14 @@
 <div class="container small ">
     <div class="d-sm-flex align-items-center justify-content-between mb-4 ">
         <h1 class="h3 mb-0 text-gray-800 mt-3 mb-3">Seluruh Data Job Order</h1>
-            <a href="<?=base_url("index.php/form/joborder/x")?>" class="btn btn-primary btn-icon-split">
+        <a href="<?=base_url("index.php/form/joborder/x")?>" class="btn btn-primary btn-icon-split">
             <span class="icon text-white-100">
                 <i class="fas fa-plus"></i> 
             </span>
-                <span class="text">
-                     Buat Job Order
-                </span>
-            </a>
+            <span class="text">
+                 Buat Job Order
+            </span>
+        </a>
     </div> 
     <div class="card shadow mb-4">
     <div class="card-header py-3">
