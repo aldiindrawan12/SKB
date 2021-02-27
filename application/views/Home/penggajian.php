@@ -1,4 +1,4 @@
-<div class="container small">
+<div class="container">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Seluruh Data Penggajian Supir</h1>
         <a class="btn btn-primary btn-icon-split" data-toggle='modal' data-target='#popup-supir'>
