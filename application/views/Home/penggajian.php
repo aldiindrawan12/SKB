@@ -36,7 +36,7 @@
 </div>
 
 <!-- pop up add supir -->
-<div class="modal fade" id="popup-supir" tabindex="-1" role="dialog" aria-labelledby="modal-block-large" aria-hidden="true">
+<div class="modal fade mt-5 px-5 py-5" id="popup-supir" tabindex="-1" role="dialog" aria-labelledby="modal-block-large" aria-hidden="true">
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary-dark">
@@ -48,7 +48,7 @@
             <div class="font-size-sm m-3 text-justify">
                 <form action="<?= base_url("index.php/form/insert_supir")?>" method="POST">
                     <div class="form-group">
-                        <label for="Supir" class="form-label">Nama Supir</label>
+                        <label for="Supir" class="form-label font-weight-bold">Nama Supir</label>
                         <input autocomplete="off" type="text" class="form-control" id="Supir" name="Supir" required>
                     </div>
                     <div class="form-group">
