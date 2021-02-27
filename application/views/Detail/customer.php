@@ -5,7 +5,8 @@
     </div>
     <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Lunas</h6>
+         <h5><span class="badge badge-success">Lunas</span></h5>
+        
     </div>
     <!-- tabel invoice Lunas-->
             <div class="card-body">
@@ -36,9 +37,10 @@
     
 
     <div class="container">
-            <div class="card shadow mb-4 mt-5">
+            <div class="card shadow mb-4 mt-3">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-danger">Belum Lunas</h6>
+         
+                <h5><span class="badge badge-warning">Belum Lunas</span></h5>
             </div>
             <!-- tabel invoice Belum Lunas-->
             <div class="card-body">
@@ -60,6 +62,6 @@
                     </table>
                 </div>
             </div>
-                                    </div>
+        </div>
 
 </div>
