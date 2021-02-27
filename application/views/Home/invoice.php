@@ -1,4 +1,4 @@
-<div class="container small">
+<div class="container">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800 mt-3 mb-3">Seluruh Data Invoice</h1>
     </div> 
