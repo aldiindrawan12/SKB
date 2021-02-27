@@ -47,7 +47,7 @@
             <li class="nav-item" id="Bon_page">
                 <a class="nav-link" href="<?=base_url("index.php/home/bon")?>">
                     <i class="fas fa-funnel-dollar"></i>
-                    <span>Transaksi BON Driver</span>
+                    <span>Transaksi BON Supir</span>
                 </a>
             </li>
              <!-- Divider -->
@@ -67,7 +67,7 @@
             <li class="nav-item" id="Supir_page">
                 <a class="nav-link" href="<?=base_url("index.php/home/penggajian")?>">
                     <i class="fas fa-money-check-alt"></i>
-                    <span>Driver</span>
+                    <span>Supir</span>
                 </a>
             </li>
             <!-- Nav Item -->

@@ -28,14 +28,14 @@
                 <table class="table table-bordered table-striped" id="" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th scope="col">No JO</th>
-                            <th scope="col">Customer</th>
-                            <th scope="col">Muatan</th>
-                            <th scope="col">Asal</th>
-                            <th scope="col">Tujuan</th>
-                            <th scope="col">Tgl Muat</th>
-                            <th scope="col">Tgl Bongkar</th>
-                            <th scope="col">Uang Jalan</th>
+                            <th class="text-center" width="12,5%"  scope="col">No JO</th>
+                            <th class="text-center" width="12,5%" scope="col">Customer</th>
+                            <th class="text-center" width="12,5%" scope="col">Muatan</th>
+                            <th class="text-center" width="12,5%" scope="col">Asal</th>
+                            <th class="text-center" width="12,5%" scope="col">Tujuan</th>
+                            <th class="text-center" width="12,5%" scope="col">Tgl Muat</th>
+                            <th class="text-center" width="12,5%" scope="col">Tgl Bongkar</th>
+                            <th class="text-center" width="12,5%"  scope="col">Uang Jalan</th>
                         </tr>
                     </thead>
                     <tbody>
