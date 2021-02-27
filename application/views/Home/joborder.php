@@ -27,13 +27,13 @@
             <table class="table table-bordered  " id="Table-Job-Order" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th width ="8%" class="text-center" scope="col">No JO</th>
+                        <th width ="10%" class="text-center" scope="col">No JO</th>
                         <th width ="17%" class="text-center" scope="col">Customer</th>
                         <th width ="15%" class="text-center" scope="col">Muatan</th>
                         <th width ="16%" class="text-center" scope="col">Asal</th>
                         <th width ="16%" class="text-center" scope="col">Tujuan</th>
-                        <th width ="7%" class="text-center" scope="col">Tanggal</th>
-                        <th width ="19%" scope="col">Status</th>
+                        <th width ="1%" class="text-center" scope="col">Tanggal</th>
+                        <th width ="25%" scope="col">Status</th>
                         <th width ="5%" scope="col">Detail</th>
                     </tr>
                 </thead>
