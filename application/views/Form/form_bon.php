@@ -9,7 +9,7 @@
             <div class="container">
                 <form action="<?=base_url("index.php/form/insert_bon")?>" method="POST" class="row">
                     <div class="col-md-4 col-md-offset-4 mb-4">
-                        <label class="form-label" for="Supir_bon">Supir</label>
+                        <label class="form-label font-weight-bold" for="Supir_bon">Supir</label>
                         <select name="Supir_bon" id="Supir_bon" class="form-control selectpicker" data-live-search="true" required onchange="bon_user()">
                             <option class="font-w700" disabled="disabled" selected value="">Supir Pengiriman</option>
                             <?php foreach($supir as $value){ ?>
@@ -23,14 +23,14 @@
                    
                     </div>
                     <div class="col-md-4 col-md-offset-4 mb-4">
-                    <label for="" class="form-label">Bon Hutang Saat Ini</label>
+                    <label for="" class="form-label font-weight-bold">Bon Hutang Saat Ini</label>
                         <input autocomplete="off" type="text" class="form-control" id="bon-saat-ini-tampilan" name="" disabled>
                         <input autocomplete="off" type="text" class="form-control" id="bon-saat-ini" name="" required hidden>
                         
                        
                     </div>
                     <div class="col-md-4 col-md-offset-4 mb-4">
-                    <label class="form-label" for="Jenis">Jenis Transaksi</label>
+                    <label class="form-label font-weight-bold" for="Jenis">Jenis Transaksi</label>
                         <select name="Jenis" id="Jenis" class="form-control custom-select" required onchange="nominal()">
                             <option class="font-w700" disabled="disabled" selected value="">Jenis Transaksi</option>
                             <option value="Pengajuan">Pengajuan</option>
@@ -41,13 +41,13 @@
                     </div>
 
                     <div class="col-md-4 col-md-offset-4 mb-4">
-                    <label for="Nominal" class="form-label">Nominal</label>
+                    <label for="Nominal" class="form-label font-weight-bold">Nominal</label>
                         <input autocomplete="off" type="text" class="form-control" id="Nominal" name="Nominal" required onkeyup="nominal()">
                     </div>
 
                      
                     <div class="col-md-8 mb-4 ">
-                        <label for="Keterangan" class="form-label">Keterangan/Catatan</label>
+                        <label for="Keterangan" class="form-label font-weight-bold">Keterangan/Catatan</label>
                         <textarea class="form-control" name="Keterangan" id="Keterangan" rows="3"></textarea>
                     </div>
 
@@ -78,7 +78,7 @@
         // alert(uang_fix);
         if($("#Jenis").val()=='Pembayaran'){
             if(parseInt(uang_fix)>parseInt($("#bon-saat-ini").val())){
-                alert('Jumlah Pembayaran Harus Lebuh Kecil Dari Rp.'+ rupiah($("#bon-saat-ini").val()));
+                alert('Jumlah Pembayaran Harus Lebih Kecil Dari Rp.'+ rupiah($("#bon-saat-ini").val()));
                 $( '#Nominal' ).val("");
             }
         }
