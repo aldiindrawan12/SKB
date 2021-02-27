@@ -39,14 +39,14 @@
 <div class="modal fade" id="popup-tambah-akun" role="dialog" aria-labelledby="modal-block-large" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <div class="modal-header bg-primary-dark">
-                <h5 class="block-title">Tambah Akun</h5>
+            <div class="modal-header">
+                <h5 class="block-title font-weight-bold">Tambah Akun</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">X</span>
+                    <span aria-hidden="true">&times</span>
                 </button>
             </div>
             <div class="font-size-sm m-3 text-justify">
-                <p>Isi Data Dengan Lengkap</p>
+                <p class="font-weight-bold">Isi Data Dengan Lengkap</p>
                 <form  action="<?= base_url("index.php/form/insert_akun")?>" method="POST">
                     <div class="mb-3 row">
                         <label for="nama" class="col-sm-5 col-form-label">Nama Akun</label>
@@ -74,8 +74,8 @@
                             <option value="Operator">Operator</option>
                         </select>
                     </div>
-                    <div style="float:right;margin-bottom:3%">
-                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    <div style="float:right;margin-bottom:3%" class="mr-5 px-3">
+                        <button type="submit" class="btn btn-success">Simpan</button>
                     </div>
                 </form>
             </div>
