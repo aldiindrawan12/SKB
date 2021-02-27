@@ -20,10 +20,10 @@
                 <table class="table table-bordered" id="Table-Bon" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th width="10%" class="text-center" width="13%" scope="col">ID Transaksi</th>
+                            <th width="10%" class="text-center" scope="col">ID Transaksi</th>
                             <th width="16%" class="text-center" scope="col">Nama Supir</th>
-                            <th width="16%" class="text-center" width="20%" scope="col">Jenis Transaksi</th>
-                            <th width="16%" class="text-center" scope="col">Nominal</th>
+                            <th width="16%" class="text-center"  scope="col">Jenis Transaksi</th>
+                            <th width="12%" class="text-center" scope="col">Nominal</th>
                             <th width="16%" class="text-center" scope="col">Tanggal Transaksi</th>
                             <th width="5%" class="text-center" scope="col">Detail</th>
                         </tr>
@@ -44,7 +44,7 @@
             <div class="modal-header bg-primary-dark">
                 <h5 class="block-title">Detail Transaksi Bon</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">X</span>
+                    <span aria-hidden="true">&times</span>
                 </button>
             </div>
             <div class="font-size-sm m-3 text-justify">

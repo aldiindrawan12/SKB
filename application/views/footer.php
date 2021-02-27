@@ -283,7 +283,8 @@
                         }
                     },
                     {
-                        "data": "bon_tanggal"
+                        "data": "bon_tanggal",
+                        className: 'text-center'    
                     },
                     {
                         "data": "bon_id",
