@@ -5,7 +5,7 @@
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
-            <<?php
+            <?php
                 if($_SESSION["user"]){
                     $link = base_url("index.php/home");
                 }else{
