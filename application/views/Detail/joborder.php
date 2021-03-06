@@ -98,9 +98,9 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary-dark">
-                <h5 class="block-title">KONFIRMASI JOB ORDER</h5>
+                <h5 class="block-title font-weight-bold">Konfirmasi Job Order</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">X</span>
+                    <span aria-hidden="true">&times</span>
                 </button>
             </div>
             <div class="font-size-sm m-3 text-justify">
@@ -143,8 +143,8 @@
                             <input autocomplete="off" class="form-control" type="text" name="TOD" id="TOD" required>
                         </div>
                     </div>
-                    <div style="float:right;margin-bottom:3%">
-                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    <div class="float-right mr-5 px-3 mt-2">
+                        <button type="submit" class="btn btn-success">Simpan</button>
                     </div>
                 </form>
             </div>

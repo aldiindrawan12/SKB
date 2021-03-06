@@ -1,12 +1,12 @@
 <div class="container">
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
+        <div class="card-header py-3 mb-3">
             <h6 class="m-0 font-weight-bold text-primary">Data Job Order(JO)</h6>
         </div>
         <!-- select tanggal,bulan,tahun -->
-        <div class="row text-center">
+        <div class="row text-center col-md-12">
             <!-- select tanggal -->
-            <div class="col-md-2">
+            <div class="col-md-2 ">
                 <select name="Tanggal" id="Tanggal" class="form-control">
                     <option class="font-w700" selected value="x">Semua Tanggal</option>
                     <?php for($i=1;$i<32;$i++){?>

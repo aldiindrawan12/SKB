@@ -310,7 +310,9 @@
                             success: function(data) { //jika ambil data sukses
                                 $('td[name="id"]').text(data["bon_id"]); //set value
                                 $('td[name="supir"]').text(data["supir_name"]); //set value
+                               
                                 $('td[name="jenis"]').text(data["bon_jenis"]); //set value
+                              
                                 $('td[name="nominal"]').text("Rp."+rupiah(data["bon_nominal"])); //set value
                                 $('td[name="tanggal"]').text(data["bon_tanggal"]); //set value
                                 $('td[name="keterangan"]').text(data["bon_keterangan"]); //set value

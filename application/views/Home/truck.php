@@ -33,7 +33,7 @@
     </div>
 </div>
 <!-- pop up add truck -->
-<div class="modal fade" id="popup-truck" tabindex="-1" role="dialog" aria-labelledby="modal-block-large" aria-hidden="true">
+<div class="modal fade mt-5 px-5 py-5" id="popup-truck" tabindex="-1" role="dialog" aria-labelledby="modal-block-large" aria-hidden="true">
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary-dark">
@@ -45,15 +45,15 @@
             <div class="font-size-sm m-3 text-justify">
                 <form action="<?= base_url("index.php/form/insert_truck")?>" method="POST">
                     <div class="form-group">
-                        <label for="mobil_no" class="form-label">Plat No Mobil</label>
+                        <label for="mobil_no" class="form-label font-weight-bold">Plat No Mobil</label>
                         <input autocomplete="off" type="text" class="form-control" id="mobil_no" name="mobil_no" required>
                     </div>
                     <div class="form-group">
-                        <label for="mobil_jenis" class="form-label">Jenis Mobil</label>
+                        <label for="mobil_jenis" class="form-label font-weight-bold">Jenis Mobil</label>
                         <input autocomplete="off" type="text" class="form-control" id="mobil_jenis" name="mobil_jenis" required>
                     </div>
                     <div class="form-group">
-                        <label for="mobil_max_load" class="form-label">Muatan Maksimal Mobil (Ton)</label>
+                        <label for="mobil_max_load" class="form-label font-weight-bold">Muatan Maksimal Mobil (Ton)</label>
                         <input autocomplete="off" type="number" class="form-control" id="mobil_max_load" name="mobil_max_load" required>
                     </div>
                     <div class="form-group">
