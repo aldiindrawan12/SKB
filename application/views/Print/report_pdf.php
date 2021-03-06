@@ -8,24 +8,31 @@
     <meta name="author" content="">
 
     <title>Sumber Karya Berkah</title>
-
-    <!-- Custom fonts for this template-->
-    <link href="<?=base_url("assets/vendor/fontawesome-free/css/all.min.css")?>" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="<?php echo base_url('assets/vendor/datatables/dataTables.bootstrap4.css') ?>">
     <!-- Custom styles for this template-->
-    <link href="<?=base_url("assets/css/sb-admin-2.min.css")?>" rel="stylesheet">
+    <style>
+        table,th,td{
+            border: 1px solid black;
+            text-align:center;
+        }
+        .judul{
+            text-align:center;
+            font-size:24px;
+        }
+        .tanggal{
+            font-size:18px;
+        }
+    </style>
 </head>
 <body>
-    <div class="body-card text-center">
-        <span class="h3">Data Laporan Job Order</span>
+    <div class="judul">
+        <span>Data Laporan Job Order</span>
         <hr>
     </div>
-    <div class="card-body">
-        <span class="h5">Tanggal : <?=$tanggal?></span>
+    <div class="tanggal">
+        <span>Tanggal : <?=$tanggal?></span>
     </div>
-    <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered table-striped" id="" width="100%" cellspacing="0">
+    <div>
+                <table  id="" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th scope="col">No JO</th>
@@ -53,7 +60,6 @@
                     <?php } ?>
                     </tbody>
                 </table>
-            </div>
     </div>
 </body>
 </html>
