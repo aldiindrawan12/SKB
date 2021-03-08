@@ -33,7 +33,7 @@
     </div>
 </div>
 <!-- pop up add truck -->
-<div class="modal fade mt-5 px-5 py-5" id="popup-truck" tabindex="-1" role="dialog" aria-labelledby="modal-block-large" aria-hidden="true">
+<div class="modal fade mt-5 px-5 py-2" id="popup-truck" tabindex="-1" role="dialog" aria-labelledby="modal-block-large" aria-hidden="true">
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary-dark">
@@ -56,6 +56,12 @@
                         <label for="mobil_max_load" class="form-label font-weight-bold">Muatan Maksimal Mobil (Ton)</label>
                         <input autocomplete="off" type="number" class="form-control" id="mobil_max_load" name="mobil_max_load" required>
                     </div>
+
+                    <div class="form-group">
+                        <label for="mobil_keterangan" class="form-label font-weight-bold">Keterangan</label>
+                        <textarea class="form-control" name="mobil_keterangan" rows="3"></textarea>
+                    </div>
+
                     <div class="form-group">
                     <button type="submit" class="btn btn-success mb-3 float-right">Simpan</button>
                     </div>
