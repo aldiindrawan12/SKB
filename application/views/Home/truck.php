@@ -22,7 +22,7 @@
                     <tr>
                         <th class="text-center" scope="col">No Polisi</th>
                         <th class="text-center" scope="col">Jenis Kendaraan</th>
-                        <th class="text-center" scope="col">Maximum Load</th>
+                        <th class="text-center" scope="col">Maximum Load (Ton)</th>
                         <th class="text-center" scope="col">Aksi</th>
                     </tr>
                 </thead>
