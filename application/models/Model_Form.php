@@ -67,6 +67,10 @@ class Model_Form extends CI_model
         return $this->db->insert("skb_customer", $data);
     }
 
+    public function insert_customerMenu($data){
+        return $this->db->insert("skb_customer", $data);
+    }
+
     public function insert_supir($data){
         return $this->db->insert("skb_supir", $data);
     }

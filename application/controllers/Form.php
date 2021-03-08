@@ -120,6 +120,15 @@ class Form extends CI_Controller {
             redirect(base_url("index.php/form/joborder/").$data["customer_name"]);
         }
 
+        public function insert_customerMenu(){
+            $data=array(
+                "customer_name"=>$this->input->post("Customer")
+            );
+            // echo($data["customer_name"]);
+            $this->model_form->insert_customer($data);
+            redirect(base_url("index.php/home/customer"));
+        }
+
         public function insert_supir(){
             $data=array(
                 "supir_name"=>$this->input->post("Supir"),
