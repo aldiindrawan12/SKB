@@ -842,6 +842,8 @@
             var delete_supir = '<?= $this->session->flashdata('status-delete-supir'); ?>';
             var kendaraan = '<?= $this->session->flashdata('status-add-kendaraan'); ?>';
             var delete_kendaraan = '<?= $this->session->flashdata('status-delete-kendaraan'); ?>';
+            var satuan = '<?= $this->session->flashdata('status-add-satuan'); ?>';
+            var delete_satuan = '<?= $this->session->flashdata('status-delete-satuan'); ?>';
             if(login == "Berhasil"){
                 Swal.fire({
                         title: "Berhasil Login",
@@ -910,6 +912,22 @@
                 Swal.fire({
                         title: "Berhasil",
                         text: "Menghapus Data Kendaraan",
+                        type: "error",
+                        timer: 2000
+                    });
+            }
+            if(satuan == "Berhasil"){
+                Swal.fire({
+                        title: "Berhasil",
+                        text: "Menambah Data Satuan",
+                        type: "success",
+                        timer: 2000
+                    });
+            }
+            if(delete_satuan == "Berhasil"){
+                Swal.fire({
+                        title: "Berhasil",
+                        text: "Menghapus Data Satuan",
                         type: "error",
                         timer: 2000
                     });

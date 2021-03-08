@@ -77,6 +77,13 @@
                     <span>Customer</span>
                 </a>
             </li>
+            <!-- Nav Item -->
+            <li class="nav-item" id="Satuan_page">
+                <a class="nav-link" href="<?=base_url("index.php/home/satuan")?>">  
+                    <i class="fas fa-weight"></i>
+                    <span>Satuan Muatan</span>
+                </a>
+            </li>
             <!-- Divider -->
             <hr class="sidebar-divider">
             <!-- Heading -->
@@ -87,7 +94,7 @@
             <li class="nav-item" id="Laporan_page">
                 <a class="nav-link" href="<?=base_url("index.php/home/report")?>">
                     <i class="fas fa-mail-bulk"></i>
-                    <span>Laporan Bukti Uang Jalan </span>
+                    <span>Laporan Job Order</span>
                 </a>
             </li>
             <?php if($_SESSION["role"] == "Super User"){?>

@@ -335,4 +335,20 @@ class Home extends CI_Controller {
             echo json_encode($callback);
         }
     //end Akun
+
+    //satuan muatan
+        public function satuan()
+        {
+            if(!$_SESSION["user"]){
+                $this->session->set_flashdata('status-login', 'False');
+                redirect(base_url());
+            }
+            $data["page"] = "Satuan_page";
+            $data["satuan"] = $this->model_home->getallsatuan();
+            $this->load->view('header',$data);
+            $this->load->view('sidebar');
+            $this->load->view('home/satuan');
+            $this->load->view('footer');
+        }
+    // end satuan muatan
 }

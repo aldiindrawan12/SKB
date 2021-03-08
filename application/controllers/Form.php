@@ -155,6 +155,16 @@ class Form extends CI_Controller {
 			$this->session->set_flashdata('status-add-kendaraan', 'Berhasil');
             redirect(base_url("index.php/home/truck"));
         }
+
+        public function insert_satuan(){
+            $data=array(
+                "satuan_name"=>$this->input->post("satuan_name"),
+                "satuan_simbol"=>$this->input->post("satuan_simbol"),
+            );
+            $this->model_form->insert_satuan($data);
+			$this->session->set_flashdata('status-add-satuan', 'Berhasil');
+            redirect(base_url("index.php/home/satuan"));
+        }
     // end fungsi insert
     
     // fungsi lain
@@ -184,6 +194,13 @@ class Form extends CI_Controller {
         $this->model_form->deletesupir($supir_id);
 		$this->session->set_flashdata('status-delete-supir', 'Berhasil');
         echo $supir_id;
+    }
+
+    public function deletesatuan(){
+        $satuan_id = $this->input->get("id");
+        $this->model_form->deletesatuan($satuan_id);
+		$this->session->set_flashdata('status-delete-satuan', 'Berhasil');
+        echo $satuan_id;
     }
 
     public function deleteakun(){

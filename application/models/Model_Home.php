@@ -7,6 +7,11 @@ class Model_Home extends CI_model
         return $this->db->get_where("skb_mobil",array("status_hapus"=>"NO"))->result_array();
     }
 
+    public function getallsatuan() //all satuan
+    {
+        return $this->db->get("skb_satuan")->result_array();
+    }
+
     public function getmobilbyid($mobil_no) //mobil by ID
     {
         return $this->db->get_where("skb_mobil",array("mobil_no"=>$mobil_no))->row_array();

@@ -75,6 +75,10 @@ class Model_Form extends CI_model
         return $this->db->insert("skb_supir", $data);
     }
 
+    public function insert_satuan($data){
+        return $this->db->insert("skb_satuan", $data);
+    }
+
     public function deletesupir($supir_id){
         $this->db->set("status_hapus","YES");
         $this->db->where("supir_id",$supir_id);
@@ -85,6 +89,11 @@ class Model_Form extends CI_model
         $this->db->set("status_hapus","YES");
         $this->db->where("mobil_no",$mobil_no);
         return $this->db->update("skb_mobil");
+    }
+
+    public function deletesatuan($satuan_id){
+        $this->db->where("satuan_id",$satuan_id);
+        return $this->db->delete("skb_satuan");
     }
 
     public function deleteakun($akun_id){
