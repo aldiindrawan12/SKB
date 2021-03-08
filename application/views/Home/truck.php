@@ -69,5 +69,46 @@
             </div>
         </div>
     </div>
+    </div>
+
+
+<!-- pop up detail kendaraan -->
+<div class="modal fade mt-5 px-5 py-5 " id="popup-kendaraan" tabindex="-1" role="dialog" aria-labelledby="modal-block-large" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary-dark">
+                <h5 class="block-title">Detail Kendaraan</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times</span>
+                </button>
+            </div>
+            <div class="font-size-sm m-3 text-justify">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="font-weight-bold" style="width: 20%;">No Polisi</td>
+                        <td name="mobil_no"></td>
+                    </tr>
+                    <tr>
+                        <td class="font-weight-bold" style="width: 20%;">Jenis Kendaraan</td>
+                        <td name="mobil_jenis"></td>
+                    </tr>
+                    <tr>
+                        <td class="font-weight-bold" style="width: 30%;">Maximum Load (Ton)</td>
+                        <td name="jenis"></td>
+                    </tr>
+                    <tr>
+                        <td class="font-weight-bold" style="width: 20%;">Keterangan</td>
+                        <td name="nominal"></td>
+                    </tr>
+                   
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+
+
+
 </div>
-<!-- end pop up add truck -->
+<!-- end pop up add kendaraan -->
