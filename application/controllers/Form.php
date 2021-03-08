@@ -148,7 +148,8 @@ class Form extends CI_Controller {
                 "mobil_jenis"=>$this->input->post("mobil_jenis"),
                 "mobil_max_load"=>$this->input->post("mobil_max_load"),
                 "status_jalan"=>"Tidak Jalan",
-                "status_hapus"=>"NO"
+                "status_hapus"=>"NO",
+                "mobil_keterangan"=>$this->input->post("mobil_keterangan")
             );
             // echo($data["customer_name"]);
             $this->model_form->insert_truck($data);
