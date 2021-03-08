@@ -90,19 +90,21 @@
                     <span>Laporan Bukti Uang Jalan </span>
                 </a>
             </li>
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Sistem dan Konfigurasi
-            </div>
-            <!-- Nav Item -->
-            <li class="nav-item" id="Akun_page">
-                <a class="nav-link" href="<?=base_url("index.php/home/akun")?>">
-                    <i class="fas fa-database"></i>
-                    <span>Data Akun </span>
-                </a>
-            </li>
+            <?php if($_SESSION["role"] == "Super User"){?>
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+                <!-- Heading -->
+                <div class="sidebar-heading">
+                    Sistem dan Konfigurasi
+                </div>
+                <!-- Nav Item -->
+                <li class="nav-item" id="Akun_page">
+                    <a class="nav-link" href="<?=base_url("index.php/home/akun")?>">
+                        <i class="fas fa-database"></i>
+                        <span>Data Akun </span>
+                    </a>
+                </li>
+            <?php }?>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block my-1">
             <!-- Sidebar Toggler (Sidebar) -->
