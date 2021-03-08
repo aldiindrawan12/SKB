@@ -34,11 +34,22 @@
                                 <td width="30%">Telah Terima Dari</td>
                                 <td width="5%">:</td>
                                 <?php if($data["bon_jenis"]=="Pengajuan"){ ?>
-                                    <td>Sumber Berkah Jaya</td>
+                                    <td>Sumber Karya Berkah</td>
                                 <?php }else{ ?>
                                     <td><?= $supir["supir_name"]?></td>
                                 <?php } ?>
                             </tr>
+
+                            <tr>
+                                <td width="30%">Untuk</td>
+                                <td width="5%">:</td>
+                                <?php if($data["bon_jenis"]=="Pengajuan"){ ?>
+                                    <td><?= $supir["supir_name"]?></td>
+                                <?php }else{ ?>
+                                    <td>Sumber Karya Berkah</td>
+                                <?php } ?>
+                            </tr>
+
                             <tr>
                                 <td width="30%">Sebesar</td>
                                 <td width="5%">:</td>
