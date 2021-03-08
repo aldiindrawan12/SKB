@@ -51,8 +51,8 @@
                         <td colspan=3><strong>Detail Muatan</strong></td>
                     </tr>
                     <tr>
-                        <td>Tonase : <?= $jo["tonase"]?> Ton</td>
-                        <td>Harga : <?= $jo["harga/kg"]?> / KG</td>
+                        <td>Muatan : <?= $jo["tonase"]." ".$jo["satuan"]?></td>
+                        <td>Harga : <?= $jo["harga/kg"]?> / <?= $jo["satuan"]?></td>
                         <td>Jumlah : Rp.<?= number_format($jo["tonase"]*$jo["harga/kg"]*1000,2,',','.')?></td>
                     </tr>
                     <tr class="text-center">
@@ -108,13 +108,21 @@
                 <form id="form-status-jo"  method="POST" id="status_supir">
                     <input type="text" name="jo_id" id="jo_id" hidden>
                     <div class="mb-3 row">
-                        <label for="tonase" class="col-sm-5 col-form-label">Tonase akhir (Ton)</label>
-                        <div class="col-sm-6">
+                        <label for="tonase" class="col-sm-5 col-form-label">Muatan akhir</label>
+                        <div class="col-sm-3">
                             <input autocomplete="off" class="form-control" type="text" name="tonase" id="tonase" onkeyup="uang()" required>    
+                        </div>
+                        <div class="col-sm-3">
+                            <select name="satuan" id="satuan" class="form-control custom-select" required>
+                                <option class="font-w700" disabled="disabled" selected value="">Jenis Satuan</option>
+                                <?php foreach($satuan as $value){?>
+                                    <option value="<?= $value["satuan_simbol"]?>"><?= $value["satuan_name"]?></option>
+                                <?php }?>
+                            </select>
                         </div>
                     </div>
                      <div class="mb-3 row">
-                        <label class="col-sm-5 col-form-label" for="harga">Harga/kg</label>
+                        <label class="col-sm-5 col-form-label" for="harga">Harga / Satuan</label>
                         <div class="col-sm-6">
                             <input autocomplete="off" class="form-control" type="text" name="harga" id="harga" onkeyup="uang()" required>
                         </div>
