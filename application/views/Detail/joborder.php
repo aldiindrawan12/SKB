@@ -53,7 +53,7 @@
                     <tr>
                         <td>Muatan : <?= $jo["tonase"]." ".$jo["satuan"]?></td>
                         <td>Harga : <?= $jo["harga/kg"]?> / <?= $jo["satuan"]?></td>
-                        <td>Jumlah : Rp.<?= number_format($jo["tonase"]*$jo["harga/kg"]*1000,2,',','.')?></td>
+                        <td>Jumlah : Rp.<?= number_format($jo["tonase"]*$jo["harga/kg"],2,',','.')?></td>
                     </tr>
                     <tr class="text-center">
                         <td colspan=3><strong>Upah Supir</strong></td>

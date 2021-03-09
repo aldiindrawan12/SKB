@@ -63,7 +63,7 @@ class Detail extends CI_Controller {
                 "Jo_id"=>$this->input->post("jo_id")
             );
 
-            $total = $data["tonase"]*$data["harga/kg"]*1000;
+            $total = $data["tonase"]*$data["harga/kg"];
             $ppn = $total * 0.1;
             $grand_total = $total + $ppn;
             $data_invoice = array(

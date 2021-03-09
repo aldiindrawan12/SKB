@@ -78,19 +78,19 @@
                                     <td><?= $invoice["tujuan"]?></td>
                                     <td><?= $invoice["tonase"]." ".$invoice["satuan"]?></td>
                                     <td>Rp.<?= number_format($invoice["harga/kg"],2,',','.')?></td>
-                                    <td>Rp.<?= number_format($invoice["tonase"]*$invoice["harga/kg"]*1000,2,',','.')?></td>
+                                    <td>Rp.<?= number_format($invoice["tonase"]*$invoice["harga/kg"],2,',','.')?></td>
                                 </tr>
                                 <tr>
                                     <td colspan=7>Total</td>
-                                    <td>Rp.<?= number_format($invoice["tonase"]*$invoice["harga/kg"]*1000,2,',','.')?></td>
+                                    <td>Rp.<?= number_format($invoice["tonase"]*$invoice["harga/kg"],2,',','.')?></td>
                                 </tr>
                                 <tr>
                                     <td colspan=7>PPN 10%</td>
-                                    <td>Rp.<?= number_format(($invoice["tonase"]*$invoice["harga/kg"]*1000)*0.1,2,',','.')?></td>
+                                    <td>Rp.<?= number_format(($invoice["tonase"]*$invoice["harga/kg"])*0.1,2,',','.')?></td>
                                 </tr>
                                 <tr>
                                     <td colspan=7>Jumlah</td>
-                                    <td>Rp.<?= number_format(($invoice["tonase"]*$invoice["harga/kg"]*1000)+(($invoice["tonase"]*$invoice["harga/kg"]*1000)*0.1),2,',','.')?></td>
+                                    <td>Rp.<?= number_format(($invoice["tonase"]*$invoice["harga/kg"])+(($invoice["tonase"]*$invoice["harga/kg"]*1000)*0.1),2,',','.')?></td>
                                 </tr>
                             </tbody>
                         </table>
