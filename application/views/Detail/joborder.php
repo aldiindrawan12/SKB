@@ -16,35 +16,35 @@
                             <p class="font-weight-bold badge badge-success">ID JO</p>
                             <p class="font-size-sm font-weight-bold"><?= $jo["Jo_id"] ?></p>
                         </td>
-                        <td class="font-weight-bold mt-2" style="width: 30%;">Muatan</td>
+                        <td class="font-weight-bold mt-2" style="width: 25%;">Muatan</td>
                         <td colspan=3 width="70%"><?= $jo["muatan"]?> </td>
                     </tr>
                     <tr>
-                        <td class="font-weight-bold" style="width: 30%;">Asal-Tujuan</td>
+                        <td class="font-weight-bold" style="width: 25%;">Asal-Tujuan</td>
                         <td colspan=3><?= $jo["asal"]."--".$jo["tujuan"] ?></td>
                     </tr>
                     <tr>
-                        <td class="font-weight-bold" style="width: 30%;">Tanggal Berangkat</td>
+                        <td class="font-weight-bold" style="width: 25%;">Tanggal Berangkat</td>
                         <td colspan=3><?= $jo["tanggal_surat"] ?></td>
                     </tr>
                     <tr>
-                        <td class="font-weight-bold" style="width: 30%;">Tanggal Bongkar</td>
+                        <td class="font-weight-bold" style="width: 25%;">Tanggal Bongkar</td>
                         <td colspan=3><?= $jo["tanggal_bongkar"] ?></td>
                     </tr>
                     <tr>
-                        <td class="font-weight-bold" style="width: 30%;">Status</td>
+                        <td class="font-weight-bold" style="width: 25%;">Status</td>
                         <td colspan=3><?= $jo["status"] ?></td>
                     </tr>
                     <tr>
-                        <td class="font-weight-bold" style="width: 30%;">Supir</td>
+                        <td class="font-weight-bold" style="width: 25%;">Supir</td>
                         <td colspan=3><?= $supir["supir_name"] ?></td>
                     </tr>
                     <tr>
-                        <td class="font-weight-bold" style="width: 30%;">Kendaraan</td>
+                        <td class="font-weight-bold" style="width: 25%;">Kendaraan</td>
                         <td colspan=3><?= $mobil["mobil_no"]." == ".$mobil["mobil_jenis"] ?></td>
                     </tr>
                     <tr>
-                        <td class="font-weight-bold " style="width: 30%;">Uang Jalan</td>
+                        <td class="font-weight-bold " style="width: 25%;">Uang Jalan</td>
                         <td colspan=3><p>Rp.<?= number_format($jo["uang_jalan"],2,',','.')." (".$jo["terbilang"].")" ?></p></td>
                     </tr>
                     <tr class="text-center">
