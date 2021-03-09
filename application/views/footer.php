@@ -96,8 +96,7 @@
                         className: 'text-center font-weight-bold',
                         "orderable": false,
                         render: function(data, type, row) {
-                            let html = "<a class='btn btn-light' href='javascript:void(0)' data-toggle='modal' data-target='#popup-kendaraan' data-pk='"+data+"'><i class='fas fa-eye'></i></a> || "+
-                            
+                            let html = "<a class='btn btn-light btn-detail-truck' href='javascript:void(0)' data-toggle='modal' data-target='#popup-kendaraan' data-pk='"+data+"'><i class='fas fa-eye'></i></a> || "+
                             "<a class='btn btn-light btn-delete-truck' href='javascript:void(0)' data-pk='"+data+"'><i class='fas fa-trash-alt'></i></a>";
                             return html;
                         }
@@ -127,10 +126,26 @@
                             }
                         })
                     });
-
-
-
-                    
+                    $('.btn-detail-truck').click(function() {
+                        let pk = $(this).data('pk');
+                        // alert(pk);
+                        $.ajax({ //ajax ambil data bon
+                            type: "GET",
+                            url: "<?php echo base_url('index.php/detail/gettruck') ?>",
+                            dataType: "JSON",
+                            data: {
+                                id: pk
+                            },
+                            success: function(data) { //jika ambil data sukses
+                            // alert(data);
+                                $('td[name="mobil_no"]').text(data["mobil_no"]); //set value
+                                $('td[name="mobil_jenis"]').text(data["mobil_jenis"]); //set value
+                                $('td[name="status_jalan"]').text(data["status_jalan"]); //set value
+                                $('td[name="mobil_max_load"]').text(data["mobil_max_load"]); //set value
+                                $('td[name="mobil_keterangan"]').text(data["mobil_keterangan"]); //set value
+                            }
+                        });
+                    });                    
                 },
                 
             });

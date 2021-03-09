@@ -57,8 +57,8 @@
                             <th class="text-center" width="10%" scope="col">Mobil</th>
                             <th class="text-center" width="10%" scope="col">Dari</th>
                             <th class="text-center" width="10%" scope="col">Ke</th>
-                            <th class="text-center" width="8%" scope="col">Tonase</th>
-                            <th class="text-center" width="10%" scope="col">Harga/Kg</th>
+                            <th class="text-center" width="8%" scope="col">Total Muatan</th>
+                            <th class="text-center" width="10%" scope="col">Harga/Satuan</th>
                             <th class="text-center" width="10%" scope="col">Jumlah</th>
                         </tr>
                     </thead>
@@ -69,8 +69,8 @@
                             <td><?= $invoice["mobil_no"]?></td>
                             <td><?= $invoice["asal"]?></td>
                             <td><?= $invoice["tujuan"]?></td>
-                            <td><?= $invoice["tonase"]?> Ton</td>
-                            <td><?= $invoice["harga/kg"]?></td>
+                            <td><?= $invoice["tonase"]." ".$invoice["satuan"]?></td>
+                            <td>Rp.<?= number_format($invoice["harga/kg"],2,',','.')?></td>
                             <td>Rp.<?= number_format($invoice["tonase"]*$invoice["harga/kg"]*1000,2,',','.')?></td>
                         </tr>
                         <tr>
@@ -121,11 +121,11 @@
 </body>
 <script>
     var asal = '<?= $asal?>';
-    window.print();
+    // window.print();
     if(asal == "JO"){
-        window.location.replace("<?= base_url("index.php/detail/detail_jo/".$Jo_id)?>");
+        // window.location.replace("<?= base_url("index.php/detail/detail_jo/".$Jo_id)?>");
     }else if(asal == "invoice"){
-        window.location.replace("<?= base_url("index.php/detail/detail_invoice/".$invoice_kode)?>");
+        // window.location.replace("<?= base_url("index.php/detail/detail_invoice/".$invoice_kode)?>");
     }
 </script>
 </html>

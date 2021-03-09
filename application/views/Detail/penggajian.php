@@ -32,7 +32,7 @@
                             <th class="text-center" width="10%" scope="col">Dari</th>
                             <th class="text-center" width="10%" scope="col">Ke</th>
                             <th class="text-center" width="10%" scope="col">Uang Jalan</th>
-                            <th class="text-center" width="8%" scope="col">Tonase</th>
+                            <th class="text-center" width="8%" scope="col">Total Muatan</th>
                             <th class="text-center" width="10%" scope="col">Upah+Bonus</th>
                         </tr>
                     </thead>
@@ -53,7 +53,7 @@
                             <td><?= $value["asal"]?></td>
                             <td><?= $value["tujuan"]?></td>
                             <td>Rp.<?= number_format($value["uang_jalan"],2,',','.') ?></td>
-                            <td><?= $value["tonase"]?> Ton</td>
+                            <td><?= $value["tonase"]." ".$value["satuan"]?></td>
                             <td>Rp.<?= number_format($value["upah"]+$value["bonus"],2,',','.')?></td>
                         </tr>
                     <?php } ?>

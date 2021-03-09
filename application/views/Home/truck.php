@@ -94,12 +94,16 @@
                         <td name="mobil_jenis"></td>
                     </tr>
                     <tr>
+                        <td class="font-weight-bold" style="width: 20%;">Status Jalan</td>
+                        <td name="status_jalan"></td>
+                    </tr>
+                    <tr>
                         <td class="font-weight-bold" style="width: 30%;">Maximum Load (Ton)</td>
-                        <td name="jenis"></td>
+                        <td name="mobil_max_load"></td>
                     </tr>
                     <tr>
                         <td class="font-weight-bold" style="width: 20%;">Keterangan</td>
-                        <td name="nominal"></td>
+                        <td name="mobil_keterangan"></td>
                     </tr>
                    
                 </tbody>

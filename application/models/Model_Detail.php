@@ -30,6 +30,9 @@ class Model_Detail extends CI_model
         return $this->db->get_where("skb_bon",array("bon_id"=>$bon_id))->row_array();
     }
 
+    public function gettruckbyid($truck_id){ //truck by ID
+        return $this->db->get_where("skb_mobil",array("mobil_no"=>$truck_id))->row_array();
+    }
     
     public function getinvoicebyid($invoice_id){ //invoice by ID
         $this->db->join("skb_job_order","skb_job_order.Jo_id=skb_invoice.jo_id","left");
