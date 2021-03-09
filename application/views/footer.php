@@ -351,6 +351,9 @@
         $(document).ready(function() {
             var table = null;
             table = $('#Table-Customer').DataTable({
+                language: {
+                    searchPlaceholder: "Nama Customer"
+                },
                 "processing": true,
                 "serverSide": true,
                 "ordering": true,
