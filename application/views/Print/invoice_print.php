@@ -17,7 +17,7 @@
             <h6 class="m-0 font-weight-bold text-center">Invoice</h6>
         </div>
         <div class="card-body">
-            <table class="w-50">
+            <table class="w-50 small">
                 <tbody>
                     <tr>
                         <td width="35%">Customer</td>
@@ -49,7 +49,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="Table-Jo" width="100%" cellspacing="0">
+                <table class="table table-bordered small" id="Table-Jo" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th class="text-center" width="10%" scope="col">Tgl JO</th>
@@ -87,7 +87,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <table>
+                <table class="small">
                     <tbody>
                         <tr>
                             <td>Harap Pembayaran di Transfer Ke</td>
@@ -111,7 +111,7 @@
                             <td>Hormat Kami</td>
                         </tr>
                         <tr class="text-center">
-                            <td style="height:200px">(..........................................)</td>
+                            <td style="height:150px">(..........................................)</td>
                         </tr>
                     </tbody>
                 </table>
@@ -121,11 +121,11 @@
 </body>
 <script>
     var asal = '<?= $asal?>';
-    // window.print();
+    window.print();
     if(asal == "JO"){
-        // window.location.replace("<?= base_url("index.php/detail/detail_jo/".$Jo_id)?>");
+        window.location.replace("<?= base_url("index.php/detail/detail_jo/".$Jo_id)?>");
     }else if(asal == "invoice"){
-        // window.location.replace("<?= base_url("index.php/detail/detail_invoice/".$invoice_kode)?>");
+        window.location.replace("<?= base_url("index.php/detail/detail_invoice/".$invoice_kode)?>");
     }
 </script>
 </html>
